@@ -63,12 +63,12 @@ public class Menu {
 		
 		/**
 		 * Si crea un oggetto JTextField che serve a caricare il file di testo 
-		 * dove al suo interno ci sara il menu del ristorante che si vuole modificare
+		 * dove al suo interno ci sara il menu del ristorante che si vuole modificare.
 		 */
 		JTextField menu = new JTextField();
 		try {
 		    String textLine;
-		    FileReader fr = new FileReader("/Users/danielefasano/Desktop/Gestore_Ristorante/Gestore_Ristorante/file/menu.txt");
+		    FileReader fr = new FileReader("menu.txt");
 		    BufferedReader reader = new BufferedReader(fr);
 		    menu.read(reader, "jTextArea1");
 		   
@@ -81,15 +81,23 @@ public class Menu {
 		menu.setFont(new Font("Garamond", Font.BOLD, 15));
 		pannello.add(menu, BorderLayout.CENTER);
 		
+		/**
+		 * Si crea un oggetto JButton, che servirà a salvare le modifiche 
+		 * effettuate nel JTextField nel file.
+		 */
 		JButton save=new JButton("Save");
 		save.setFont(new Font("Garamond", Font.BOLD, 20));
+		save.setBackground(new Color(220,220,220));
+		save.setForeground(Color.BLACK);
 		pannello.add(save, BorderLayout.PAGE_END);
 	    
 		
-		
+		/**
+		 * ActionListener che serve a salvare le modifiche effettuate nel Menu.
+		 */
 		save.addActionListener(e1->{
 	        try{
-	            BufferedWriter bw = new BufferedWriter(new FileWriter("/Users/danielefasano/Desktop/Gestore_Ristorante/Gestore_Ristorante/file/menu.txt"));
+	            BufferedWriter bw = new BufferedWriter(new FileWriter("menu.txt"));
 	            bw.write(menu.getText());
 	            bw.close();
 	            System.out.println("Done");
