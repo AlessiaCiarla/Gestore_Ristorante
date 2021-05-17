@@ -64,19 +64,16 @@ public class MenuPrincipale{
 	    pannello.add(cassa);
 	    
 	    /**
-	     * Grazie all'interfaccia ActionListener, è possibile gestire gli eventi, come nel caso del bottone chef.
-	     * Utilizziamo allora addActionListener, per assegnare un "ascoltatore" al bottone.
+	     * Grazie all'interfaccia ActionListener, è possibile gestire gli eventi, come nel caso dei 4 bottoni che abbiamo.
+	     * Utilizziamo allora addActionListener, per assegnare un "ascoltatore" ad ogni bottone.
+	     * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
+	     * * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone.
 	     */
 	    chef.addActionListener(new ActionListener(){
-	    	
-	    	/**
-	    	 * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
-	    	 */
-		    public void actionPerformed(ActionEvent evento){
+	    	public void actionPerformed(ActionEvent evento){
 		    	
 		    	/**
-		    	 * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone chef.
-		    	 * In questo caso, il JFrame del menù principale viene chiuso,e ne viene creato uno nuovo di tipo Menu_Chef, che implementerà una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo Menu_Chef, che implementerà una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new Menu_Chef();
