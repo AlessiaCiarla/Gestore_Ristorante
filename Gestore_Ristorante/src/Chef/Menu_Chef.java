@@ -1,6 +1,9 @@
+package Chef;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Gestore_Ristorante.MenuPrincipale;
 
 /**
  * Classe che implementa la grafica del menù che visulizzerà lo chef, che sarà modificabile grazie ad alcuni bottoni.

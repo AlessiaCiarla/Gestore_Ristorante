@@ -1,6 +1,9 @@
+package Gestore_Ristorante;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import Chef.Menu_Chef;
 
 /**
  * Classe che implementa la grafica del menù iniziale, da cui è possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.

@@ -1,3 +1,4 @@
+package Chef;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,12 +9,12 @@ import java.util.Collections;
 
 
 /**
- * Classe che contiene l'ArrayList di tutti i piatti all'interno del menÃ¹.
+ * Classe che contiene l'ArrayList di tutti i piatti all'interno del menù.
  */
 public class ListaPiatti{
 	
 	private ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
-	File file = new File("menu.txt");
+	File file = new File("file/menu.txt");
 	
 	/**
 	 * Costruttore che genera un ArrayList che contiene i vari piatti.
@@ -23,11 +24,10 @@ public class ListaPiatti{
 	{
 		this.listapiatti=piatti;
 	}
-	
-	
+			
 	/**
 	 * Aggiunge un piatto all'ArrayList dei piatti.
-	 * @param piatto Ã¨ il piatto da aggiungere.
+	 * @param piatto è il piatto da aggiungere.
 	 */
 	public void add(Piatto datiPiatto) 
 	{
@@ -36,6 +36,7 @@ public class ListaPiatti{
 	
 	/**
 	 * Ordina la lista dei piatti tramite una Collections.sort.
+	 * Questo avviene tramite la creazione di un nuovo oggetto di tipo OrdinaPiatti.
 	 */
 	public void sort() 
 	{
@@ -52,7 +53,7 @@ public class ListaPiatti{
 	
 	/**
 	 * Rimuove un piatto specifico all'interno dell'ArrayList.
-	 * @param piatto Ã¨ il piatto da rimuovere.
+	 * @param piatto è il piatto da rimuovere.
 	 */
 	public void remove(Piatto datiPiatto) {
 		listapiatti.remove(datiPiatto);
@@ -60,18 +61,19 @@ public class ListaPiatti{
 	
 	
 	/**
-	 * Sostituisce un piatto con un altro piatto.
-	 * @param dasostituire Ã¨ il piatto da sostituire.
-	 * @param sostituto Ã¨ il piatto che va inserito al posto del precedente.
+	 * Permette di sostituire o modificare i dati di un piatto.
+	 * @param dasostituire è il piatto da modificare.
+	 * @param sostituto è il piatto che va inserito al posto del precedente.
 	 */
 	public void modify(Piatto dasostituire, Piatto sostituto) 
 	{
 		for (Piatto datiPiatto : listapiatti)
-		  {
-		   if (datiPiatto.equals(dasostituire)){
+		{
+		   if (datiPiatto.equals(dasostituire))
+		   {
 			   listapiatti.set(listapiatti.indexOf(datiPiatto), sostituto);
 		   }
-		  }
+		}
 	}
 	
 	
@@ -93,7 +95,7 @@ public class ListaPiatti{
 	
 	
 	/**
-	 * Legge il file in cui Ã¨ contenuto il menÃ¹ e lo copia all'interno dell'ArrayList.
+	 * Legge il file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {
@@ -104,7 +106,7 @@ public class ListaPiatti{
 		  BufferedReader reader = new BufferedReader(new FileReader(file));
 		  
 		  /**
-		   * Legge il contenuto del file.
+		   * Legge il contenuto del file riga per riga.
 		   */
 		  
 		  String currentLine = reader.readLine();
@@ -115,29 +117,32 @@ public class ListaPiatti{
 		   
 		   String Category = datiPiatto[0];
 		   String Name = datiPiatto[1];
-		   double Price = Double.valueOf(datiPiatto[2]);
+		   String Price =datiPiatto[2];
+		   
 		   int Numcategory = Integer.valueOf(datiPiatto[3]);
 		   
-		   //Crea un oggetto DishData e lo aggiunge all'ArrayList.
+		   /**
+		    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
+		    */
 		   
 		   listapiatti.add(new Piatto(Category, Name, Price, Numcategory));
 		   
 		   currentLine = reader.readLine();
-		   reader.close();
 		  }
-		  
-	}
-	catch(Exception ex)
-	  {
-	   System.out.println("Exception msg: "+ex);
-	  }
+		reader.close();
+		}
+		catch(Exception ex)
+		{
+		   System.out.println("Exception msg: "+ex);
+		}
+	
 	}
 		
 		
 		
 		
 	/**
-	 * Prende il contenuto dell'ArrayList e lo copia all'interno di un file txt.
+	 * Prende il contenuto dell'ArrayList e lo copia all'interno del file txt.
 	 */
 	public void write(){
 	try {
@@ -154,7 +159,7 @@ public class ListaPiatti{
 	  {
 	   writer.write(datiPiatto.getCategory());
 	   writer.write(","+ datiPiatto.getName());
-	   writer.write(","+ datiPiatto.getPrice());
+	   writer.write(",€"+ datiPiatto.getPrice());
 	   writer.write(","+ datiPiatto.getNumcategory());
 	   writer.newLine(); 
 	  }

@@ -1,3 +1,5 @@
+package Gestore_Ristorante;
+
 /**
  * Classe grazie alla quale è possibile fare dei test e verificare il corretto funzionamento del programma.
  * Classe contenente il metodo principale main, da cui si fa partire il programma con il Menù principale.
