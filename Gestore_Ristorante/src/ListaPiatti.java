@@ -13,7 +13,7 @@ import java.util.Collections;
 public class ListaPiatti{
 	
 	private ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
-	File file = new File("/Users/danielefasano/Desktop/Gestore_Ristorante/Gestore_Ristorante/file/menu.txt");
+	File file = new File("menu.txt");
 	
 	/**
 	 * Costruttore che genera un ArrayList che contiene i vari piatti.
