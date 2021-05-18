@@ -1,3 +1,2 @@
-Primo,pasta al sugo,€11,1
-Secondo,bistecca,€17.50,2
-Primo,lasagna,€13.50,1
+Primo,pasta al sugo,ï¿½11,1
+Primo,lasagna,ï¿½13.50,1
