@@ -1,2 +1,8 @@
-Primo,pasta al sugo,�11,1
-Primo,lasagna,�13.50,1
+Antipasti: 
+Primi: 
+Primo,pasta al sugo,�11
+Primo,lasagna,�13.50
+Secondi: 
+Secondo,bistecca,�17.50
+Contorni: 
+Dessert: 

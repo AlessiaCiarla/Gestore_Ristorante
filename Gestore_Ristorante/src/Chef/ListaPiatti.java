@@ -126,13 +126,12 @@ public class ListaPiatti{
 		   String Name = datiPiatto[1];
 		   String Price =datiPiatto[2];
 		   
-		   int Numcategory = Integer.valueOf(datiPiatto[3]);
 		   
 		   /**
 		    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
 		    */
 		   
-		   listapiatti.add(new Piatto(Category, Name, Price, Numcategory));
+		   listapiatti.add(new Piatto(Category, Name, Price));
 		   
 		   currentLine = reader.readLine();
 		  }
@@ -170,8 +169,7 @@ public class ListaPiatti{
 		   }
 	   if (datiPiatto.getName()!=null) {
 		   writer.write(",�"+ datiPiatto.getPrice());
-		   }
-	   writer.write(","+ datiPiatto.getNumcategory());
+	   }
 	   writer.newLine(); 
 	  }
 	  /**
