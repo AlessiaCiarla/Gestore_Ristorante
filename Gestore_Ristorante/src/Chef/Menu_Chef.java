@@ -104,9 +104,47 @@ public class Menu_Chef {
 		    		JFrame agg_piatto= new JFrame("AGGIUNGI UN PIATTO");
 		    		agg_piatto.setSize(400,200);
 		    		Container cont_agg= agg_piatto.getContentPane();
-		    		JPanel tendina= new JPanel();
-		    		tendina.setBackground(MenuPrincipale.COLORE_SFONDO);
-		    		cont_agg.add(tendina, BorderLayout.NORTH);
+		    		
+		    		JPanel tendina1= new JPanel();
+		    		tendina1.setBackground(MenuPrincipale.COLORE_SFONDO);
+		    		tendina1.setLayout(new GridLayout(3,2));
+		    		cont_agg.add(tendina1,BorderLayout.CENTER);
+		    		
+		    		JLabel category= new JLabel("CATEGORIA:",SwingConstants.CENTER);
+		    		category.setFont(new Font("Garamond", Font.BOLD, 20));
+		    	    category.setForeground(Color.BLACK);
+		    		tendina1.add(category);
+		    		
+		    		final JComboBox<String> drop_down = new JComboBox<String>(categorie);
+		    	    drop_down.setVisible(true);
+		    	    tendina1.add(drop_down);
+		    		
+		    	    JLabel nome= new JLabel("NOME:",SwingConstants.CENTER);
+		    		nome.setFont(new Font("Garamond", Font.BOLD, 20));
+		    	    nome.setForeground(Color.BLACK);
+		    		tendina1.add(nome);
+		    		
+		    		JTextField name= new JTextField();
+		    		tendina1.add(name);
+		    		
+		    		JLabel prezzo= new JLabel("PREZZO:",SwingConstants.CENTER);
+		    		prezzo.setFont(new Font("Garamond", Font.BOLD, 20));
+		    	    prezzo.setForeground(Color.BLACK);
+		    		tendina1.add(prezzo);
+		    		
+		    		JTextField price= new JTextField();
+		    		tendina1.add(price);
+		    		
+		    		JPanel down= new JPanel();
+		    		up.setLayout(new GridLayout(1,1));
+		    		cont_agg.add(down, BorderLayout.SOUTH);
+		    		
+		    		JButton conferma = new JButton("CONFERMA");
+		    		conferma.setFont(new Font("Garamond", Font.BOLD, 20));
+		    	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
+		    	    conferma.setForeground(Color.BLACK);
+		    	    down.add(conferma);
+		    	    
 		    		agg_piatto.setVisible(true);
 		    		agg_piatto.setLocationRelativeTo(null);
 		    		agg_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -127,13 +165,55 @@ public class Menu_Chef {
 			        
 			        modifica.addActionListener(new ActionListener(){
 				    	public void actionPerformed(ActionEvent evento){
-				    		JFrame agg_piatto= new JFrame("MODIFICA UN PIATTO");
-				    		agg_piatto.setSize(400,200); 
-				    		agg_piatto.setVisible(true);
-				    		agg_piatto.setLocationRelativeTo(null);
-				    		agg_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-				    	}
-			        });
+				    		JFrame mod_piatto= new JFrame("MODIFICA UN PIATTO");
+				    		mod_piatto.setSize(400,200);
+				    		Container cont_mod= mod_piatto.getContentPane();
+				    		
+				    		JPanel tendina2= new JPanel();
+				    		tendina2.setBackground(MenuPrincipale.COLORE_SFONDO);
+				    		tendina2.setLayout(new GridLayout(3,2));
+				    		cont_mod.add(tendina2,BorderLayout.CENTER);
+				    		
+				    		JLabel category= new JLabel("CATEGORIA:",SwingConstants.CENTER);
+				    		category.setFont(new Font("Garamond", Font.BOLD, 20));
+				    	    category.setForeground(Color.BLACK);
+				    		tendina2.add(category);
+				    		
+				    		final JComboBox<String> drop_down = new JComboBox<String>(categorie);
+				    	    drop_down.setVisible(true);
+				    	    tendina2.add(drop_down);
+				    		
+				    	    JLabel nome= new JLabel("NOME:",SwingConstants.CENTER);
+				    		nome.setFont(new Font("Garamond", Font.BOLD, 20));
+				    	    nome.setForeground(Color.BLACK);
+				    		tendina2.add(nome);
+				    		
+				    		JTextField name= new JTextField();
+				    		tendina2.add(name);
+				    		
+				    		JLabel prezzo= new JLabel("PREZZO:",SwingConstants.CENTER);
+				    		prezzo.setFont(new Font("Garamond", Font.BOLD, 20));
+				    	    prezzo.setForeground(Color.BLACK);
+				    		tendina2.add(prezzo);
+				    		
+				    		JTextField price= new JTextField();
+				    		tendina2.add(price);
+				    		
+				    		JPanel down= new JPanel();
+				    		up.setLayout(new GridLayout(1,1));
+				    		cont_mod.add(down, BorderLayout.SOUTH);
+				    		
+				    		JButton conferma = new JButton("CONFERMA");
+				    		conferma.setFont(new Font("Garamond", Font.BOLD, 20));
+				    	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
+				    	    conferma.setForeground(Color.BLACK);
+				    	    down.add(conferma);
+				    	    
+				    		mod_piatto.setVisible(true);
+				    		mod_piatto.setLocationRelativeTo(null);
+				    		mod_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+					    }
+				    });
 	    		}
 	    	}
 	    }
