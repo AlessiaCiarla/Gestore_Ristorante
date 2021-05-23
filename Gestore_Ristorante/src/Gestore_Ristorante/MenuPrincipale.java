@@ -10,11 +10,13 @@ import Chef.Menu_Chef;
  */
 public class MenuPrincipale{
 	
+	public final static Color COLORE_SFONDO=new Color(220,220,220);
+	
 	/**
 	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che è proprio il menù iniziale.
 	 */
 	public MenuPrincipale() {
-		
+
 		/**
 		 * Si crea un oggetto JFrame, di grandezza 600x600.
 		 */
@@ -44,25 +46,25 @@ public class MenuPrincipale{
 		 */
 		JButton chef = new JButton("CHEF");
 		chef.setFont(new Font("Garamond", Font.BOLD, 40));
-	    chef.setBackground(new Color(220,220,220));
+	    chef.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    chef.setForeground(Color.BLACK);
 	    pannello.add(chef);
 		
 	    JButton cameriere = new JButton("CAMERIERE");
 	    cameriere.setFont(new Font("Garamond", Font.BOLD, 40));
-	    cameriere.setBackground(new Color(220,220,220));
+	    cameriere.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    cameriere.setForeground(Color.BLACK);
 	    pannello.add(cameriere);
 	    
 	    JButton cuoco = new JButton("CUOCO");
 	    cuoco.setFont(new Font("Garamond", Font.BOLD, 40));
-	    cuoco.setBackground(new Color(220,220,220));
+	    cuoco.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    cuoco.setForeground(Color.BLACK);
 	    pannello.add(cuoco);
 	    
 	    JButton cassa= new JButton("CASSA");
 	    cassa.setFont(new Font("Garamond", Font.BOLD, 40));
-	    cassa.setBackground(new Color(220,220,220));
+	    cassa.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    cassa.setForeground(Color.BLACK);
 	    pannello.add(cassa);
 	    

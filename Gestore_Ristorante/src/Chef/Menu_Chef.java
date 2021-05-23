@@ -33,7 +33,7 @@ public class Menu_Chef {
 		 */
 		JPanel up= new JPanel();
 		up.setLayout(new GridLayout(1,2));
-		up.setBackground(new Color(220,220,220));
+		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
 		
 		/**
@@ -41,17 +41,17 @@ public class Menu_Chef {
 		 * Si crea per primo una label menu, con testo, posizione, font e sfondo settati; la label viene infine aggiunta al pannello "up".
 		 */
 		JLabel menu = new JLabel("MENU", SwingConstants.CENTER);
-		menu.setFont(new Font("Garamond", Font.BOLD, 20));
+		menu.setFont(new Font("Garamond", Font.BOLD, 22));
 	    menu.setForeground(Color.BLACK);
 		up.add(menu);
 		
 		/**
-		 * Si crea poi, per secondo, un bottone con un'icona e sfondo settato.
+		 * Poi si crea, per secondo, un bottone con un'icona e sfondo settato.
 		 * Viene poi aggiunto al pannello "up".
 		 */
-		Icon icona = new ImageIcon("images/freccia1.png");
-		JButton back= new JButton(icona);
-		back.setBackground(new Color(220,220,220));
+		Icon freccia = new ImageIcon("images/freccia1.png");
+		JButton back= new JButton(freccia);
+		back.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    up.add(back);
 	    
 	    /**
@@ -68,25 +68,78 @@ public class Menu_Chef {
 		    }
 	    });
 	    
-	    /**
-	     * Dopo il primo pannello up, viene creato un secondo pannello center, che gestirà il resto dello spazio dell'interfaccia.
-	     * Il pannello center è di tipo JSplitPane, che consente di dividere il pannello in due porzioni e , nel nostro caso, verticalmente.
-	     */
+	    String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
+		ListaPiatti listap= new ListaPiatti();
+		int lunghezza= categorie.length + listap.size();
+		
 	    JPanel center_left= new JPanel();
-		center_left.setBackground(new Color(220,220,220));
-		center_left.setLayout(new BoxLayout(center_left,BoxLayout.Y_AXIS));
+		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
+		center_left.setLayout(new GridLayout(lunghezza,1));
 	    
 		JPanel center_right= new JPanel();
-		center_right.setBackground(new Color(220,220,220));
-		center_right.setLayout(new BoxLayout(center_right,BoxLayout.Y_AXIS));
+		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
+		center_right.setLayout(new GridLayout(lunghezza,1));
 		
 		JSplitPane center = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,center_left, center_right);
 		contenuto.add(center,BorderLayout.CENTER);
-		center.setResizeWeight(0.5);
+		center.setResizeWeight(0.7);
         center.setContinuousLayout(true);
         JScrollPane scroll1= new JScrollPane(center);
 		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contenuto.add(scroll1);
+		
+		for (int i = 0; i < categorie.length; i++) {
+    		 JLabel categ = new JLabel(categorie[i], SwingConstants.CENTER);
+    		 categ.setFont(new Font("Garamond", Font.BOLD, 22));
+ 		     categ.setForeground(Color.BLACK);
+ 		     center_left.add(categ);
+ 		     
+ 		    Icon piu = new ImageIcon("images/piu.png");
+			JButton aggiungi = new JButton(piu);
+			aggiungi.setBackground(MenuPrincipale.COLORE_SFONDO);
+	        center_right.add(aggiungi);
+	        
+	        aggiungi.addActionListener(new ActionListener(){
+		    	public void actionPerformed(ActionEvent evento){
+		    		JFrame agg_piatto= new JFrame("AGGIUNGI UN PIATTO");
+		    		agg_piatto.setSize(400,200);
+		    		Container cont_agg= agg_piatto.getContentPane();
+		    		JPanel tendina= new JPanel();
+		    		tendina.setBackground(MenuPrincipale.COLORE_SFONDO);
+		    		cont_agg.add(tendina, BorderLayout.NORTH);
+		    		agg_piatto.setVisible(true);
+		    		agg_piatto.setLocationRelativeTo(null);
+		    		agg_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+			    }
+		    });
+		        
+	    	for (int j = 0; j < listap.size(); j++) {
+	    		if (listap.getPiatto(j).getNumcategory()== i) {
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     € " + listap.getPiatto(j).getPrice());
+		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    piatto.setForeground(Color.BLACK);
+			        center_left.add(piatto);
+			        
+			        Icon penna = new ImageIcon("images/penna1.png");
+					JButton modifica = new JButton(penna);
+					modifica.setBackground(MenuPrincipale.COLORE_SFONDO);
+			        center_right.add(modifica);
+			        
+			        modifica.addActionListener(new ActionListener(){
+				    	public void actionPerformed(ActionEvent evento){
+				    		JFrame agg_piatto= new JFrame("MODIFICA UN PIATTO");
+				    		agg_piatto.setSize(400,200); 
+				    		agg_piatto.setVisible(true);
+				    		agg_piatto.setLocationRelativeTo(null);
+				    		agg_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				    	}
+			        });
+	    		}
+	    	}
+	    }
+		
+	    
+		
 		
 		/**
 		 * Metodi per rendere visibile la finestra,per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
