@@ -1,4 +1,4 @@
-package Chef;
+package gestore_ristorante.chef;
 
 /**
  * Viene creata la classe Piatto, grazie alla quale viene identificato un piatto all'interno del men�.

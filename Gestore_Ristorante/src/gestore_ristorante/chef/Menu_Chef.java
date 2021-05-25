@@ -1,9 +1,9 @@
-package Chef;
+package gestore_ristorante.chef;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Gestore_Ristorante.MenuPrincipale;
+import gestore_ristorante.MenuPrincipale;
 
 /**
  * Classe che implementa la grafica del menù che visulizzerà lo chef, che sarà modificabile grazie ad alcuni bottoni.
@@ -15,6 +15,10 @@ public class Menu_Chef {
 	 * Con il metodo costruttore della classe Menu_Chef si crea un nuovo oggetto, cioè il menù dello Chef.
 	 */
 	public Menu_Chef() {
+		
+		String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
+		ListaPiatti listap= new ListaPiatti();
+		int lunghezza= categorie.length + listap.size();
 		
 		/**
 		 * Si crea un oggetto JFrame, di grandezza 600x600.
@@ -32,7 +36,7 @@ public class Menu_Chef {
 		 * Di conseguenza, il pannello "up" viene posto in posizione NORTH del Container, che invece implementa un BorderLayout.
 		 */
 		JPanel up= new JPanel();
-		up.setLayout(new GridLayout(1,2));
+		up.setLayout(new GridLayout(1,3));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
 		
@@ -51,7 +55,7 @@ public class Menu_Chef {
 		 */
 		Icon freccia = new ImageIcon("images/freccia1.png");
 		JButton back= new JButton(freccia);
-		back.setBackground(MenuPrincipale.COLORE_SFONDO);
+		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 	    
 	    /**
@@ -68,9 +72,62 @@ public class Menu_Chef {
 		    }
 	    });
 	    
-	    String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
-		ListaPiatti listap= new ListaPiatti();
-		int lunghezza= categorie.length + listap.size();
+	    Icon piu = new ImageIcon("images/piu.png");
+		JButton aggiungi = new JButton(piu);
+		aggiungi.setBackground(MenuPrincipale.COLORE_BOTTONI);
+        up.add(aggiungi);
+        
+        aggiungi.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent evento){
+	    		JFrame agg_piatto= new JFrame("AGGIUNGI UN PIATTO");
+	    		agg_piatto.setSize(400,200);
+	    		Container cont_agg= agg_piatto.getContentPane();
+	    		
+	    		JPanel tendina1= new JPanel();
+	    		tendina1.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    		tendina1.setLayout(new GridLayout(3,2));
+	    		cont_agg.add(tendina1,BorderLayout.CENTER);
+	    		
+	    		JLabel category= new JLabel("CATEGORIA:",SwingConstants.CENTER);
+	    		category.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    category.setForeground(Color.BLACK);
+	    		tendina1.add(category);
+	    		
+	    		final JComboBox<String> drop_down = new JComboBox<String>(categorie);
+	    	    drop_down.setVisible(true);
+	    	    tendina1.add(drop_down);
+	    		
+	    	    JLabel nome= new JLabel("NOME:",SwingConstants.CENTER);
+	    		nome.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    nome.setForeground(Color.BLACK);
+	    		tendina1.add(nome);
+	    		
+	    		JTextField name= new JTextField();
+	    		tendina1.add(name);
+	    		
+	    		JLabel prezzo= new JLabel("PREZZO:",SwingConstants.CENTER);
+	    		prezzo.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    prezzo.setForeground(Color.BLACK);
+	    		tendina1.add(prezzo);
+	    		
+	    		JTextField price= new JTextField();
+	    		tendina1.add(price);
+	    		
+	    		JPanel down= new JPanel();
+	    		up.setLayout(new GridLayout(1,1));
+	    		cont_agg.add(down, BorderLayout.SOUTH);
+	    		
+	    		JButton conferma = new JButton("CONFERMA");
+	    		conferma.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    	    conferma.setForeground(Color.BLACK);
+	    	    down.add(conferma);
+	    	    
+	    		agg_piatto.setVisible(true);
+	    		agg_piatto.setLocationRelativeTo(null);
+	    		agg_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		    }
+	    });
 		
 	    JPanel center_left= new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
@@ -82,7 +139,7 @@ public class Menu_Chef {
 		
 		JSplitPane center = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,center_left, center_right);
 		contenuto.add(center,BorderLayout.CENTER);
-		center.setResizeWeight(0.7);
+		center.setResizeWeight(0.8);
         center.setContinuousLayout(true);
         JScrollPane scroll1= new JScrollPane(center);
 		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -94,62 +151,9 @@ public class Menu_Chef {
  		     categ.setForeground(Color.BLACK);
  		     center_left.add(categ);
  		     
- 		    Icon piu = new ImageIcon("images/piu.png");
-			JButton aggiungi = new JButton(piu);
-			aggiungi.setBackground(MenuPrincipale.COLORE_SFONDO);
-	        center_right.add(aggiungi);
-	        
-	        aggiungi.addActionListener(new ActionListener(){
-		    	public void actionPerformed(ActionEvent evento){
-		    		JFrame agg_piatto= new JFrame("AGGIUNGI UN PIATTO");
-		    		agg_piatto.setSize(400,200);
-		    		Container cont_agg= agg_piatto.getContentPane();
-		    		
-		    		JPanel tendina1= new JPanel();
-		    		tendina1.setBackground(MenuPrincipale.COLORE_SFONDO);
-		    		tendina1.setLayout(new GridLayout(3,2));
-		    		cont_agg.add(tendina1,BorderLayout.CENTER);
-		    		
-		    		JLabel category= new JLabel("CATEGORIA:",SwingConstants.CENTER);
-		    		category.setFont(new Font("Garamond", Font.BOLD, 20));
-		    	    category.setForeground(Color.BLACK);
-		    		tendina1.add(category);
-		    		
-		    		final JComboBox<String> drop_down = new JComboBox<String>(categorie);
-		    	    drop_down.setVisible(true);
-		    	    tendina1.add(drop_down);
-		    		
-		    	    JLabel nome= new JLabel("NOME:",SwingConstants.CENTER);
-		    		nome.setFont(new Font("Garamond", Font.BOLD, 20));
-		    	    nome.setForeground(Color.BLACK);
-		    		tendina1.add(nome);
-		    		
-		    		JTextField name= new JTextField();
-		    		tendina1.add(name);
-		    		
-		    		JLabel prezzo= new JLabel("PREZZO:",SwingConstants.CENTER);
-		    		prezzo.setFont(new Font("Garamond", Font.BOLD, 20));
-		    	    prezzo.setForeground(Color.BLACK);
-		    		tendina1.add(prezzo);
-		    		
-		    		JTextField price= new JTextField();
-		    		tendina1.add(price);
-		    		
-		    		JPanel down= new JPanel();
-		    		up.setLayout(new GridLayout(1,1));
-		    		cont_agg.add(down, BorderLayout.SOUTH);
-		    		
-		    		JButton conferma = new JButton("CONFERMA");
-		    		conferma.setFont(new Font("Garamond", Font.BOLD, 20));
-		    	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
-		    	    conferma.setForeground(Color.BLACK);
-		    	    down.add(conferma);
-		    	    
-		    		agg_piatto.setVisible(true);
-		    		agg_piatto.setLocationRelativeTo(null);
-		    		agg_piatto.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-			    }
-		    });
+ 		    JLabel category= new JLabel();
+ 		    category.setBackground(MenuPrincipale.COLORE_SFONDO);
+    		center_right.add(category);
 		        
 	    	for (int j = 0; j < listap.size(); j++) {
 	    		if (listap.getPiatto(j).getNumcategory()== i) {
@@ -160,7 +164,7 @@ public class Menu_Chef {
 			        
 			        Icon penna = new ImageIcon("images/penna1.png");
 					JButton modifica = new JButton(penna);
-					modifica.setBackground(MenuPrincipale.COLORE_SFONDO);
+					modifica.setBackground(MenuPrincipale.COLORE_BOTTONI);
 			        center_right.add(modifica);
 			        
 			        modifica.addActionListener(new ActionListener(){
@@ -200,8 +204,14 @@ public class Menu_Chef {
 				    		tendina2.add(price);
 				    		
 				    		JPanel down= new JPanel();
-				    		up.setLayout(new GridLayout(1,1));
+				    		up.setLayout(new GridLayout(1,2));
 				    		cont_mod.add(down, BorderLayout.SOUTH);
+				    		
+				    		JButton rimuovi = new JButton("RIMUOVI PIATTO");
+				    		rimuovi.setFont(new Font("Garamond", Font.BOLD, 20));
+				    	    rimuovi.setBackground(MenuPrincipale.COLORE_SFONDO);
+				    	    rimuovi.setForeground(Color.BLACK);
+				    	    down.add(rimuovi);
 				    		
 				    		JButton conferma = new JButton("CONFERMA");
 				    		conferma.setFont(new Font("Garamond", Font.BOLD, 20));

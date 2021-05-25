@@ -1,4 +1,4 @@
-package Chef;
+package gestore_ristorante.chef;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -13,7 +13,6 @@ import java.util.Collections;
  * Classe che contiene l'ArrayList di tutti i piatti all'interno del men�.
  */
 public class ListaPiatti{
-	
 	
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
 	File file = new File("file/menu.txt");

@@ -1,17 +1,18 @@
-package Gestore_Ristorante;
+package gestore_ristorante;
+
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import Chef.Menu_Chef;
+import gestore_ristorante.chef.Menu_Chef;
 
 /**
  * Classe che implementa la grafica del menù iniziale, da cui è possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
  */
 public class MenuPrincipale{
 	
-	public final static Color COLORE_SFONDO=new Color(220,220,220);
-	
+	public final static Color COLORE_SFONDO=new Color(171,205,239);  
+	public final static Color COLORE_BOTTONI=new Color(224,255,255);
 	/**
 	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che è proprio il menù iniziale.
 	 */

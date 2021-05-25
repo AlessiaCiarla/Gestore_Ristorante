@@ -1,2 +1,5 @@
 Bruschette,6,0
 Pasta al sugo,11.50,1
+Grigliata,15,2
+Insalata,4,3
+Tiramisù,5,4

@@ -1,4 +1,4 @@
-package Gestore_Ristorante;
+package gestore_ristorante;
 
 /**
  * Classe grazie alla quale è possibile fare dei test e verificare il corretto funzionamento del programma.
