@@ -4,17 +4,18 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import gestore_ristorante.cameriere.Gestione_Tavoli;
 import gestore_ristorante.chef.Menu_Chef;
 
 /**
- * Classe che implementa la grafica del menù iniziale, da cui è possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
+ * Classe che implementa la grafica del menï¿½ iniziale, da cui ï¿½ possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
  */
 public class MenuPrincipale{
 	
 	public final static Color COLORE_SFONDO=new Color(171,205,239);  
 	public final static Color COLORE_BOTTONI=new Color(224,255,255);
 	/**
-	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che è proprio il menù iniziale.
+	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che ï¿½ proprio il menï¿½ iniziale.
 	 */
 	public MenuPrincipale() {
 
@@ -25,7 +26,7 @@ public class MenuPrincipale{
 		start.setSize(600,600); 
 		
 		/**
-		 * Si crea un oggetto Container, che corrisponderà al contenuto del JFrame.
+		 * Si crea un oggetto Container, che corrisponderï¿½ al contenuto del JFrame.
 		 */
 		Container contenuto=start.getContentPane();
 		
@@ -70,7 +71,7 @@ public class MenuPrincipale{
 	    pannello.add(cassa);
 	    
 	    /**
-	     * Grazie all'interfaccia ActionListener, è possibile gestire gli eventi, come nel caso dei 4 bottoni che abbiamo.
+	     * Grazie all'interfaccia ActionListener, ï¿½ possibile gestire gli eventi, come nel caso dei 4 bottoni che abbiamo.
 	     * Utilizziamo allora addActionListener, per assegnare un "ascoltatore" ad ogni bottone.
 	     * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
 	     * * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone.
@@ -79,13 +80,22 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 		    	/**
-		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo Menu_Chef, che implementerà una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menï¿½ principale viene chiuso, e ne viene creato uno nuovo di tipo Menu_Chef, che implementerï¿½ una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new Menu_Chef();
 		    }
 	    });
-	    
+	    cameriere.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent evento){
+		    	
+		    	/**
+		    	 * In questo caso, il JFrame del menï¿½ principale viene chiuso, e ne viene creato uno nuovo di tipo Lista_Tavoli, che implementerï¿½ una nuova interfaccia.
+		    	 */
+		    	start.dispose(); 
+		    	new Gestione_Tavoli();
+		    }
+	    });
 		/**
 		 * Metodi per rendere visibile la finestra,per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
 		 */
