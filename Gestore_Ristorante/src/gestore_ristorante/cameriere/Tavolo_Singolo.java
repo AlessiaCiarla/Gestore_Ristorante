@@ -9,7 +9,6 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -25,7 +24,6 @@ import javax.swing.SwingConstants;
 
 import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.chef.ListaPiatti;
-import gestore_ristorante.chef.Piatto;
 
 
 
@@ -34,13 +32,10 @@ public class Tavolo_Singolo{
 	String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
 	ListaPiatti listap= new ListaPiatti();
 	int lunghezza= categorie.length + listap.size();
-	ListaPiatti quantità = new ListaPiatti();
+	int quantita [] = new int[listap.size()];   //array che contiene i valori di tutti i contatori.
+	
 	JFrame editable_menu= new JFrame("ORDINAZIONE");
-	 
-	
-	
 	Container contenuto= editable_menu.getContentPane();
-	
 	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
 	
@@ -56,13 +51,10 @@ public class Tavolo_Singolo{
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
 		
-		
 		JPanel down= new JPanel();
 		up.setLayout(new GridLayout(1,1));
 		contenuto.add(down, BorderLayout.SOUTH);
 		
-		
-
 		JLabel menu = new JLabel("MENU", SwingConstants.CENTER);
 		menu.setFont(new Font("Garamond", Font.BOLD, 22));
 	    menu.setForeground(Color.BLACK);
@@ -76,7 +68,6 @@ public class Tavolo_Singolo{
 		JButton back= new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    up.add(back);
-	    
 	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
@@ -96,17 +87,23 @@ public class Tavolo_Singolo{
 	    down.add(conferma, BorderLayout.SOUTH);
 	    
 	    conferma.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    	public void actionPerformed(ActionEvent evento) {
 		    	
-		    	/**
+		    	/*
 		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
 		    	 */
+	    		/*int value = (int) aggiungi.getValue();
+		        for (i = 0; i < quantita.length; i++) {
+		        	quantita[i]=value;*/
+		        /*for (i=0; i< quantita.length;i++) {
+		        	System.out.println(quantita[i]);
+		        }*/
+		        //quantita.add(new Piatto(listap.getPiatto(j).getName(), listap.getPiatto(j).getPrice(), Integer.parseInt(value)));
+	    		
 		    	editable_menu.dispose();
 		    	new Riepilogo();
 		    }
 	    });
-	    
-	    
 	    
 	    contenuto.add(pannello_variabile,BorderLayout.CENTER);
         pannello_variabile.setResizeWeight(0.8);
@@ -131,7 +128,6 @@ public class Tavolo_Singolo{
 		center_right.setLayout(new GridLayout(lunghezza,1));
 		pannello_variabile.setRightComponent(center_right);
 		
-		
 		for (int i = 0; i < categorie.length; i++) {
    		 JLabel categ = new JLabel(categorie[i], SwingConstants.CENTER);
    		 categ.setFont(new Font("Garamond", Font.BOLD, 22));
@@ -139,25 +135,22 @@ public class Tavolo_Singolo{
 		 center_left.add(categ);
 		 
 		 JLabel vuota = new JLabel();
-		 vuota.setForeground(new Color(220,220,220));
+		 vuota.setForeground(MenuPrincipale.COLORE_SFONDO);
 		 center_right.add(vuota);
 		
-		for (int j = 0; j < listap.size(); j++) {
-    		if (listap.getPiatto(j).getNumcategory()== i) {
-    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     $" + listap.getPiatto(j).getPrice());
-	    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
-			    piatto.setForeground(Color.BLACK);
-		        center_left.add(piatto);
-		        
-		        SpinnerModel limite = new SpinnerNumberModel(0, 0, 10, 1);
-				JSpinner aggiungi = new JSpinner(limite);
-				aggiungi.setBackground(MenuPrincipale.COLORE_SFONDO);
-				aggiungi.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		        center_right.add(aggiungi);
-		        
-		        String value = aggiungi.getValue() + "";
-		        quantità.add(new Piatto(listap.getPiatto(j).getName(), listap.getPiatto(j).getPrice(), Integer.parseInt(value)));
-    			}
+			for (int j = 0; j < listap.size(); j++) {
+	    		if (listap.getPiatto(j).getNumcategory()== i) {
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     �" + listap.getPiatto(j).getPrice());
+		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    piatto.setForeground(Color.BLACK);
+			        center_left.add(piatto);
+			        
+			        SpinnerModel limite = new SpinnerNumberModel(0, 0, 10, 1);
+					JSpinner cont = new JSpinner(limite);
+					cont.setBackground(MenuPrincipale.COLORE_SFONDO);
+					cont.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
+			        center_right.add(cont);
+	    		}
 			}
 		}	
 	}

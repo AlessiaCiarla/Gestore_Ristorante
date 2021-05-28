@@ -13,11 +13,8 @@ import gestore_ristorante.MenuPrincipale;
  *
  */
 public class Gestione_Tavoli {
-	
-
-	String tavoli[] ={"TAVOLO1", "TAVOLO2", "TAVOLO3", "TAVOLO4"};
-	ListaTavoli listat= new ListaTavoli();
-	int lunghezza= tavoli.length + listat.size();
+	String tavoli[] ={"TAVOLO 1", "TAVOLO 2", "TAVOLO 3", "TAVOLO 4","TAVOLO 5"};
+	String stato[]= {"NI","NI","NI","NI","NI"};
 	
 	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
 	Container contenuto= table_view.getContentPane();
@@ -72,16 +69,14 @@ public class Gestione_Tavoli {
 	
 	
 	public void popolaPannello() {
-	    
-		
 		JPanel center_left= new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
-		center_left.setLayout(new GridLayout(4,2));
+		center_left.setLayout(new GridLayout(5,2));
 		pannello_variabile.setLeftComponent(center_left);
 		
 		JPanel center_right= new JPanel();
 		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
-		center_right.setLayout(new GridLayout(4,2));
+		center_right.setLayout(new GridLayout(5,2));
 		pannello_variabile.setRightComponent(center_right);
 
 		for (int i = 0; i < tavoli.length; i++) {
@@ -97,19 +92,11 @@ public class Gestione_Tavoli {
 		    		new Tavolo_Singolo();
 		    	}
 		    });
-		    
-		    
-		    
-		    for (int j = 0; j < listat.size(); j++) {
-	    		if (listat.getTavolo(j).getNumero_tavolo()== i) {
-	    			JLabel tavolo = new JLabel("STATO ORDINE: " + listat.getTavolo(j).getStato());
-		    		tavolo.setFont(new Font("AR BLANCA", Font.BOLD, 20));
-				    tavolo.setForeground(Color.BLACK);
-			        center_right.add(tavolo);
-	    		}
-	    	}
-		
-		
+			JLabel status = new JLabel("STATO ORDINE: " + stato[i] );
+    		status.setFont(new Font("Aldhabi", Font.BOLD, 20));
+		    status.setForeground(Color.BLACK);
+	        center_right.add(status);
+	        // disabilitare bottone se la label è == I
 		}
 	
 	}

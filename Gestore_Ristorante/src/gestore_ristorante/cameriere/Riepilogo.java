@@ -65,7 +65,7 @@ public class Riepilogo{
 		    }
 	    });
 	    
-		
+		//AGGIUNGI IMPORTO TOTALE
 	    
 	    JButton conferma = new JButton("INSERISCI ORDINE");
 		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
@@ -75,6 +75,7 @@ public class Riepilogo{
 	    
 	    conferma.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
+	    		//cambiare lo stato in backend
 		    	editable_menu.dispose();
 		    	new Gestione_Tavoli();
 		    }

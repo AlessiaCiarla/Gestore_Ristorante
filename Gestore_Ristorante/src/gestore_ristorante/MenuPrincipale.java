@@ -90,7 +90,7 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 		    	/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo Lista_Tavoli, che implementer� una nuova interfaccia.
+		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo Gestione_Tavoli, che implementer� una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new Gestione_Tavoli();
