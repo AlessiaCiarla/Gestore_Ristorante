@@ -27,11 +27,11 @@ import gestore_ristorante.chef.ListaPiatti;
 
 
 
-public class Tavolo_Singolo extends Gestione_Tavoli{
+public class Tavolo_Singolo {
 
 	
-	public Tavolo_Singolo (String titolo) {
-		JFrame editable_menu= new JFrame(titolo);
+	public Tavolo_Singolo () {
+		JFrame editable_menu= new JFrame("ORDINAZIONE");
 		editable_menu.setSize(600,600); 
 		
 		/**

@@ -8,18 +8,15 @@ import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Collections;
 
-
 /**
- * Classe che contiene l'ArrayList di tutti i piatti all'interno del menï¿½.
+ * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menù, e gestisce vari metodi che saranno usati nella classe Menu_Chef(front-end).
  */
 public class ListaPiatti{
-	
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
 	File file = new File("file/menu.txt");
 	
 	/**
-	 * Costruttore che genera un ArrayList che contiene i vari piatti.
-	 * @param piatti sono i piatti da aggiungere all'ArrayList.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti, al fine di popolare immediatamente il pannello grafico usato in Menu_Chef.
 	 */
 	public ListaPiatti () {
 		read();
@@ -27,7 +24,7 @@ public class ListaPiatti{
 			
 	/**
 	 * Aggiunge un piatto all'ArrayList dei piatti.
-	 * @param piatto ï¿½ il piatto da aggiungere.
+	 * @param piatto è il piatto da aggiungere.
 	 */
 	public void add(Piatto datiPiatto){
 		if (!listapiatti.contains(datiPiatto)) {
@@ -52,24 +49,33 @@ public class ListaPiatti{
 	
 	/**
 	 * Rimuove un piatto specifico all'interno dell'ArrayList.
-	 * @param piatto ï¿½ il piatto da rimuovere.
+	 * @param piatto è il piatto da rimuovere.
 	 */
 	public void remove(Piatto datiPiatto) {
 		listapiatti.remove(datiPiatto);
 	}
 	
+	/**
+	 * Metodo grazie al quale è possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
+	 * @param indice: un indice di tipo intero.
+	 * @return l'oggetto di tipo Piatto all'indice passato in input.
+	 */
 	public Piatto getPiatto(int indice) {
 		return listapiatti.get(indice);
 	}
 	
+	/**
+	 * Metodo grazie al quale si ricava la lunghezza dell'Arraylist listapiatti.
+	 * @return la  lunghezza di listapiatti.
+	 */
 	public int size() {
 		return listapiatti.size();
 	}
 	
 	/**
 	 * Permette di sostituire o modificare i dati di un piatto(nome, prezzo, categoria)
-	 * @param dasostituire ï¿½ il piatto da modificare.
-	 * @param sostituto ï¿½ il piatto che va inserito al posto del precedente.
+	 * @param dasostituire è il piatto da modificare.
+	 * @param sostituto è il piatto che va inserito al posto del precedente.
 	 */
 	public void modify(Piatto dasostituire, Piatto sostituto){	
 		if (!listapiatti.contains(sostituto)) {
@@ -81,10 +87,8 @@ public class ListaPiatti{
 		}
 	}
 	
-	
-	
 	/**
-	 * Mostra il contenuto dell'ArrayList.
+	 * Mostra il contenuto dell'ArrayList,stampandolo a video.
 	 */
 	public void readArray() {
 		for (Piatto datiPiatto : listapiatti){
@@ -92,13 +96,10 @@ public class ListaPiatti{
 								+ ","+ datiPiatto.getPrice() 
 								+ ","+ datiPiatto.getNumcategory());
 		}
-		
-		
 	}
 	
-	
 	/**
-	 * Legge il file in cui ï¿½ contenuto il menï¿½ e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {
@@ -128,16 +129,11 @@ public class ListaPiatti{
 			   
 			    currentLine = reader.readLine();
 		    }
-		reader.close();
-		}
-		catch(Exception ex){
+		    reader.close();
+		} catch(Exception ex){
 			System.out.println("Exception msg: "+ ex);
 		}
-	
 	}
-		
-		
-		
 		
 	/**
 	 * Prende il contenuto dell'ArrayList e lo copia all'interno del file txt.
@@ -148,25 +144,24 @@ public class ListaPiatti{
 	    /**
 	     * Crea un oggetto BufferedWriter per scrivere l'output del file.
 	     */
-		BufferedWriter writer = new BufferedWriter(new FileWriter(file));
+			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
 		/**
 		* Scrive ogni piatto all'interno del file di output.
 		*/
-		for (Piatto datiPiatto : listapiatti){
-			writer.write(datiPiatto.getName());
-			writer.write("," + datiPiatto.getPrice());
-		    writer.write(","  + datiPiatto.getNumcategory());
-		    writer.newLine(); 
-		}
+			for (Piatto datiPiatto : listapiatti){
+				writer.write(datiPiatto.getName());
+				writer.write("," + datiPiatto.getPrice());
+			    writer.write(","  + datiPiatto.getNumcategory());
+			    writer.newLine(); 
+			}
 		
 	    /**
-	     * Chiude tutte le risorse
+	     * Chiude il file.
 	     */
-	    writer.close();
+			writer.close();
 	  
-		}
-		catch(Exception ex){
+		} catch(Exception ex){
 			System.out.println("Exception msg: "+ex);
 		}
 	}

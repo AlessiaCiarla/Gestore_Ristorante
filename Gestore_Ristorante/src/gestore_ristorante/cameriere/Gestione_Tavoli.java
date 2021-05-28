@@ -5,7 +5,6 @@ import java.awt.event.*;
 import javax.swing.*;
 
 import gestore_ristorante.MenuPrincipale;
-import gestore_ristorante.chef.ListaPiatti;
 
 
 /**
@@ -15,7 +14,6 @@ import gestore_ristorante.chef.ListaPiatti;
  */
 public class Gestione_Tavoli {
 	
-	String titolo;
 	String tavoli[] ={"TAVOLO1", "TAVOLO2", "TAVOLO3", "TAVOLO4"};
 	ListaTavoli listat= new ListaTavoli();
 	int lunghezza= tavoli.length + listat.size();
@@ -92,7 +90,7 @@ public class Gestione_Tavoli {
 		
 		JSplitPane center = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,center_left, center_right);
 		contenuto.add(center,BorderLayout.CENTER);
-		center.setResizeWeight(0.85);
+		center.setResizeWeight(0.9);
         center.setContinuousLayout(true);
         JScrollPane scroll1= new JScrollPane(center);
 		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
@@ -107,12 +105,11 @@ public class Gestione_Tavoli {
 			Tavolo.setBackground(MenuPrincipale.COLORE_SFONDO);
 			Tavolo.setForeground(Color.BLACK);
 		    center_left.add(Tavolo);
-		    titolo = tavoli [i];
 		
 		    Tavolo.addActionListener(new ActionListener(){
 		    	public void actionPerformed(ActionEvent evento) {
-		    		table_view.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-		    		new Tavolo_Singolo(titolo);
+		    		table_view.dispose();
+		    		new Tavolo_Singolo();
 		    	}
 		    });
 		    
