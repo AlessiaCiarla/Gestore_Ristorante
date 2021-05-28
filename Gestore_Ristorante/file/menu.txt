@@ -1,7 +1,5 @@
 Bruschette,8.0,0
 antipasto di montagna,10.0,0
-Antipasto di mare,14.0,0
-crostini,6.0,0
 Pasta al sugo,11.0,1
 Carbonara,11.5,1
 Cacio e pepe,11.0,1
@@ -13,8 +11,9 @@ orata,15.0,2
 bistecca,15.0,2
 Insalata,4.0,3
 cicoria ripassata,5.0,3
-Tiramisù,5.0,4
+Tiramisï¿½,5.0,4
 pannacotta,4.0,4
 Cheesecake,4.0,4
 millefoglie,5.0,4
 torta al cioccolato,5.0,4
+Torta della nonna,10.0,4

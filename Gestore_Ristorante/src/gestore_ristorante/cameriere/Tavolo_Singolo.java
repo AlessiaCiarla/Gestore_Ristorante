@@ -1,5 +1,6 @@
 package gestore_ristorante.cameriere;
 
+
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.ComponentOrientation;
@@ -24,25 +25,32 @@ import javax.swing.SwingConstants;
 
 import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.chef.ListaPiatti;
+import gestore_ristorante.chef.Piatto;
 
 
 
-public class Tavolo_Singolo {
-
+public class Tavolo_Singolo{
+	
+	String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
+	ListaPiatti listap= new ListaPiatti();
+	int lunghezza= categorie.length + listap.size();
+	ListaPiatti quantità = new ListaPiatti();
+	JFrame editable_menu= new JFrame("ORDINAZIONE");
+	 
+	
+	
+	Container contenuto= editable_menu.getContentPane();
+	
+	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	
 	
 	public Tavolo_Singolo () {
-		JFrame editable_menu= new JFrame("ORDINAZIONE");
-		editable_menu.setSize(600,600); 
+		visualizza();
+	}
+	
+	public void visualizza() {
 		
-		/**
-		 * Si crea un oggetto Container, che corrisponder� al contenuto del JFrame.
-		 */
-		Container contenuto= editable_menu.getContentPane();
-		
-		/**
-		 * Si crea un primo JPanel "up",che implementa un GridLayout 1x2, e gli viene settato lo sfondo.
-		 * Di conseguenza, il pannello "up" viene posto in posizione NORTH del Container, che invece implementa un BorderLayout.
-		 */
+		editable_menu.setSize(600,600);
 		JPanel up= new JPanel();
 		up.setLayout(new GridLayout(1,2));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
@@ -54,10 +62,7 @@ public class Tavolo_Singolo {
 		contenuto.add(down, BorderLayout.SOUTH);
 		
 		
-		/**
-		 * Si vanno poi a definire una label e un bottone che saranno posizionati sul JPanel "up".
-		 * Si crea per primo una label menu, con testo, posizione, font e sfondo settati; la label viene infine aggiunta al pannello "up".
-		 */
+
 		JLabel menu = new JLabel("MENU", SwingConstants.CENTER);
 		menu.setFont(new Font("Garamond", Font.BOLD, 22));
 	    menu.setForeground(Color.BLACK);
@@ -72,9 +77,7 @@ public class Tavolo_Singolo {
 		back.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    up.add(back);
 	    
-	    /**
-	     * Viene poi gestito l'evento riguardante il clic sul bottone back.
-	     */
+	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
@@ -86,30 +89,47 @@ public class Tavolo_Singolo {
 		    }
 	    });
 	    
-	    String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
-		ListaPiatti listap= new ListaPiatti();
-		int lunghezza= categorie.length + listap.size();
+	    JButton conferma = new JButton("CONFERMA");
+		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
+	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    conferma.setForeground(Color.BLACK);
+	    down.add(conferma, BorderLayout.SOUTH);
 	    
-		JPanel center_left= new JPanel();
-		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
-		center_left.setLayout(new GridLayout(lunghezza,1));
+	    conferma.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent evento){
+		    	
+		    	/**
+		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
+		    	 */
+		    	editable_menu.dispose();
+		    	new Riepilogo();
+		    }
+	    });
 	    
-		JPanel center_right= new JPanel();
-		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
-		center_right.setLayout(new GridLayout(lunghezza,1));
-
-		
-		JSplitPane center = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,center_left, center_right);
-		contenuto.add(center,BorderLayout.CENTER);
-		center.setResizeWeight(0.8);
-        center.setContinuousLayout(true);
-        JScrollPane scroll1= new JScrollPane(center);
+	    
+	    
+	    contenuto.add(pannello_variabile,BorderLayout.CENTER);
+        pannello_variabile.setResizeWeight(0.8);
+		pannello_variabile.setContinuousLayout(true);
+        JScrollPane scroll1= new JScrollPane(pannello_variabile);
 		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contenuto.add(scroll1);
+		popolaPannello();
 	    editable_menu.setVisible(true);
 		editable_menu.setLocationRelativeTo(null);
 		editable_menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}
+	
+	public void popolaPannello() {
+		JPanel center_left= new JPanel();
+		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
+		center_left.setLayout(new GridLayout(lunghezza,1));
+		pannello_variabile.setLeftComponent(center_left);
 		
+		JPanel center_right= new JPanel();
+		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
+		center_right.setLayout(new GridLayout(lunghezza,1));
+		pannello_variabile.setRightComponent(center_right);
 		
 		
 		for (int i = 0; i < categorie.length; i++) {
@@ -134,27 +154,12 @@ public class Tavolo_Singolo {
 				aggiungi.setBackground(MenuPrincipale.COLORE_SFONDO);
 				aggiungi.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 		        center_right.add(aggiungi);
-		       
+		        
+		        String value = aggiungi.getValue() + "";
+		        quantità.add(new Piatto(listap.getPiatto(j).getName(), listap.getPiatto(j).getPrice(), Integer.parseInt(value)));
     			}
 			}
-		
-		}
-		
-		JButton conferma = new JButton("CONFERMA");
-		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
-	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
-	    conferma.setForeground(Color.BLACK);
-	    down.add(conferma, BorderLayout.SOUTH);
-	    
-	  
-	    
-	    /**
-		 * Metodi per rendere visibile la finestra,per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
-		 */
-		editable_menu.setVisible(true);
-		editable_menu.setLocationRelativeTo(null);
-		editable_menu.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		}	
 	}
-	
 }
 
