@@ -65,8 +65,6 @@ public class Riepilogo{
 		    }
 	    });
 	    
-		//AGGIUNGI IMPORTO TOTALE
-	    
 	    JButton conferma = new JButton("INSERISCI ORDINE");
 		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
 	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);

@@ -9,6 +9,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -32,7 +33,8 @@ public class Tavolo_Singolo{
 	String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
 	ListaPiatti listap= new ListaPiatti();
 	int lunghezza= categorie.length + listap.size();
-	int quantita [] = new int[listap.size()];   //array che contiene i valori di tutti i contatori.
+	ArrayList<JSpinner> spinner= new ArrayList<JSpinner>();
+	
 	
 	JFrame editable_menu= new JFrame("ORDINAZIONE");
 	Container contenuto= editable_menu.getContentPane();
@@ -150,6 +152,7 @@ public class Tavolo_Singolo{
 					cont.setBackground(MenuPrincipale.COLORE_SFONDO);
 					cont.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
 			        center_right.add(cont);
+			        spinner.add(cont);
 	    		}
 			}
 		}	

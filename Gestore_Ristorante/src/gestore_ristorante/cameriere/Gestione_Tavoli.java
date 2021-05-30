@@ -93,7 +93,7 @@ public class Gestione_Tavoli {
 		    	}
 		    });
 			JLabel status = new JLabel("STATO ORDINE: " + stato[i] );
-    		status.setFont(new Font("Aldhabi", Font.BOLD, 20));
+    		status.setFont(new Font("Times New Roman", Font.BOLD, 20));
 		    status.setForeground(Color.BLACK);
 	        center_right.add(status);
 	        // disabilitare bottone se la label è == I
