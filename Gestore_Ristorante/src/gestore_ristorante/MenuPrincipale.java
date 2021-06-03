@@ -4,8 +4,10 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import gestore_ristorante.cameriere.Gestione_Tavoli;
+import gestore_ristorante.cameriere.ElencoTavoliCameriere;
+import gestore_ristorante.cassa.ElencoTavoliCassa;
 import gestore_ristorante.chef.Menu_Chef;
+import gestore_ristorante.cuoco.ElencoTavoliCuoco;
 
 /**
  * Classe che implementa la grafica del men� iniziale, da cui � possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
@@ -76,6 +78,7 @@ public class MenuPrincipale{
 	     * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
 	     * * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone.
 	     */
+	    
 	    chef.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
@@ -86,16 +89,36 @@ public class MenuPrincipale{
 		    	new Menu_Chef();
 		    }
 	    });
+	    
 	    cameriere.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
-		    	/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo Gestione_Tavoli, che implementer� una nuova interfaccia.
-		    	 */
+		 
 		    	start.dispose(); 
-		    	new Gestione_Tavoli();
+		    	new ElencoTavoliCameriere();
 		    }
 	    });
+	    
+	    cuoco.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent evento){
+		    	
+		 
+		    	start.dispose(); 
+		    	new ElencoTavoliCuoco();
+		    }
+	    });
+	    
+
+	    cassa.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent evento){
+		    	
+		 
+		    	start.dispose(); 
+		    	new ElencoTavoliCassa();
+		    }
+	    });
+	    
+	    
 		/**
 		 * Metodi per rendere visibile la finestra,per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
 		 */

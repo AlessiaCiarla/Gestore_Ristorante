@@ -1,26 +1,36 @@
-package gestore_ristorante.cameriere;
+package gestore_ristorante.cassa;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Container;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
-import java.awt.*;
-import java.awt.event.*;
-import javax.swing.*;
+import javax.swing.Icon;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.SwingConstants;
+
 import gestore_ristorante.MenuPrincipale;
+import gestore_ristorante.cameriere.ListaTavoli;
 
-
-/**
- * Classe che implementa la grafica dei tavoli che visulizzerà il cameriere,
- *  il quale potrà selezionare quelli liberi e vedere quelli occupati.
- *
- */
-public class Gestione_Tavoli {
+public class ElencoTavoliCassa {
 	String tavoli[] ={"TAVOLO 1", "TAVOLO 2", "TAVOLO 3", "TAVOLO 4","TAVOLO 5"};
-	String stato[]= {"NI","NI","NI","NI","NI"};
-	
+	ListaTavoli listat = new ListaTavoli();
 	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
 	Container contenuto= table_view.getContentPane();
 	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
-	public Gestione_Tavoli() {
+    
+	
+	public ElencoTavoliCassa() {
 		visualizza();
 	}
 	
@@ -46,10 +56,6 @@ public class Gestione_Tavoli {
 	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-		    	
-		    	/**
-		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
-		    	 */
 		    	table_view.dispose(); 
 		    	new MenuPrincipale();
 		    }
@@ -78,6 +84,7 @@ public class Gestione_Tavoli {
 		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_right.setLayout(new GridLayout(5,2));
 		pannello_variabile.setRightComponent(center_right);
+		
 
 		for (int i = 0; i < tavoli.length; i++) {
 			JButton Tavolo = new JButton (tavoli[i]);
@@ -85,19 +92,27 @@ public class Gestione_Tavoli {
 			Tavolo.setBackground(MenuPrincipale.COLORE_SFONDO);
 			Tavolo.setForeground(Color.BLACK);
 		    center_left.add(Tavolo);
+		    if (listat.getTavolo(i).getStato().equals("NI")||listat.getTavolo(i).getStato().equals("I")) {
+		    	Tavolo.setEnabled(false);
+		    }
+		    int indice=i;
 		
 		    Tavolo.addActionListener(new ActionListener(){
 		    	public void actionPerformed(ActionEvent evento) {
+		    		int numero = listat.getTavolo(indice).getNumero();
 		    		table_view.dispose();
-		    		new Tavolo_Singolo();
+		    		new RiepilogoCassa(numero);
 		    	}
 		    });
-			JLabel status = new JLabel("STATO ORDINE: " + stato[i] );
-    		status.setFont(new Font("Times New Roman", Font.BOLD, 20));
-		    status.setForeground(Color.BLACK);
-	        center_right.add(status);
-	        // disabilitare bottone se la label � == I
+		    
+		    for (int j = 0; j < listat.size(); j++) {
+	    		if (listat.getTavolo(j).getNumero()== i) {
+	    			JLabel status = new JLabel("STATO ORDINE: " + listat.getTavolo(j).getStato());
+		    		status.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    status.setForeground(Color.BLACK);
+			        center_right.add(status);    
+	    		}
+		    }
 		}
-	
 	}
 }

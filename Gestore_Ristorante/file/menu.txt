@@ -1,19 +1,11 @@
-Bruschette,8.0,0
-antipasto di montagna,10.0,0
-Pasta al sugo,11.0,1
-Carbonara,11.5,1
-Cacio e pepe,11.0,1
-pasta con i funghi,12.0,1
-amatriciana,10.0,1
+antipasto di mare,12.0,0
+antipasto di montagna,12.0,0
 gricia,12.0,1
-Grigliata,15.0,2
-orata,15.0,2
-bistecca,15.0,2
-Insalata,4.0,3
-cicoria ripassata,5.0,3
-Tiramis�,5.0,4
-pannacotta,4.0,4
-Cheesecake,4.0,4
-millefoglie,5.0,4
-torta al cioccolato,5.0,4
+carbonara,12.0,1
+amatriciana,12.0,1
+frittura di pesce,12.0,2
+bistecca,10.0,2
+insalata,4.0,3
+patatine fritte,4.0,3
+tiramisu,2.0,4
 Torta della nonna,10.0,4
