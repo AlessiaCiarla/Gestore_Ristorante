@@ -1,12 +1,7 @@
 package gestore_ristorante.cameriere;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.*;
+import java.util.*;
 
 import gestore_ristorante.chef.OrdinaPiatti;
 import gestore_ristorante.chef.Piatto;
