@@ -16,15 +16,9 @@ public class ElencoTavoliCameriere {
 	Container contenuto= table_view.getContentPane();
 	JSplitPane pannello_centrale=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
-    
-	
 	public ElencoTavoliCameriere() {
-		
-		
 		visualizza();
 	}
-	
-	
 	
 	public void visualizza() {
 		

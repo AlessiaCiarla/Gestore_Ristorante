@@ -34,8 +34,6 @@ public class ElencoTavoliCassa {
 		visualizza();
 	}
 	
-	
-	
 	public void visualizza() {
 		table_view.setSize(600,600);
 		
@@ -108,7 +106,7 @@ public class ElencoTavoliCassa {
 		    for (int j = 0; j < listat.size(); j++) {
 	    		if (listat.getTavolo(j).getNumero()== i) {
 	    			JLabel status = new JLabel("STATO ORDINE: " + listat.getTavolo(j).getStato());
-		    		status.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+		    		status.setFont(new Font("Times New Roman", Font.BOLD, 20));
 				    status.setForeground(Color.BLACK);
 			        center_right.add(status);    
 	    		}

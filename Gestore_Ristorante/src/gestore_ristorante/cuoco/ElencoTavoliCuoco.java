@@ -6,7 +6,6 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import gestore_ristorante.MenuPrincipale;
-import gestore_ristorante.cameriere.ElencoTavoliCameriere;
 import gestore_ristorante.cameriere.ListaTavoli;
 
 
@@ -98,7 +97,7 @@ public class ElencoTavoliCuoco {
 		    for (int j = 0; j < listat.size(); j++) {
 	    		if (listat.getTavolo(j).getNumero()== i) {
 	    			JLabel status = new JLabel("STATO ORDINE: " + listat.getTavolo(j).getStato());
-		    		status.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+		    		status.setFont(new Font("Times New Roman", Font.BOLD, 20));
 				    status.setForeground(Color.BLACK);
 			        center_right.add(status);
 			        

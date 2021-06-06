@@ -31,6 +31,7 @@ public class Tavolo_Singolo{
 	public void visualizza() {
 		quantita.clear();
 		ordinazione.setSize(600,600);
+		
 		JPanel up= new JPanel();
 		up.setLayout(new GridLayout(1,2));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
@@ -38,7 +39,9 @@ public class Tavolo_Singolo{
 		
 		JPanel down= new JPanel();
 		up.setLayout(new GridLayout(1,1));
+		down.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(down, BorderLayout.SOUTH);
+		
 		
 		JLabel menu = new JLabel("MENU", SwingConstants.CENTER);
 		menu.setFont(new Font("Garamond", Font.BOLD, 22));
@@ -47,7 +50,7 @@ public class Tavolo_Singolo{
 		
 		Icon freccia = new ImageIcon("images/freccia1.png");
 		JButton back= new JButton(freccia);
-		back.setBackground(MenuPrincipale.COLORE_SFONDO);
+		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 	    
 	    back.addActionListener(new ActionListener(){
@@ -60,7 +63,7 @@ public class Tavolo_Singolo{
 	    
 	    JButton conferma = new JButton("CONFERMA");
 		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
-	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    conferma.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    conferma.setForeground(Color.BLACK);
 	    down.add(conferma, BorderLayout.SOUTH);
 	    
@@ -114,7 +117,7 @@ public class Tavolo_Singolo{
 			for (int j = 0; j < listap.size(); j++) {
 	    		if (listap.getPiatto(j).getNumcategory()== i) {
 	    			 
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     ï¿½" + listap.getPiatto(j).getPrice());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     €" + listap.getPiatto(j).getPrice());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);

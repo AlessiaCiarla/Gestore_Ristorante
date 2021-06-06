@@ -3,42 +3,29 @@ package gestore_ristorante.cameriere;
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
-import javax.swing.Icon;
 import javax.swing.*;
 
 import gestore_ristorante.MenuPrincipale;
 
 public class RiepilogoCameriere{
 	
-	
-	String categorie[] = {"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
 	JFrame riepilogo= new JFrame("RIEPILOGO ORDINE");
 	Container contenuto= riepilogo.getContentPane();
 	Ordinazione listap = new Ordinazione();
 	ListaTavoli tavoli = new ListaTavoli();
-	JPanel pannello_centrale;	
+	JPanel pannello_centrale= new JPanel();	
 	File infile =new File("file/riepilogo.txt");
 	int numerotavolo;
-	
 	
 	public RiepilogoCameriere(int num) {
 		this.numerotavolo=num;
 		visualizza();
 	}
 	
-	
-	
 	public void visualizza() {
-		int contatore=0;
-		for (int i = 0; i<listap.size(); i++) {
-			if (listap.getPiatto(i).getNumcategory()>0) {
-				contatore++;
-			}
 		
-		}
-		int lunghezza = contatore;
-		pannello_centrale = new JPanel(new GridLayout(lunghezza, 3));
 		riepilogo.setSize(600,600); 
+		pannello_centrale.setLayout(new BoxLayout(pannello_centrale, BoxLayout.PAGE_AXIS));
 		pannello_centrale.setBackground(MenuPrincipale.COLORE_SFONDO);
 		
 		JPanel up= new JPanel();
@@ -53,7 +40,7 @@ public class RiepilogoCameriere{
 		
 		Icon freccia = new ImageIcon("images/freccia1.png");
 		JButton back= new JButton(freccia);
-		back.setBackground(MenuPrincipale.COLORE_SFONDO);
+		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 		
 	    back.addActionListener(new ActionListener(){
@@ -125,7 +112,6 @@ public class RiepilogoCameriere{
 	    	    	try {
 						infile.createNewFile();
 					} catch (IOException e) {
-						// TODO Auto-generated catch block
 						e.printStackTrace();
 					}
 	    	    
@@ -136,6 +122,7 @@ public class RiepilogoCameriere{
 	    	    }
 		    	riepilogo.dispose();
 		    	new ElencoTavoliCameriere();
+		    	JOptionPane.showMessageDialog(null, "Ordine inserito!");
 	    	}});
 	    
 	    
@@ -152,20 +139,24 @@ public class RiepilogoCameriere{
 	public void popolaPannello() {
 		for (int j = 0; j < listap.size(); j++) {
 					if (listap.getPiatto(j).getNumcategory()>0) {
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName());
-		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
-				    piatto.setForeground(Color.BLACK);
-			        pannello_centrale.add(piatto);
-			        
-			        JLabel prezzo = new JLabel(listap.getPiatto(j).getPrice() + "   $");
-		    		prezzo.setFont(new Font("AR BLANCA", Font.BOLD, 20));
-				    prezzo.setForeground(Color.BLACK);
-			        pannello_centrale.add(prezzo);
-			        
-			        JLabel quantita = new JLabel(listap.getPiatto(j).getNumcategory() + "");
-		    		quantita.setFont(new Font("AR BLANCA", Font.BOLD, 20));
-				    quantita.setForeground(Color.BLACK);
-			        pannello_centrale.add(quantita);
+						pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
+		    			JLabel piatto = new JLabel("PIATTO: " + listap.getPiatto(j).getName()); 
+			    		piatto.setFont(new Font("Ink Free", Font.BOLD, 22));
+					    piatto.setForeground(Color.BLACK);
+					    piatto.setAlignmentX(Component.CENTER_ALIGNMENT);
+				        pannello_centrale.add(piatto);
+				        
+				        JLabel prezzo = new JLabel("PREZZO: " + listap.getPiatto(j).getPrice() + "   €");
+			    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
+					    prezzo.setForeground(Color.BLACK);
+					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+				        pannello_centrale.add(prezzo);
+				        
+				        JLabel quantita = new JLabel("N. PORZIONI: " + listap.getPiatto(j).getNumcategory() + "");
+			    		quantita.setFont(new Font("Ink Free", Font.BOLD, 22)); 
+					    quantita.setForeground(Color.BLACK);
+					    quantita.setAlignmentX(Component.CENTER_ALIGNMENT);
+				        pannello_centrale.add(quantita);
 					}
 	   		}
 	}
