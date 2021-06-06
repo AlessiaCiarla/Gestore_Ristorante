@@ -28,6 +28,7 @@ public class RiepilogoCassa{
 	JFrame editable_menu= new JFrame("RIEPILOGO ORDINE");
 	Container contenuto= editable_menu.getContentPane();
 	ListaTavoli tavoli = new ListaTavoli();
+	JPanel pannello_centrale;
 	int numerotavolo;
 	double totale;
 	
@@ -41,10 +42,17 @@ public class RiepilogoCassa{
 	
 	public void visualizza() {
 		Scontrino scontrino = new Scontrino(numerotavolo);
-		int lunghezza= categorie.length + scontrino.size();
-		JPanel pannello_variabile=new JPanel(new GridLayout(lunghezza, 1));
+		int contatore=0;
+		for (int i = 0; i<scontrino.size(); i++) {
+			if (scontrino.getPiatto(i).getNumcategory()>0) {
+				contatore++;
+			}
+		
+		}
+		int lunghezza = contatore;
+		pannello_centrale = new JPanel(new GridLayout(lunghezza, 3));
 		editable_menu.setSize(600,600); 
-		pannello_variabile.setBackground(MenuPrincipale.COLORE_SFONDO);
+		pannello_centrale.setBackground(MenuPrincipale.COLORE_SFONDO);
 		
 		JPanel up= new JPanel();
 		up.setLayout(new GridLayout(1,2));
@@ -101,11 +109,11 @@ public class RiepilogoCassa{
 	    	}});
 	    
 	    
-	    contenuto.add(pannello_variabile,BorderLayout.CENTER);
-        JScrollPane scroll1= new JScrollPane(pannello_variabile);
+	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
+        JScrollPane scroll1= new JScrollPane(pannello_centrale);
 		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contenuto.add(scroll1);
-		popolaPannello(scontrino, pannello_variabile);
+		popolaPannello(scontrino, pannello_centrale);
 		JLabel prezzo = new JLabel("TOTALE: " + totale, SwingConstants.CENTER);
 		prezzo.setFont(new Font("Garamond", Font.BOLD, 22));
 	    prezzo.setForeground(Color.BLACK);
@@ -121,10 +129,20 @@ public class RiepilogoCassa{
 		for (int j = 0; j < scontrino.size(); j++) {
 					if (scontrino.getPiatto(j).getNumcategory()>0) {
 					totale= totale + (scontrino.getPiatto(j).getPrice()*scontrino.getPiatto(j).getNumcategory());
-	    			JLabel piatto = new JLabel(scontrino.getPiatto(j).getName() + "     � " + scontrino.getPiatto(j).getPrice() + " QUANTITA': "+scontrino.getPiatto(j).getNumcategory());
+					JLabel piatto = new JLabel(scontrino.getPiatto(j).getName());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
-			        pannello_variabile.add(piatto);
+			        pannello_centrale.add(piatto);
+			        
+			        JLabel prezzo = new JLabel(scontrino.getPiatto(j).getPrice() + "   $");
+		    		prezzo.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    prezzo.setForeground(Color.BLACK);
+			        pannello_centrale.add(prezzo);
+			        
+			        JLabel quantita = new JLabel(scontrino.getPiatto(j).getNumcategory() + "");
+		    		quantita.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    quantita.setForeground(Color.BLACK);
+			        pannello_centrale.add(quantita);
 					}
 	   		}
 	}

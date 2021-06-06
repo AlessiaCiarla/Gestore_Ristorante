@@ -15,10 +15,8 @@ public class RiepilogoCameriere{
 	JFrame riepilogo= new JFrame("RIEPILOGO ORDINE");
 	Container contenuto= riepilogo.getContentPane();
 	Ordinazione listap = new Ordinazione();
-	Ordinazione scontrino = new Ordinazione();
 	ListaTavoli tavoli = new ListaTavoli();
-	int lunghezza= categorie.length + listap.size();
-	JPanel pannello_centrale=new JPanel(new GridLayout(lunghezza, 1));
+	JPanel pannello_centrale;	
 	File infile =new File("file/riepilogo.txt");
 	int numerotavolo;
 	
@@ -31,6 +29,15 @@ public class RiepilogoCameriere{
 	
 	
 	public void visualizza() {
+		int contatore=0;
+		for (int i = 0; i<listap.size(); i++) {
+			if (listap.getPiatto(i).getNumcategory()>0) {
+				contatore++;
+			}
+		
+		}
+		int lunghezza = contatore;
+		pannello_centrale = new JPanel(new GridLayout(lunghezza, 3));
 		riepilogo.setSize(600,600); 
 		pannello_centrale.setBackground(MenuPrincipale.COLORE_SFONDO);
 		
@@ -57,6 +64,7 @@ public class RiepilogoCameriere{
 		    	new Tavolo_Singolo(numerotavolo);
 		    }
 	    });
+	    
 	    
 		JPanel down= new JPanel();
 		up.setLayout(new GridLayout(1,1));
@@ -144,10 +152,20 @@ public class RiepilogoCameriere{
 	public void popolaPannello() {
 		for (int j = 0; j < listap.size(); j++) {
 					if (listap.getPiatto(j).getNumcategory()>0) {
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     € " + listap.getPiatto(j).getPrice() + " QUANTITA': " +listap.getPiatto(j).getNumcategory());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        pannello_centrale.add(piatto);
+			        
+			        JLabel prezzo = new JLabel(listap.getPiatto(j).getPrice() + "   $");
+		    		prezzo.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    prezzo.setForeground(Color.BLACK);
+			        pannello_centrale.add(prezzo);
+			        
+			        JLabel quantita = new JLabel(listap.getPiatto(j).getNumcategory() + "");
+		    		quantita.setFont(new Font("AR BLANCA", Font.BOLD, 20));
+				    quantita.setForeground(Color.BLACK);
+			        pannello_centrale.add(quantita);
 					}
 	   		}
 	}

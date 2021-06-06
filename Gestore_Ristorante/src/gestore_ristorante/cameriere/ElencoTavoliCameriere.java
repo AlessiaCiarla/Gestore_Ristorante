@@ -19,6 +19,8 @@ public class ElencoTavoliCameriere {
     
 	
 	public ElencoTavoliCameriere() {
+		
+		
 		visualizza();
 	}
 	

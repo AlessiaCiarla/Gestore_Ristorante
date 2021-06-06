@@ -6,6 +6,7 @@ import java.awt.event.*;
 
 import javax.swing.*;
 import gestore_ristorante.MenuPrincipale;
+import gestore_ristorante.cameriere.ElencoTavoliCameriere;
 import gestore_ristorante.cameriere.ListaTavoli;
 
 

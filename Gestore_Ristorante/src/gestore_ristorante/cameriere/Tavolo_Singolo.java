@@ -29,6 +29,7 @@ public class Tavolo_Singolo{
 	}
 	
 	public void visualizza() {
+		quantita.clear();
 		ordinazione.setSize(600,600);
 		JPanel up= new JPanel();
 		up.setLayout(new GridLayout(1,2));
@@ -113,7 +114,7 @@ public class Tavolo_Singolo{
 			for (int j = 0; j < listap.size(); j++) {
 	    		if (listap.getPiatto(j).getNumcategory()== i) {
 	    			 
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     €" + listap.getPiatto(j).getPrice());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     ï¿½" + listap.getPiatto(j).getPrice());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);

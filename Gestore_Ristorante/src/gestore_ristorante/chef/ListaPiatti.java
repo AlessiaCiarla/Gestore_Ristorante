@@ -9,14 +9,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 /**
- * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menù, e gestisce vari metodi che saranno usati nella classe Menu_Chef(front-end).
+ * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menï¿½, e gestisce vari metodi che saranno usati nella classe Menu_Chef(front-end).
  */
 public class ListaPiatti{
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
 	File file = new File("file/menu.txt");
 	
 	/**
-	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti, al fine di popolare immediatamente il pannello grafico usato in Menu_Chef.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato piï¿½ avanti, al fine di popolare immediatamente il pannello grafico usato in Menu_Chef.
 	 */
 	public ListaPiatti () {
 		read();
@@ -24,7 +24,7 @@ public class ListaPiatti{
 			
 	/**
 	 * Aggiunge un piatto all'ArrayList dei piatti.
-	 * @param piatto è il piatto da aggiungere.
+	 * @param piatto ï¿½ il piatto da aggiungere.
 	 */
 	public void add(Piatto datiPiatto){
 		if (!listapiatti.contains(datiPiatto)) {
@@ -49,14 +49,14 @@ public class ListaPiatti{
 	
 	/**
 	 * Rimuove un piatto specifico all'interno dell'ArrayList.
-	 * @param piatto è il piatto da rimuovere.
+	 * @param piatto ï¿½ il piatto da rimuovere.
 	 */
 	public void remove(Piatto datiPiatto) {
 		listapiatti.remove(datiPiatto);
 	}
 	
 	/**
-	 * Metodo grazie al quale è possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
+	 * Metodo grazie al quale ï¿½ possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
 	 * @param indice: un indice di tipo intero.
 	 * @return l'oggetto di tipo Piatto all'indice passato in input.
 	 */
@@ -74,8 +74,8 @@ public class ListaPiatti{
 	
 	/**
 	 * Permette di sostituire o modificare i dati di un piatto(nome, prezzo, categoria)
-	 * @param dasostituire è il piatto da modificare.
-	 * @param sostituto è il piatto che va inserito al posto del precedente.
+	 * @param dasostituire ï¿½ il piatto da modificare.
+	 * @param sostituto ï¿½ il piatto che va inserito al posto del precedente.
 	 */
 	public void modify(Piatto dasostituire, Piatto sostituto){	
 		if (!listapiatti.contains(sostituto)) {
@@ -88,18 +88,7 @@ public class ListaPiatti{
 	}
 	
 	/**
-	 * Mostra il contenuto dell'ArrayList,stampandolo a video.
-	 */
-	public void readArray() {
-		for (Piatto datiPiatto : listapiatti){
-			System.out.println(datiPiatto.getName() 
-								+ ","+ datiPiatto.getPrice() 
-								+ ","+ datiPiatto.getNumcategory());
-		}
-	}
-	
-	/**
-	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui ï¿½ contenuto il menï¿½ e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {

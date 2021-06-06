@@ -1,6 +1,6 @@
-antipasto di mare,12.0,2
+antipasto di mare,12.0,1
 antipasto di montagna,12.0,0
-gricia,12.0,2
+gricia,12.0,0
 carbonara,12.0,0
 amatriciana,12.0,0
 frittura di pesce,12.0,0

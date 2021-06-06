@@ -41,13 +41,7 @@ public class Ordinazione {
 		listapiatti.clear();
 	}
 	
-	/**
-	 * Rimuove un piatto specifico all'interno dell'ArrayList.
-	 * @param piatto � il piatto da rimuovere.
-	 */
-	public void remove(Piatto datiPiatto) {
-		listapiatti.remove(datiPiatto);
-	}
+	
 	
 	/**
 	 * Metodo grazie al quale � possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
@@ -67,31 +61,6 @@ public class Ordinazione {
 		return listapiatti.size();
 	}
 	
-	/**
-	 * Permette di sostituire o modificare i dati di un piatto(nome, prezzo, categoria)
-	 * @param dasostituire � il piatto da modificare.
-	 * @param sostituto � il piatto che va inserito al posto del precedente.
-	 */
-	public void modify(Piatto dasostituire, Piatto sostituto){	
-		if (!listapiatti.contains(sostituto)) {
-			for (Piatto datiPiatto : listapiatti){
-				if (datiPiatto.equals(dasostituire)){
-					listapiatti.set(listapiatti.indexOf(datiPiatto), sostituto);
-				}
-			}
-		}
-	}
-	
-	/**
-	 * Mostra il contenuto dell'ArrayList,stampandolo a video.
-	 */
-	public void readArray() {
-		for (Piatto datiPiatto : listapiatti){
-			System.out.println(datiPiatto.getName() 
-								+ ","+ datiPiatto.getPrice() 
-								+ ","+ datiPiatto.getNumcategory());
-		}
-	}
 	
 	/**
 	 * Legge dal file in cui � contenuto il men� e lo copia all'interno dell'ArrayList.
