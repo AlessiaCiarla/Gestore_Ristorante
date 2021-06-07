@@ -16,21 +16,27 @@ public class MenuPrincipale{
 	
 	public final static Color COLORE_SFONDO=new Color(171,205,239);  
 	public final static Color COLORE_BOTTONI=new Color(224,255,255);
+	
+	/**
+	 * Si crea un oggetto JFrame, di grandezza 600x600.
+	 */
+	JFrame start= new JFrame("GESTORE DI UN RISTORANTE");
+	
+	/**
+	 * Si crea un oggetto Container, che corrisponder� al contenuto del JFrame.
+	 */
+	Container contenuto=start.getContentPane();
+	
 	/**
 	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che � proprio il men� iniziale.
 	 */
 	public MenuPrincipale() {
-
-		/**
-		 * Si crea un oggetto JFrame, di grandezza 600x600.
-		 */
-		JFrame start= new JFrame("GESTORE DI UN RISTORANTE");
+		visualizza();
+	}
+	
+	public void visualizza() {
+	
 		start.setSize(600,600); 
-		
-		/**
-		 * Si crea un oggetto Container, che corrisponder� al contenuto del JFrame.
-		 */
-		Container contenuto=start.getContentPane();
 		
 		/**
 		 * Si crea un oggetto JPanel, grazie al quale si imposta un layout.
@@ -38,7 +44,8 @@ public class MenuPrincipale{
 		 */
 		JPanel pannello= new JPanel();
 		pannello.setLayout(new GridLayout(4,1));
-		contenuto.add(pannello);
+		pannello.setBackground(MenuPrincipale.COLORE_SFONDO);
+		contenuto.add(pannello,BorderLayout.CENTER );
 		
 		/**
 		 * Si creano 4 bottoni di tipo JButton, uno per ogni ruolo all'interno del ristorante.
@@ -118,13 +125,32 @@ public class MenuPrincipale{
 		    }
 	    });
 	    
+	    JPanel down= new JPanel();
+		down.setLayout(new GridLayout(1,1));
+		down.setBackground(COLORE_SFONDO);
+		contenuto.add(down,BorderLayout.SOUTH );
+	    
+		JButton chiudi_sessione = new JButton("CHIUDI SESSIONE");
+	    chiudi_sessione.setFont(new Font("Garamond", Font.BOLD, 20));
+	    chiudi_sessione.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    chiudi_sessione.setForeground(Color.BLACK);
+	    down.add(chiudi_sessione);
+	    
+	    chiudi_sessione.addActionListener(new ActionListener(){
+	    	public void actionPerformed(ActionEvent evento){
+		    	
+		 
+	    		
+	    		
+		    	start.dispose(); 
+		    }
+	    });
 	    
 		/**
 		 * Metodi per rendere visibile la finestra,per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
 		 */
 		start.setVisible(true);
 	    start.setLocationRelativeTo(null);
-	    start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	    
+	    start.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  
 	}
 }

@@ -82,7 +82,7 @@ public class RiepilogoCassa{
 		/**
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
-		Icon freccia = new ImageIcon("images/freccia1.png");
+		Icon freccia = new ImageIcon("images/freccia.png");
 		JButton back= new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
@@ -154,7 +154,7 @@ public class RiepilogoCassa{
 		/**
 		 * Viene creata una label che visualizzera il totale da pagare.
 		 */
-		JLabel prezzo = new JLabel("TOTALE: ï¿½" + totale, SwingConstants.CENTER);
+		JLabel prezzo = new JLabel("TOTALE: €" + totale, SwingConstants.CENTER);
 		prezzo.setFont(new Font("Garamond", Font.BOLD, 22));
 	    prezzo.setForeground(Color.BLACK);
 		down.add(prezzo, BorderLayout.SOUTH);
@@ -195,7 +195,7 @@ public class RiepilogoCassa{
 				        /**
 		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
 		    			 */
-				        JLabel prezzo = new JLabel("PREZZO: " + scontrino.getPiatto(j).getPrice() + "   ï¿½");
+				        JLabel prezzo = new JLabel("PREZZO: " + scontrino.getPiatto(j).getPrice() + "   €");
 			    		prezzo.setFont(new Font("Bell MT", Font.BOLD, 22));
 					    prezzo.setForeground(Color.BLACK);
 					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);

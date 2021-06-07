@@ -95,7 +95,7 @@ public class RiepilogoCuoco{
 		/**
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
-		Icon freccia = new ImageIcon("images/freccia1.png");
+		Icon freccia = new ImageIcon("images/freccia.png");
 		JButton back= new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
@@ -194,7 +194,7 @@ public class RiepilogoCuoco{
 				        /**
 		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
 		    			 */
-				        JLabel prezzo = new JLabel("PREZZO: " + comanda.getPiatto(j).getPrice() + "   $");
+				        JLabel prezzo = new JLabel("PREZZO: " + comanda.getPiatto(j).getPrice() + "   €");
 			    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
 					    prezzo.setForeground(Color.BLACK);
 					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);

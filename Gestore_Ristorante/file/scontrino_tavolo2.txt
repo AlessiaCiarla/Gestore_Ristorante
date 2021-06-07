@@ -1,8 +1,8 @@
 Antipasto di mare,13.0,0
 Antipasto di montagna,11.0,0
-Gricia,11.5,0
+Gricia,11.5,1
 Carbonara,12.0,0
-Amatriciana,11.0,1
+Amatriciana,11.0,0
 Frittura di pesce,15.0,0
 Tagliata,13.0,0
 Insalata,3.5,0

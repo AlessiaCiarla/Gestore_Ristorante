@@ -5,7 +5,7 @@ package gestore_ristorante;
  * Classe contenente il metodo principale main, da cui si fa partire il programma con il Men� principale.
  */
 
-public class Tester_Ristorante {
+public class TesterRistorante {
 	public static void main(String[] args){
 		
 		/**

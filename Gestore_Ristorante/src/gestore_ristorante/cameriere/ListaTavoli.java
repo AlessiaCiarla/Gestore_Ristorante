@@ -8,7 +8,7 @@ import java.util.ArrayList;
 */
 public class ListaTavoli {
 	ArrayList<Tavolo> listatavoli = new ArrayList<Tavolo>();
-	File file = new File("file/tavoli.txt");
+	File file = new File("file/lista_tavoli.txt");
 	
 	/**
 	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Tavolo,usando il metodo read() creato pi� avanti, al fine di popolare immediatamente il pannello grafico usato in ElencoTavoliCameriere.

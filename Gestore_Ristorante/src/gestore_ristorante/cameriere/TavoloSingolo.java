@@ -41,7 +41,7 @@ public class TavoloSingolo{
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
 	 * Inoltre, viene creato come attributo anche il pannello che conterrï¿½ il menï¿½ ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
 	 */
-	JFrame ordinazione= new JFrame("ORDINAZIONE");
+	JFrame ordinazione= new JFrame("TAVOLO SINGOLO");
 	Container contenuto= ordinazione.getContentPane();
 	JSplitPane pannello_centrale=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
@@ -100,7 +100,7 @@ public class TavoloSingolo{
 		/**
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
-		Icon freccia = new ImageIcon("images/freccia1.png");
+		Icon freccia = new ImageIcon("images/freccia.png");
 		JButton back= new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
@@ -210,7 +210,7 @@ public class TavoloSingolo{
 	    			/**
 	    			 * il nome del piatto e il suo prezzo vengono aggiunti al pannello di sx.
 	    			 */
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     ï¿½" + listap.getPiatto(j).getPrice());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     €" + listap.getPiatto(j).getPrice());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);

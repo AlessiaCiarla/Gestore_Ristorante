@@ -66,19 +66,64 @@ public class ElencoTavoliCameriere {
 		/**
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
-		Icon freccia = new ImageIcon("images/freccia1.png");
+		Icon freccia = new ImageIcon("images/freccia.png");
 		JButton back= new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-	    		/**
-		    	 * In questo caso, il JFrame di ElencoTavoliCameriere viene chiuso,
-		    	 *  e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
+		    	
+		    	/**
+		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
 		    	 */
-		    	table_view.dispose(); 
-		    	new MenuPrincipale();
+	    		JFrame controllo= new JFrame();
+	    		controllo.setSize(400,200);
+	    		Container cont= controllo.getContentPane();
+	    		
+	    		JPanel center= new JPanel();
+	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    		center.setLayout(new GridLayout(1,1));
+	    		cont.add(center,BorderLayout.CENTER);
+	    		
+	    		JLabel domanda= new JLabel("Vuoi tornare al Menù Principale?",SwingConstants.CENTER);
+	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    domanda.setForeground(Color.BLACK);
+	    		center.add(domanda);
+	    		
+	    		JPanel down= new JPanel();
+	    		down.setLayout(new GridLayout(1,2));
+	    		cont.add(down, BorderLayout.SOUTH);
+	    		
+	    		JButton no = new JButton("NO");
+	    		no.setFont(new Font("Garamond", Font.BOLD, 18));
+	    	    no.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    	    no.setForeground(Color.BLACK);
+	    	    down.add(no);
+	    	    
+	    	    no.addActionListener(new ActionListener(){
+	    	    	public void actionPerformed(ActionEvent evento){
+	    	    		controllo.dispose();
+	    	    	}
+	    	    });
+	    	    
+	    	    JButton si = new JButton("SI");
+	    		si.setFont(new Font("Garamond", Font.BOLD, 18));
+	    	    si.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    	    si.setForeground(Color.BLACK);
+	    	    down.add(si);
+	    	    
+	    	    si.addActionListener(new ActionListener(){
+	    	    	public void actionPerformed(ActionEvent evento){
+	    	    		controllo.dispose();
+	    	    		table_view.dispose(); 
+	    		    	new MenuPrincipale();
+	    	    	}
+	    	    });
+	    		
+	    	    controllo.setVisible(true);
+	    		controllo.setLocationRelativeTo(null);
+	    		controllo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		    }
 	    });
 	    
