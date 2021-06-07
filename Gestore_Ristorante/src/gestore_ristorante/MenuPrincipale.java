@@ -2,9 +2,13 @@ package gestore_ristorante;
 
 import java.awt.*;
 import java.awt.event.*;
+import java.io.FileNotFoundException;
+import java.io.PrintWriter;
+
 import javax.swing.*;
 
 import gestore_ristorante.cameriere.ElencoTavoliCameriere;
+import gestore_ristorante.cameriere.ListaTavoli;
 import gestore_ristorante.cassa.ElencoTavoliCassa;
 import gestore_ristorante.chef.MenuChef;
 import gestore_ristorante.cuoco.ElencoTavoliCuoco;
@@ -26,6 +30,9 @@ public class MenuPrincipale{
 	 * Si crea un oggetto Container, che corrisponder� al contenuto del JFrame.
 	 */
 	Container contenuto=start.getContentPane();
+	
+	ListaTavoli tavoli = new ListaTavoli();
+	
 	
 	/**
 	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che � proprio il men� iniziale.
@@ -90,7 +97,7 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 		    	/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo Menu_Chef, che implementer� una nuova interfaccia.
+		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo MenuChef, che implementer� una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new MenuChef();
@@ -100,7 +107,9 @@ public class MenuPrincipale{
 	    cameriere.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
-		 
+	    		/**
+		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCameriere, che implementer� una nuova interfaccia.
+		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCameriere();
 		    }
@@ -108,8 +117,10 @@ public class MenuPrincipale{
 	    
 	    cuoco.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-		    	
-		 
+	    		
+	    		/**
+		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCuoco, che implementer� una nuova interfaccia.
+		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCuoco();
 		    }
@@ -119,7 +130,9 @@ public class MenuPrincipale{
 	    cassa.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
-		 
+	    		/**
+		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa, che implementer� una nuova interfaccia.
+		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCassa();
 		    }
@@ -136,12 +149,43 @@ public class MenuPrincipale{
 	    chiudi_sessione.setForeground(Color.BLACK);
 	    down.add(chiudi_sessione);
 	    
+	    
 	    chiudi_sessione.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-		    	
-		 
+		    	/**
+		    	 * Se si chiude la sessione il programma verrà chiuso e verranno puliti tutti i file che contengono i
+		    	 *  dati di ordinazione e scontrini e gli stati dei tavoli cambiarenna in NI.
+		    	 */
 	    		
+	    		for (int i = 0; i<tavoli.size(); i++) {
+					tavoli.getTavolo(i).setStato("NI");
+					tavoli.write();
+				}
 	    		
+	    		PrintWriter pw1;
+	    		PrintWriter pw2;
+	    		PrintWriter pw3;
+	    		PrintWriter pw4;
+	    		PrintWriter pw5;
+	    		PrintWriter pw6;
+	    		
+				try {
+					pw1 = new PrintWriter("file/scontrino_tavolo1.txt");
+					pw1.close();
+					pw2 = new PrintWriter("file/scontrino_tavolo2.txt");
+					pw2.close();
+					pw3 = new PrintWriter("file/scontrino_tavolo3.txt");
+					pw3.close();
+					pw4 = new PrintWriter("file/scontrino_tavolo4.txt");
+					pw4.close();
+					pw5 = new PrintWriter("file/scontrino_tavolo5.txt");
+					pw5.close();
+					pw6 = new PrintWriter("file/appoggio.txt");
+					pw6.close();
+				} catch (FileNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 		    	start.dispose(); 
 		    }
 	    });

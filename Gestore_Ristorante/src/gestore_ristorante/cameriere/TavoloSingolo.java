@@ -210,7 +210,7 @@ public class TavoloSingolo{
 	    			/**
 	    			 * il nome del piatto e il suo prezzo vengono aggiunti al pannello di sx.
 	    			 */
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     €" + listap.getPiatto(j).getPrice());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     ï¿½" + listap.getPiatto(j).getPrice());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);

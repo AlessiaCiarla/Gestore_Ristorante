@@ -1,5 +1,0 @@
-antipasto di montagna,10.0,0
-gricia,12.0,0
-bistecca,15.0,0
-cicoria ripassata,5.0,6
-Torta della nonna,10.0,0
