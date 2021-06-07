@@ -83,7 +83,7 @@ public class MenuChef {
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
 	    		
-	    		JLabel domanda= new JLabel("Vuoi tornare al Menù Principale?",SwingConstants.CENTER);
+	    		JLabel domanda= new JLabel("Vuoi tornare al MenÃ¹ Principale?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
@@ -208,7 +208,7 @@ public class MenuChef {
 		    	    		aggiungiPiatto(nuovo_nome,d_prezzo, indice);
 		    	    		agg_piatto.dispose();
 	    	    		} catch(Exception ex) {
-		    			    JOptionPane.showMessageDialog(null, "Per continuare, è necessario inserire un nome e un prezzo.");
+		    			    JOptionPane.showMessageDialog(null, "Per continuare, Ã¨ necessario inserire un nome e un prezzo.");
 	    	    		}
 	    	    	}
 	    	    });
@@ -297,7 +297,7 @@ public class MenuChef {
 	    			/**
 	    			 * il nome del piatto e il suo prezzo vengono aggiunti al pannello di sx.
 	    			 */
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     € " + listap.getPiatto(j).getPrice());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     â‚¬ " + listap.getPiatto(j).getPrice());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);
@@ -407,7 +407,7 @@ public class MenuChef {
 					    	    		modificaPiatto(dasostituire, sostituto);
 					    	    		mod_piatto.dispose();
 						    		} catch(Exception ex) {
-						    			JOptionPane.showMessageDialog(null, "Per continuare, è necessario inserire un nome e un prezzo.");
+						    			JOptionPane.showMessageDialog(null, "Per continuare, Ã¨ necessario inserire un nome e un prezzo.");
 						    		}
 						    	}
 				    	    });

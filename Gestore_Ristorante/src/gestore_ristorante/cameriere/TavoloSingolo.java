@@ -107,11 +107,57 @@ public class TavoloSingolo{
 	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-	    		/**
-		    	 * In questo caso, il JFrame di Tavolo_Singolo viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
+		    	
+		    	/**
+		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
 		    	 */
-		    	ordinazione.dispose(); 
-		    	new ElencoTavoliCameriere();
+	    		JFrame controllo= new JFrame();
+	    		controllo.setSize(400,200);
+	    		Container cont= controllo.getContentPane();
+	    		
+	    		JPanel center= new JPanel();
+	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    		center.setLayout(new GridLayout(1,1));
+	    		cont.add(center,BorderLayout.CENTER);
+	    		
+	    		JLabel domanda= new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
+	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    domanda.setForeground(Color.BLACK);
+	    		center.add(domanda);
+	    		
+	    		JPanel down= new JPanel();
+	    		down.setLayout(new GridLayout(1,2));
+	    		cont.add(down, BorderLayout.SOUTH);
+	    		
+	    		JButton no = new JButton("NO");
+	    		no.setFont(new Font("Garamond", Font.BOLD, 18));
+	    	    no.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    	    no.setForeground(Color.BLACK);
+	    	    down.add(no);
+	    	    
+	    	    no.addActionListener(new ActionListener(){
+	    	    	public void actionPerformed(ActionEvent evento){
+	    	    		controllo.dispose();
+	    	    	}
+	    	    });
+	    	    
+	    	    JButton si = new JButton("SI");
+	    		si.setFont(new Font("Garamond", Font.BOLD, 18));
+	    	    si.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    	    si.setForeground(Color.BLACK);
+	    	    down.add(si);
+	    	    
+	    	    si.addActionListener(new ActionListener(){
+	    	    	public void actionPerformed(ActionEvent evento){
+	    	    		controllo.dispose();
+	    	    		ordinazione.dispose(); 
+	    		    	new ElencoTavoliCameriere();
+	    	    	}
+	    	    });
+	    		
+	    	    controllo.setVisible(true);
+	    		controllo.setLocationRelativeTo(null);
+	    		controllo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		    }
 	    });
 	    
@@ -126,12 +172,14 @@ public class TavoloSingolo{
 	    
 	    conferma.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento) {
-	    		/**
-	    		 * Quando si clicca il bottone "conferma", si aprir� un nuovo frame creato dalla classe RiepilogoCameriere.
-	    		 */
+	    		
+	    		if (quantita.size()==0) {
+	    			JOptionPane.showMessageDialog(null, "Per proseguire, è necessario ordinare almeno una porzione.");
+	    		} else {
 		    	ordinazione.dispose();
 		    	quantita.write();
 		    	new RiepilogoCameriere(numerotavolo);
+	    		}
 		    }
 	    });
 	    /**
@@ -210,7 +258,7 @@ public class TavoloSingolo{
 	    			/**
 	    			 * il nome del piatto e il suo prezzo vengono aggiunti al pannello di sx.
 	    			 */
-	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     �" + listap.getPiatto(j).getPrice());
+	    			JLabel piatto = new JLabel(listap.getPiatto(j).getName() + "     €" + listap.getPiatto(j).getPrice());
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);

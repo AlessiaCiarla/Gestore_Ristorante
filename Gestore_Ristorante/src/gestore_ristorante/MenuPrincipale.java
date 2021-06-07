@@ -183,7 +183,6 @@ public class MenuPrincipale{
 					pw6 = new PrintWriter("file/appoggio.txt");
 					pw6.close();
 				} catch (FileNotFoundException e) {
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		    	start.dispose(); 

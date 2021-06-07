@@ -238,7 +238,7 @@ public class RiepilogoCameriere{
 				        /**
 		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
 		    			 */
-				        JLabel prezzo = new JLabel("PREZZO: " + listap.getPiatto(j).getPrice() + "   €");
+				        JLabel prezzo = new JLabel("PREZZO: " + listap.getPiatto(j).getPrice() + "   â‚¬");
 			    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
 					    prezzo.setForeground(Color.BLACK);
 					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);

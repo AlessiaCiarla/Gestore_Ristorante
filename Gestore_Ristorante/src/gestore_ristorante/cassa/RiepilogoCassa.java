@@ -90,11 +90,57 @@ public class RiepilogoCassa{
 	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-	    		/**
-		    	 * In questo caso, il JFrame di RiepilogoCassa viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa.
+		    	
+		    	/**
+		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
 		    	 */
-		    	editable_menu.dispose(); 
-		    	new ElencoTavoliCassa();
+	    		JFrame controllo= new JFrame();
+	    		controllo.setSize(400,200);
+	    		Container cont= controllo.getContentPane();
+	    		
+	    		JPanel center= new JPanel();
+	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    		center.setLayout(new GridLayout(1,1));
+	    		cont.add(center,BorderLayout.CENTER);
+	    		
+	    		JLabel domanda= new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
+	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
+	    	    domanda.setForeground(Color.BLACK);
+	    		center.add(domanda);
+	    		
+	    		JPanel down= new JPanel();
+	    		down.setLayout(new GridLayout(1,2));
+	    		cont.add(down, BorderLayout.SOUTH);
+	    		
+	    		JButton no = new JButton("NO");
+	    		no.setFont(new Font("Garamond", Font.BOLD, 18));
+	    	    no.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    	    no.setForeground(Color.BLACK);
+	    	    down.add(no);
+	    	    
+	    	    no.addActionListener(new ActionListener(){
+	    	    	public void actionPerformed(ActionEvent evento){
+	    	    		controllo.dispose();
+	    	    	}
+	    	    });
+	    	    
+	    	    JButton si = new JButton("SI");
+	    		si.setFont(new Font("Garamond", Font.BOLD, 18));
+	    	    si.setBackground(MenuPrincipale.COLORE_BOTTONI);
+	    	    si.setForeground(Color.BLACK);
+	    	    down.add(si);
+	    	    
+	    	    si.addActionListener(new ActionListener(){
+	    	    	public void actionPerformed(ActionEvent evento){
+	    	    		controllo.dispose();
+	    	    		editable_menu.dispose(); 
+	    		    	new ElencoTavoliCassa();
+	    	    	}
+	    	    });
+	    		
+	    	    controllo.setVisible(true);
+	    		controllo.setLocationRelativeTo(null);
+	    		controllo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 		    }
 	    });
 		
@@ -154,7 +200,7 @@ public class RiepilogoCassa{
 		/**
 		 * Viene creata una label che visualizzera il totale da pagare.
 		 */
-		JLabel prezzo = new JLabel("TOTALE: €" + totale, SwingConstants.CENTER);
+		JLabel prezzo = new JLabel("TOTALE: â‚¬" + totale, SwingConstants.CENTER);
 		prezzo.setFont(new Font("Garamond", Font.BOLD, 22));
 	    prezzo.setForeground(Color.BLACK);
 		down.add(prezzo, BorderLayout.SOUTH);
@@ -195,7 +241,7 @@ public class RiepilogoCassa{
 				        /**
 		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
 		    			 */
-				        JLabel prezzo = new JLabel("PREZZO: " + scontrino.getPiatto(j).getPrice() + "   €");
+				        JLabel prezzo = new JLabel("PREZZO: " + scontrino.getPiatto(j).getPrice() + "   â‚¬");
 			    		prezzo.setFont(new Font("Bell MT", Font.BOLD, 22));
 					    prezzo.setForeground(Color.BLACK);
 					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
