@@ -5,11 +5,13 @@ import java.util.*;
 
 import gestore_ristorante.chef.OrdinaPiatti;
 import gestore_ristorante.chef.Piatto;
-
+/**
+* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe Tavolo_Singolo e RiepilogoCameriere(front-end).
+*/
 public class Ordinazione {
 	
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
-	File file = new File("file/riepilogo.txt");
+	File file = new File("file/appoggio.txt");
 	
 	
 	public Ordinazione () {
@@ -63,7 +65,7 @@ public class Ordinazione {
 	
 	
 	/**
-	 * Legge dal file in cui � contenuto il men� e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui � contenuta l'ordinazione e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {

@@ -6,7 +6,7 @@ import javax.swing.*;
 
 import gestore_ristorante.cameriere.ElencoTavoliCameriere;
 import gestore_ristorante.cassa.ElencoTavoliCassa;
-import gestore_ristorante.chef.Menu_Chef;
+import gestore_ristorante.chef.MenuChef;
 import gestore_ristorante.cuoco.ElencoTavoliCuoco;
 
 /**
@@ -86,7 +86,7 @@ public class MenuPrincipale{
 		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo Menu_Chef, che implementer� una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
-		    	new Menu_Chef();
+		    	new MenuChef();
 		    }
 	    });
 	    

@@ -4,60 +4,37 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 import java.util.ArrayList;
-import java.util.Collections;
-
-import gestore_ristorante.chef.OrdinaPiatti;
 import gestore_ristorante.chef.Piatto;
 
+/**
+* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe RiepilogoCassa(front-end).
+*/
 public class Scontrino {
+	
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
-	File file1 = new File("file/riepilogo1.txt");
-	File file2 = new File("file/riepilogo2.txt");
-	File file3 = new File("file/riepilogo3.txt");
-	File file4 = new File("file/riepilogo4.txt");
-	File file5 = new File("file/riepilogo5.txt");
+	File file1 = new File("file/scontrino_tavolo1.txt");
+	File file2 = new File("file/scontrino_tavolo2.txt");
+	File file3 = new File("file/scontrino_tavolo3.txt");
+	File file4 = new File("file/scontrino_tavolo4.txt");
+	File file5 = new File("file/scontrino_tavolo5.txt");
+	
+	/**
+	 * è il numero del tavolo su cui sto prendendo l'ordinazione.
+	 */
 	int numerotavolo=0;
 	
 	
-	
+	/**
+	 * Il costruttore chiama la funzione read per leggere il contenuto del file.
+	 * @param int num è il numero del tavolo su cui devo pagare l'ordine.
+	 */
+
 	public Scontrino (int numero) {
 		this.numerotavolo=numero;
 		read();
 	}
 
-	/**
-	 * Aggiunge un piatto all'ArrayList dei piatti.
-	 * @param piatto � il piatto da aggiungere.
-	 */
-	public void add(Piatto datiPiatto){
-		if (!listapiatti.contains(datiPiatto)) {
-			listapiatti.add(datiPiatto);
-		}
-	}
-	
-	/**
-	 * Ordina la lista dei piatti tramite una Collections.sort.
-	 * Questo avviene tramite la creazione di un nuovo oggetto di tipo OrdinaPiatti.
-	 */
-	public void sort(){
-		Collections.sort(listapiatti, new OrdinaPiatti());
-	}
-	
-	/**
-	 * Rimuove tutto il contenuto dell'ArrayList.
-	 */
-	public void clear(){
-		listapiatti.clear();
-	}
-	
-	/**
-	 * Rimuove un piatto specifico all'interno dell'ArrayList.
-	 * @param piatto � il piatto da rimuovere.
-	 */
-	public void remove(Piatto datiPiatto) {
-		listapiatti.remove(datiPiatto);
-	}
-	
+
 	/**
 	 * Metodo grazie al quale � possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
 	 * @param indice: un indice di tipo intero.
@@ -76,16 +53,6 @@ public class Scontrino {
 		return listapiatti.size();
 	}
 	
-	/**
-	 * Mostra il contenuto dell'ArrayList,stampandolo a video.
-	 */
-	public void readArray() {
-		for (Piatto datiPiatto : listapiatti){
-			System.out.println(datiPiatto.getName() 
-								+ ","+ datiPiatto.getPrice() 
-								+ ","+ datiPiatto.getNumcategory());
-		}
-	}
 	
 	/**
 	 * Legge dal file in cui � contenuto il men� e lo copia all'interno dell'ArrayList.

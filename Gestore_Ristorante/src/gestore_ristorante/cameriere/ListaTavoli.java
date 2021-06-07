@@ -3,42 +3,41 @@ package gestore_ristorante.cameriere;
 import java.io.*;
 import java.util.ArrayList;
 
-
+/**
+* Classe back-end che contiene l'ArrayList di tutti i tavoli e gestisce vari metodi che saranno usati nella classe ElencoTavoliCameriere(front-end).
+*/
 public class ListaTavoli {
 	ArrayList<Tavolo> listatavoli = new ArrayList<Tavolo>();
 	File file = new File("file/tavoli.txt");
 	
 	/**
-	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato pi� avanti, al fine di popolare immediatamente il pannello grafico usato in Menu_Chef.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Tavolo,usando il metodo read() creato pi� avanti, al fine di popolare immediatamente il pannello grafico usato in ElencoTavoliCameriere.
 	 */
 	public ListaTavoli () {
 		read();
 	}
 			
-	
+	/**
+	 * Metodo grazie al quale � possibile ricavare un tavolo di tipo Tavolo nell'Arraylist listatavoli.
+	 * @param indice: un indice di tipo intero.
+	 * @return l'oggetto di tipo Piatto all'indice passato in input.
+	 */
 	public Tavolo getTavolo(int indice) {
 		return listatavoli.get(indice);
 	}
 	
 	/**
-	 * Metodo grazie al quale si ricava la lunghezza dell'Arraylist listapiatti.
-	 * @return la  lunghezza di listapiatti.
+	 * Metodo grazie al quale si ricava la lunghezza dell'Arraylist listatavoli.
+	 * @return la  lunghezza di listatavoli.
 	 */
 	public int size() {
 		return listatavoli.size();
 	}
 	
 	
-	public void readArray() {
-		for (Tavolo datiTavolo : listatavoli){
-			System.out.println(datiTavolo.getNome() 
-								+ ","+ datiTavolo.getNumero() 
-								+ ","+ datiTavolo.getStato());
-		}
-	}
 	
 	/**
-	 * Legge dal file in cui � contenuto il men� e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui � contenuta la lista dei tavoli e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {
