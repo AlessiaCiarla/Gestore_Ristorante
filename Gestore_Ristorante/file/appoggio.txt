@@ -1,0 +1,11 @@
+Antipasto di mare,13.0,1
+Antipasto di montagna,11.0,0
+Gricia,11.5,0
+Carbonara,12.0,0
+Amatriciana,11.0,0
+Frittura di pesce,15.0,0
+Tagliata,13.0,0
+Insalata,3.5,0
+Patatine fritte,4.0,0
+Tiramisu,5.0,0
+Torta della nonna,4.5,0

@@ -45,7 +45,10 @@ public class TavoloSingolo{
 	Container contenuto= ordinazione.getContentPane();
 	JSplitPane pannello_centrale=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
-	
+	/**
+	 * Variabile che serve a far uscire un alert se non è stata selezionata nessuna quantità.
+	 */
+	int contatore_quantita=0;
 	
 	/**
 	 * Il costruttore chiama la funzione visualizza.
@@ -173,7 +176,7 @@ public class TavoloSingolo{
 	    conferma.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento) {
 	    		
-	    		if (quantita.size()==0) {
+	    		if (contatore_quantita==0) {
 	    			JOptionPane.showMessageDialog(null, "Per proseguire, è necessario ordinare almeno una porzione.");
 	    		} else {
 		    	ordinazione.dispose();
@@ -315,6 +318,7 @@ public class TavoloSingolo{
 		    	    		quantita.getPiatto(indicecorrente).setNumcategory(count);
 		    	    		String porz = count.toString();
     	    				numpor.setText("   " + porz);
+    	    				contatore_quantita=count;
 		    	    		}
 		    	    	}
 			        });
@@ -328,6 +332,7 @@ public class TavoloSingolo{
 		    	    		quantita.getPiatto(indicecorrente).setNumcategory(count);
 		    	    		String por = count.toString();
     	    				numpor.setText("   " + por);
+    	    				contatore_quantita=count;
 		    	    	}
 			        });
 	    		}
