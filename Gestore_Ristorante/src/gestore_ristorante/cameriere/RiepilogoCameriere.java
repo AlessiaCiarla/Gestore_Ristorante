@@ -8,25 +8,25 @@ import javax.swing.*;
 import gestore_ristorante.MenuPrincipale;
 
 /**
- * Classe che implementa la grafica dell'ordinazione che visualizzer� il cameriere.
+ * Classe che implementa la grafica dell'ordinazione finale che visualizzerà il cameriere.
  *
  */
 public class RiepilogoCameriere{
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterr� l'ordinazione e i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
 	 */
 	JFrame riepilogo= new JFrame("RIEPILOGO ORDINE");
 	Container contenuto= riepilogo.getContentPane();
 	JPanel pannello_centrale= new JPanel();	
 	
 	/**
-	 * viene creato un oggetto di tipo Ordinazione, grazie al quale invece riesco ad avere tutte le quantità di ogni piatto ordinato.
+	 * viene creato un oggetto di tipo Ordinazione, grazie al quale riesco ad avere tutte le quantità di ogni piatto ordinato.
 	 */
 	Ordinazione listap = new Ordinazione();
 	
-	/** In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale invece riesco ad avere tutti i tavoli 
+	/** In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale riesco ad avere tutti i tavoli 
 	 * con relativi attributi in un ArrayList.
 	 */
 	ListaTavoli tavoli = new ListaTavoli();
@@ -37,14 +37,13 @@ public class RiepilogoCameriere{
 	File infile =new File("file/appoggio.txt");
 	
 	/**
-	 * è il numero del tavolo su cui sto prendendo l'ordinazione.
+	 * numerotavolo è il numero del tavolo su cui sto prendendo l'ordinazione.
 	 */
 	int numerotavolo;
 	
-	
 	/**
 	 * Il costruttore chiama la funzione visualizza.
-	 * @param int num è il numero del tavolo su cui ho preso l'ordinazione.
+	 * @param int num : è il numero del tavolo su cui ho preso l'ordinazione.
 	 */
 	public RiepilogoCameriere(int num) {
 		this.numerotavolo=num;
@@ -52,7 +51,7 @@ public class RiepilogoCameriere{
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il men� e i rispettivi bottoni.
+	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
@@ -92,7 +91,7 @@ public class RiepilogoCameriere{
 	    	public void actionPerformed(ActionEvent evento){
 	    		/**
 		    	 * In questo caso, il JFrame di RiepilogoCameriere viene chiuso, e ne viene creato uno nuovo di tipo TavoloSingolo, che riporta proprio alla schermata dell'ordinazione.
-		    	 * Inoltre viene azzerato il contenuto del file di appoggio.
+		    	 * Inoltre viene azzerato il contenuto del file di appoggio e ripulita la lista che contiene i piatti ordinati.
 		    	 */
 	    		listap.clear();
 	    		listap.write();
@@ -110,7 +109,7 @@ public class RiepilogoCameriere{
 		contenuto.add(down, BorderLayout.SOUTH);
 		
 		/**
-	     * Viene aggiunto un bottone conferma, grazie al quale � possibile confermare l'ordine definitivamente.
+	     * Viene aggiunto un bottone conferma, grazie al quale è possibile confermare l'ordine definitivamente.
 	     */
 	    JButton conferma = new JButton("INSERISCI ORDINE");
 		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
@@ -120,12 +119,14 @@ public class RiepilogoCameriere{
 	    
 	    conferma.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
+	    		
 	    		/**
 	    		 * Quando si clicca il bottone "conferma", si copierà il contenuto nel file di appoggio nel file dello scontrino.
 	    		 */
 	    		FileInputStream instream = null;
 	    		FileOutputStream outstream = null;
 	    	    	try{
+	    	    		
 	    	    		/**
 	    	    		 * In base al numero del tavolo si copia l'ordine nel rispettivo scontrino.
 	    	    		 */
@@ -161,8 +162,6 @@ public class RiepilogoCameriere{
 
 	    	    	    instream.close();
 	    	    	    outstream.close();
-
-	    	 
 	    	    	}catch(IOException ioe){
 	    	    		ioe.printStackTrace();
 	    	    	 }
@@ -175,9 +174,9 @@ public class RiepilogoCameriere{
 						e.printStackTrace();
 					}
 	    	    
-	    	    	/**
-	    	    	 * Una volta confermato l'ordine vado a cambiare lo stato del tavolo annesso.
-	    	    	 */
+    	    	/**
+    	    	 * Una volta confermato l'ordine vado a cambiare lo stato del tavolo annesso.
+    	    	 */
 	    	    for (int k=0; k<tavoli.size(); k++) {
 	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
 			    	    tavoli.getTavolo(k).setStato("I");
@@ -190,10 +189,10 @@ public class RiepilogoCameriere{
 		    	riepilogo.dispose();
 		    	new ElencoTavoliCameriere();
 		    	JOptionPane.showMessageDialog(null, "Ordine inserito!");
-	    	}});
+	    }});
 	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame , e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * il pannello centrale viene aggiunto al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
 	    
@@ -210,49 +209,54 @@ public class RiepilogoCameriere{
 		popolaPannello();
 		
 		/**
-		 * il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
+		 * il frame viene reso visibile, settato al centro e chiudibile con il tasto "X".
 		 */
 	    riepilogo.setVisible(true);
 		riepilogo.setLocationRelativeTo(null);
 		riepilogo.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-
+	
+	/**
+	 * La funzione popolaPannello, come da nome, è in grado di popolare il pannello centrale con vari oggetti.
+	 */
 	public void popolaPannello() {
+		
 		/**
-	     * si scorre la lista dei piatti, e si controlla se la quantita del piatto e maggiore di zero.
-	     * Nel caso la risposta fosse si,il piatto viene aggiunto al pannello centrale.
+	     * si scorre la lista dei piatti, e si controlla se la quantita del piatto è maggiore di zero.
+	     * Nel caso la risposta fosse si, il piatto viene aggiunto al pannello centrale.
 	     */
 		for (int j = 0; j < listap.size(); j++) {
-					if (listap.getPiatto(j).getNumcategory()>0) {
-						
-						/**
-		    			 * il nome del piatto viene aggiunto al pannello centrale.
-		    			 */
-						pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
-		    			JLabel piatto = new JLabel("PIATTO: " + listap.getPiatto(j).getName()); 
-			    		piatto.setFont(new Font("Ink Free", Font.BOLD, 22));
-					    piatto.setForeground(Color.BLACK);
-					    piatto.setAlignmentX(Component.CENTER_ALIGNMENT);
-				        pannello_centrale.add(piatto);
-				        
-				        /**
-		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
-		    			 */
-				        JLabel prezzo = new JLabel("PREZZO: " + listap.getPiatto(j).getPrice() + "   €");
-			    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
-					    prezzo.setForeground(Color.BLACK);
-					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
-				        pannello_centrale.add(prezzo);
-				        
-				        /**
-		    			 * la quantita del piatto viene aggiunto al pannello centrale.
-		    			 */
-				        JLabel quantita = new JLabel("N. PORZIONI: " + listap.getPiatto(j).getNumcategory() + "");
-			    		quantita.setFont(new Font("Ink Free", Font.BOLD, 22)); 
-					    quantita.setForeground(Color.BLACK);
-					    quantita.setAlignmentX(Component.CENTER_ALIGNMENT);
-				        pannello_centrale.add(quantita);
-					}
-	   		}
+			if (listap.getPiatto(j).getNumcategory()>0) {
+				
+				/**
+    			 * il nome del piatto viene aggiunto al pannello centrale.
+    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto da un punto di vista grafico.
+    			 */
+				pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
+    			JLabel piatto = new JLabel("PIATTO: " + listap.getPiatto(j).getName()); 
+	    		piatto.setFont(new Font("Ink Free", Font.BOLD, 22));
+			    piatto.setForeground(Color.BLACK);
+			    piatto.setAlignmentX(Component.CENTER_ALIGNMENT);
+		        pannello_centrale.add(piatto);
+		        
+		        /**
+    			 * il prezzo del piatto viene aggiunto al pannello centrale.
+    			 */
+		        JLabel prezzo = new JLabel("PREZZO: " + listap.getPiatto(j).getPrice() + "   €");
+	    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
+			    prezzo.setForeground(Color.BLACK);
+			    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
+		        pannello_centrale.add(prezzo);
+		        
+		        /**
+    			 * la quantita del piatto viene aggiunto al pannello centrale.
+    			 */
+		        JLabel quantita = new JLabel("N. PORZIONI: " + listap.getPiatto(j).getNumcategory() + "");
+	    		quantita.setFont(new Font("Ink Free", Font.BOLD, 22)); 
+			    quantita.setForeground(Color.BLACK);
+			    quantita.setAlignmentX(Component.CENTER_ALIGNMENT);
+		        pannello_centrale.add(quantita);
+			}
+	   	}
 	}
 }

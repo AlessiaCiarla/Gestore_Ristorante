@@ -5,22 +5,29 @@ import java.util.*;
 
 import gestore_ristorante.chef.OrdinaPiatti;
 import gestore_ristorante.chef.Piatto;
+
 /**
-* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe Tavolo_Singolo e RiepilogoCameriere(front-end).
+* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe TavoloSingolo e RiepilogoCameriere(front-end).
 */
 public class Ordinazione {
 	
+	/**
+	 * Viene creato un ArrayList contenente oggetti di tipo Tavolo.
+	 * Viene salvato un file preso in input con l'indirizzo, in una variabile "file".
+	 */
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
 	File file = new File("file/appoggio.txt");
 	
-	
+	/**
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti.
+	 */
 	public Ordinazione () {
 		read();
 	}
 
 	/**
 	 * Aggiunge un piatto all'ArrayList dei piatti.
-	 * @param piatto � il piatto da aggiungere.
+	 * @param piatto è il piatto da aggiungere.
 	 */
 	public void add(Piatto datiPiatto){
 		if (!listapiatti.contains(datiPiatto)) {
@@ -43,17 +50,14 @@ public class Ordinazione {
 		listapiatti.clear();
 	}
 	
-	
-	
 	/**
-	 * Metodo grazie al quale � possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
+	 * Metodo grazie al quale è possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
 	 * @param indice: un indice di tipo intero.
 	 * @return l'oggetto di tipo Piatto all'indice passato in input.
 	 */
 	public Piatto getPiatto(int indice) {
 		return listapiatti.get(indice);
 	}
-	
 	
 	/**
 	 * Metodo grazie al quale si ricava la lunghezza dell'Arraylist listapiatti.
@@ -63,9 +67,8 @@ public class Ordinazione {
 		return listapiatti.size();
 	}
 	
-	
 	/**
-	 * Legge dal file in cui � contenuta l'ordinazione e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui è contenuta l'ordinazione e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {
@@ -107,14 +110,14 @@ public class Ordinazione {
 	public void write(){
 		try {
 			
-	    /**
-	     * Crea un oggetto BufferedWriter per scrivere l'output del file.
-	     */
+		    /**
+		     * Crea un oggetto BufferedWriter per scrivere l'output del file.
+		     */
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
-		/**
-		* Scrive ogni piatto all'interno del file di output.
-		*/
+			/**
+			* Scrive ogni piatto all'interno del file di output.
+			*/
 			for (Piatto datiPiatto : listapiatti){
 				writer.write(datiPiatto.getName());
 				writer.write("," + datiPiatto.getPrice());
@@ -122,9 +125,9 @@ public class Ordinazione {
 			    writer.newLine(); 
 			}
 		
-	    /**
-	     * Chiude il file.
-	     */
+		    /**
+		     * Chiude il file.
+		     */
 			writer.close();
 	  
 		} catch(Exception ex){

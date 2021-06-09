@@ -1,22 +1,21 @@
 package gestore_ristorante.chef;
 
-import java.io.BufferedReader;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileReader;
-import java.io.FileWriter;
-import java.util.ArrayList;
-import java.util.Collections;
+import java.io.*;
+import java.util.*;
 
 /**
- * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del men�, e gestisce vari metodi che saranno usati nella classe Menu_Chef(front-end).
+ * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menù, e gestisce vari metodi che saranno usati nella classe MenuChef(front-end).
  */
 public class ListaPiatti{
+	
+	/**
+	 * Viene creato un ArrayList di tipo Piatto e viene preso in input in file e salvato in una variabile.
+	 */
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
 	File file = new File("file/menu.txt");
 	
 	/**
-	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato pi� avanti, al fine di popolare immediatamente il pannello grafico usato in Menu_Chef.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti, al fine di popolare immediatamente il pannello grafico usato in MenuChef.
 	 */
 	public ListaPiatti () {
 		read();
@@ -24,7 +23,7 @@ public class ListaPiatti{
 			
 	/**
 	 * Aggiunge un piatto all'ArrayList dei piatti.
-	 * @param piatto � il piatto da aggiungere.
+	 * @param piatto è il piatto da aggiungere.
 	 */
 	public void add(Piatto datiPiatto){
 		if (!listapiatti.contains(datiPiatto)) {
@@ -49,14 +48,14 @@ public class ListaPiatti{
 	
 	/**
 	 * Rimuove un piatto specifico all'interno dell'ArrayList.
-	 * @param piatto � il piatto da rimuovere.
+	 * @param piatto è il piatto da rimuovere.
 	 */
 	public void remove(Piatto datiPiatto) {
 		listapiatti.remove(datiPiatto);
 	}
 	
 	/**
-	 * Metodo grazie al quale � possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
+	 * Metodo grazie al quale è possibile ricavare un piatto di tipo Piatto nell'Arraylist listapiatti.
 	 * @param indice: un indice di tipo intero.
 	 * @return l'oggetto di tipo Piatto all'indice passato in input.
 	 */
@@ -74,8 +73,8 @@ public class ListaPiatti{
 	
 	/**
 	 * Permette di sostituire o modificare i dati di un piatto(nome, prezzo, categoria)
-	 * @param dasostituire � il piatto da modificare.
-	 * @param sostituto � il piatto che va inserito al posto del precedente.
+	 * @param dasostituire è il piatto da modificare.
+	 * @param sostituto è il piatto che va inserito al posto del precedente.
 	 */
 	public void modify(Piatto dasostituire, Piatto sostituto){	
 		if (!listapiatti.contains(sostituto)) {
@@ -88,7 +87,7 @@ public class ListaPiatti{
 	}
 	
 	/**
-	 * Legge dal file in cui � contenuto il men� e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
 	 */
 	public void read() {
 		try {
@@ -111,6 +110,7 @@ public class ListaPiatti{
 			    String NumCat= datiPiatto[2];
 			    int numint= Integer.parseInt(NumCat);
 			    double prezzo = Double.parseDouble(Price);
+			    
 			    /**
 			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
 			    */
@@ -130,14 +130,14 @@ public class ListaPiatti{
 	public void write(){
 		try {
 			
-	    /**
-	     * Crea un oggetto BufferedWriter per scrivere l'output del file.
-	     */
+		    /**
+		     * Crea un oggetto BufferedWriter per scrivere l'output del file.
+		     */
 			BufferedWriter writer = new BufferedWriter(new FileWriter(file));
 
-		/**
-		* Scrive ogni piatto all'interno del file di output.
-		*/
+			/**
+			* Scrive ogni piatto all'interno del file di output.
+			*/
 			for (Piatto datiPiatto : listapiatti){
 				writer.write(datiPiatto.getName());
 				writer.write("," + datiPiatto.getPrice());
@@ -145,10 +145,10 @@ public class ListaPiatti{
 			    writer.newLine(); 
 			}
 		
-	    /**
-	     * Chiude il file.
-	     */
-			writer.close();
+		    /**
+		     * Chiude il file.
+		     */
+				writer.close();
 	  
 		} catch(Exception ex){
 			System.out.println("Exception msg: "+ex);

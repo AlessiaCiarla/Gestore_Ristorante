@@ -2,9 +2,7 @@ package gestore_ristorante;
 
 import java.awt.*;
 import java.awt.event.*;
-import java.io.FileNotFoundException;
-import java.io.PrintWriter;
-
+import java.io.*;
 import javax.swing.*;
 
 import gestore_ristorante.cameriere.ElencoTavoliCameriere;
@@ -14,10 +12,13 @@ import gestore_ristorante.chef.MenuChef;
 import gestore_ristorante.cuoco.ElencoTavoliCuoco;
 
 /**
- * Classe che implementa la grafica del men� iniziale, da cui � possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
+ * Classe che implementa la grafica del menù iniziale, da cui è possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
  */
 public class MenuPrincipale{
 	
+	/**
+	 * vengono create due variabili statiche per mantenere i colori utilizzati nel programma.
+	 */
 	public final static Color COLORE_SFONDO=new Color(171,205,239);  
 	public final static Color COLORE_BOTTONI=new Color(224,255,255);
 	
@@ -31,11 +32,14 @@ public class MenuPrincipale{
 	 */
 	Container contenuto=start.getContentPane();
 	
+	/**
+	 * si crea un oggetto di tipo ListaTavoli.
+	 */
 	ListaTavoli tavoli = new ListaTavoli();
 	
 	
 	/**
-	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che � proprio il men� iniziale.
+	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che è proprio il menù iniziale.
 	 */
 	public MenuPrincipale() {
 		visualizza();
@@ -43,6 +47,9 @@ public class MenuPrincipale{
 	
 	public void visualizza() {
 	
+		/**
+		 * viene settata la misura del frame.
+		 */
 		start.setSize(600,600); 
 		
 		/**
@@ -87,7 +94,7 @@ public class MenuPrincipale{
 	    pannello.add(cassa);
 	    
 	    /**
-	     * Grazie all'interfaccia ActionListener, � possibile gestire gli eventi, come nel caso dei 4 bottoni che abbiamo.
+	     * Grazie all'interfaccia ActionListener, è possibile gestire gli eventi, come nel caso dei 4 bottoni che abbiamo.
 	     * Utilizziamo allora addActionListener, per assegnare un "ascoltatore" ad ogni bottone.
 	     * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
 	     * * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone.
@@ -97,7 +104,7 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 		    	/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo MenuChef, che implementer� una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo MenuChef, che implementerà una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new MenuChef();
@@ -108,7 +115,7 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 	    		/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCameriere, che implementer� una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCameriere, che implementerà una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCameriere();
@@ -119,7 +126,7 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 	    		
 	    		/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCuoco, che implementer� una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCuoco, che implementerà una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCuoco();
@@ -131,32 +138,43 @@ public class MenuPrincipale{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 	    		/**
-		    	 * In questo caso, il JFrame del men� principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa, che implementer� una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa, che implementerà una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCassa();
 		    }
 	    });
 	    
+	    /**
+	     * Si crea un pannello down situato nella parte sud del frame.
+	     * Ha un'impostazione a griglia 1x1.
+	     * Ne viene settato anche lo sfondo.
+	     */
 	    JPanel down= new JPanel();
 		down.setLayout(new GridLayout(1,1));
 		down.setBackground(COLORE_SFONDO);
 		contenuto.add(down,BorderLayout.SOUTH );
 	    
+		/**
+		 * Viene poi creato un bottone, di cui vengono settati font e colori.
+		 * Viene poi aggiunto al pannello down.
+		 */
 		JButton chiudi_sessione = new JButton("CHIUDI SESSIONE");
 	    chiudi_sessione.setFont(new Font("Garamond", Font.BOLD, 20));
 	    chiudi_sessione.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    chiudi_sessione.setForeground(Color.BLACK);
 	    down.add(chiudi_sessione);
 	    
-	    
+	    /**
+	     * Viene creato un ActionListener  per il bottone chiudi_sessione.
+	     */
 	    chiudi_sessione.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
+	    		
 		    	/**
 		    	 * Se si chiude la sessione il programma verrà chiuso e verranno puliti tutti i file che contengono i
-		    	 *  dati di ordinazione e scontrini e gli stati dei tavoli cambiarenna in NI.
+		    	 *  dati di ordinazione, scontrini e gli stati dei tavoli cambiarenna in NI.
 		    	 */
-	    		
 	    		for (int i = 0; i<tavoli.size(); i++) {
 					tavoli.getTavolo(i).setStato("NI");
 					tavoli.write();

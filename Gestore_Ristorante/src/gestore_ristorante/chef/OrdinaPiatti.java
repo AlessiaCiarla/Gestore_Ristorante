@@ -3,7 +3,7 @@ package gestore_ristorante.chef;
 import java.util.Comparator;
 
 /**
- * Classe che implementa l'interfaccia Comparator,e grazie al quale è possibile confrontare due identificatori di categorie.
+ * Classe che implementa l'interfaccia Comparator,e grazie al quale Ã¨ possibile confrontare due identificatori di categorie.
  *
  */
 public class OrdinaPiatti implements Comparator<Piatto>{

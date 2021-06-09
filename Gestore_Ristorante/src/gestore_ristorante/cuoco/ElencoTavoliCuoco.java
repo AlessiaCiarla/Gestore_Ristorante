@@ -1,6 +1,5 @@
 package gestore_ristorante.cuoco;
 
-
 import java.awt.*;
 import java.awt.event.*;
 
@@ -9,7 +8,7 @@ import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.cameriere.ListaTavoli;
 
 /**
- * Classe che implementa la gestione dei tavoli da parte del cuoco.
+ * Classe che implementa la gestione dei tavoli da parte del cuoco(front-end).
  *
  */
 public class ElencoTavoliCuoco {
@@ -24,13 +23,12 @@ public class ElencoTavoliCuoco {
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterr� il men� ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
 	 */
 	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
 	Container contenuto= table_view.getContentPane();
 	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-	
-    
+	  
 	/**
 	 * Il costruttore chiama la funzione visualizza.
 	 */
@@ -38,10 +36,9 @@ public class ElencoTavoliCuoco {
 		visualizza();
 	}
 	
-	
 	/**
 	 * La funzione visualizza in sintesi crea la parte alta della finestra 
-	 * e setta le spechifiche grafiche del pannello principale,contenente la lista dei tavoli e i rispettivi bottoni.
+	 * e setta le spechifiche grafiche del pannello principale, contenente la lista dei tavoli e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
@@ -60,7 +57,7 @@ public class ElencoTavoliCuoco {
 		contenuto.add(up, BorderLayout.NORTH);
 		
 		/**
-		 * Viene aggiunta una label nometavolo, per dare un contesto al frame, e ne vengono impostate le specifiche.
+		 * Viene aggiunta una label "TAVOLI", per dare un contesto al frame, e ne vengono impostate le specifiche.
 		 */
 		JLabel nometavolo = new JLabel("TAVOLI", SwingConstants.CENTER);
 		nometavolo.setFont(new Font("Garamond", Font.BOLD, 20));
@@ -78,45 +75,69 @@ public class ElencoTavoliCuoco {
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
-		    	/**
-		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
+	    		/**
+		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; ci sono 2 opzioni disponibili.
+		    	 *Viene settata la misura e gli viene associato un ContentPane.
 		    	 */
 	    		JFrame controllo= new JFrame();
 	    		controllo.setSize(400,200);
 	    		Container cont= controllo.getContentPane();
 	    		
+	    		/**
+	    		 * Viene creato un pannello che viene aggiunto al ContentPane e ne vengono settati sfondo e layout.
+	    		 */
 	    		JPanel center= new JPanel();
 	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
 	    		
+	    		/**
+	    		 * Viene aggiunta una JLabel al pannello centrale del frame.
+	    		 * Ne vengono settati font e colore.
+	    		 */
 	    		JLabel domanda= new JLabel("Vuoi tornare al Menù Principale?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
 	    		
+	    		/**
+	    		 * Viene creato un poi un secondo pannello,situato nella parte bassa del frame.
+	    		 * Ne vengono impostati layout e viene aggiunto al ContentPane.
+	    		 */
 	    		JPanel down= new JPanel();
 	    		down.setLayout(new GridLayout(1,2));
 	    		cont.add(down, BorderLayout.SOUTH);
 	    		
+	    		/**
+	    		 * Viene aggiunto il bottone "no" al pannello down, con le impostazioni grafiche settate.
+	    		 */
 	    		JButton no = new JButton("NO");
 	    		no.setFont(new Font("Garamond", Font.BOLD, 18));
 	    	    no.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    	    no.setForeground(Color.BLACK);
 	    	    down.add(no);
 	    	    
+	    	    /**
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
 	    	    	}
 	    	    });
 	    	    
+	    	    /**
+	    	     * Si crea poi anche un bottone "si" che viene aggiunto al pannello down, con le impostazioni grafiche settate.
+	    	     */
 	    	    JButton si = new JButton("SI");
 	    		si.setFont(new Font("Garamond", Font.BOLD, 18));
 	    	    si.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    	    si.setForeground(Color.BLACK);
 	    	    down.add(si);
 	    	    
+	    	    /**
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
@@ -125,6 +146,9 @@ public class ElencoTavoliCuoco {
 	    	    	}
 	    	    });
 	    		
+	    	    /**
+	    	     * Si rende visibile il frame editable_menu, si colloca al centro e si può chiudere con il tasto "X".
+	    	     */
 	    	    controllo.setVisible(true);
 	    		controllo.setLocationRelativeTo(null);
 	    		controllo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -132,7 +156,7 @@ public class ElencoTavoliCuoco {
 	    });
 	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame ,
+         * il pannello centrale viene aggiungo al contenuto del frame,
          *  e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_variabile,BorderLayout.CENTER);
@@ -153,14 +177,14 @@ public class ElencoTavoliCuoco {
 	}
 	
 	/**
-	 * La funzione popolaPannello,come da nome, � in grado di popolare il pannello centrale con vari oggetti.
+	 * La funzione popolaPannello,come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		
 		/**
-		 * Essendo il pannello centrale un JSplitPane, questo � caratterizzato dal fatto che � divisibile in 2 pannelli pi� piccoli;
+		 * Essendo il pannello centrale un JSplitPane, questo è caratterizzato dal fatto che è divisibile in 2 pannelli più piccoli;
 		 * nel nostro caso, uno di sx e uno di dx.
-		 * Entrambi usato il GridLayout e ne vengono settati i colori e aggiunti al pannello principale.
+		 * Entrambi usano il GridLayout e ne vengono settati i colori e vengono aggiunti al pannello principale.
 		 */
 		JPanel center_left= new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
@@ -173,7 +197,7 @@ public class ElencoTavoliCuoco {
 		pannello_variabile.setRightComponent(center_right);
 		
 		/**
-		 * Si scorre l'array dei tavoli, e per ogni tavolo si crea un bottone con il nome  nel pannello di sx,
+		 * Si scorre l'array dei tavoli, e per ogni tavolo si crea un bottone con il nome nel pannello di sx,
 		 * e una label con lo stato dell'ordine nel pannello di dx.
 		 */
 		for (int i = 0; i < tavoli.length; i++) {
@@ -188,19 +212,19 @@ public class ElencoTavoliCuoco {
 		    center_left.add(Tavolo);
 		    
 		    /**
-			 * Se lo stato dell'ordine non è stato inserito o evaso allora il bottone del tavolo viene disattivato
+			 * Se lo stato dell'ordine non è stato inserito o evaso allora il bottone del tavolo viene disattivato.
 			 */
 		    if (listat.getTavolo(i).getStato().equals("NI") || listat.getTavolo(i).getStato().equals("E")) {
 		    	Tavolo.setEnabled(false);
 		    }
 		    
 		    /*
-		     * indice identifica il numero del tavolo
+		     * indice identifica il numero del tavolo.
 		     */
 		    int indice=i;
 		    
 		    /**
-    		 * Cliccando su un tavolo viene creato un nuovo frame dato dalla classe RiepilogoCuoco, dove mi porto dietro il numero del tavolo su cui ho cliccato.
+    		 * Cliccando su un tavolo viene creato un nuovo frame dato dalla classe RiepilogoCuoco, dove mi porto dietro il numero del tavolo che ho selezionato.
     		 */
 		    Tavolo.addActionListener(new ActionListener(){
 		    	public void actionPerformed(ActionEvent evento) {

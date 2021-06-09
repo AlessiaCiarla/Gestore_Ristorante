@@ -8,16 +8,15 @@ import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.chef.ListaPiatti;
 import gestore_ristorante.chef.Piatto;
 
-
 /**
- * Classe che implementa la grafica del men� che visualizzer� il cameriere, che sar� modificabile grazie ad alcuni bottoni.
+ * Classe che implementa la grafica del menù che visualizzerà il cameriere.
  *
  */
 public class TavoloSingolo{
 	
 	/**
 	 * Le categorie sono fisse e sono 5, quindi viene creato un array di strighe,rappresentante le categorie.
-	 * In secondo luogo, viene creato un oggetto di tipo ListaPiatti, grazie al quale invece riesco ad avere tutti i piatti nel men�.
+	 * In secondo luogo, viene creato un oggetto di tipo ListaPiatti, grazie al quale invece riesco ad avere tutti i piatti nel menù.
 	 */
 	String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
 	ListaPiatti listap= new ListaPiatti();
@@ -33,13 +32,13 @@ public class TavoloSingolo{
 	Ordinazione quantita = new Ordinazione();  
 	
 	/**
-	 * è il numero del tavolo su cui sto prendendo l'ordinazione.
+	 * numerotavolo è il numero del tavolo su cui sto prendendo l'ordinazione.
 	 */
 	int numerotavolo;
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterr� il men� ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
 	 */
 	JFrame ordinazione= new JFrame("TAVOLO SINGOLO");
 	Container contenuto= ordinazione.getContentPane();
@@ -52,7 +51,7 @@ public class TavoloSingolo{
 	
 	/**
 	 * Il costruttore chiama la funzione visualizza.
-	 * @param int num è il numero del tavolo su cui sto prendendo l'ordinazione.
+	 * @param int num: è il numero del tavolo su cui sto prendendo l'ordinazione.
 	 */
 
 	public TavoloSingolo (int num) {
@@ -61,11 +60,12 @@ public class TavoloSingolo{
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il men� e i rispettivi bottoni.
+	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
+		
 		/**
-		 * Ad ogni avvio pulisco il file appoggio.txt e l'ArrayList dove è contenuta l'ordinazione.
+		 * Ad ogni avvio pulisco il file appoggio.txt e l'ArrayList dove è contenuta l'ordinazione, per poter prendere in modo corretto una nuova ordinazione.
 		 */
 		quantita.clear();
 		
@@ -111,45 +111,69 @@ public class TavoloSingolo{
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
-		    	/**
-		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
+	    		/**
+		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; ci sono 2 opzioni disponibili.
+		    	 *Viene settata la misura e gli viene associato un ContentPane.
 		    	 */
 	    		JFrame controllo= new JFrame();
 	    		controllo.setSize(400,200);
 	    		Container cont= controllo.getContentPane();
 	    		
+	    		/**
+	    		 * Viene creato un pannello che viene aggiunto al ContentPane e ne vengono settati sfondo e layout.
+	    		 */
 	    		JPanel center= new JPanel();
 	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
 	    		
+	    		/**
+	    		 * Viene aggiunta una JLabel al pannello centrale del frame.
+	    		 * Ne vengono settati font e colore.
+	    		 */
 	    		JLabel domanda= new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
 	    		
+	    		/**
+	    		 * Viene creato un poi un secondo pannello,situato nella parte bassa del frame.
+	    		 * Ne vengono impostati layout e viene aggiunto al ContentPane.
+	    		 */
 	    		JPanel down= new JPanel();
 	    		down.setLayout(new GridLayout(1,2));
 	    		cont.add(down, BorderLayout.SOUTH);
 	    		
+	    		/**
+	    		 * Viene aggiunto il bottone "no" al pannello down, con le impostazioni grafiche settate.
+	    		 */
 	    		JButton no = new JButton("NO");
 	    		no.setFont(new Font("Garamond", Font.BOLD, 18));
 	    	    no.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    	    no.setForeground(Color.BLACK);
 	    	    down.add(no);
 	    	    
+	    	    /**
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
 	    	    	}
 	    	    });
 	    	    
+	    	    /**
+	    	     * Si crea poi anche un bottone "si" che viene aggiunto al pannello down, con le impostazioni grafiche settate.
+	    	     */
 	    	    JButton si = new JButton("SI");
 	    		si.setFont(new Font("Garamond", Font.BOLD, 18));
 	    	    si.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    	    si.setForeground(Color.BLACK);
 	    	    down.add(si);
 	    	    
+	    	    /**
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
@@ -158,6 +182,9 @@ public class TavoloSingolo{
 	    	    	}
 	    	    });
 	    		
+	    	    /**
+	    	     * Si rende visibile il frame editable_menu, si colloca al centro e si può chiudere con il tasto "X".
+	    	     */
 	    	    controllo.setVisible(true);
 	    		controllo.setLocationRelativeTo(null);
 	    		controllo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -165,7 +192,7 @@ public class TavoloSingolo{
 	    });
 	    
 	    /**
-	     * Viene aggiunto un bottone conferma, grazie al quale � possibile conferma l'ordine e creare una comanda.
+	     * Viene aggiunto un bottone conferma al pannello down, grazie al quale è possibile confermare l'ordine e creare una comanda.
 	     */
 	    JButton conferma = new JButton("CONFERMA");
 		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
@@ -173,20 +200,32 @@ public class TavoloSingolo{
 	    conferma.setForeground(Color.BLACK);
 	    down.add(conferma, BorderLayout.SOUTH);
 	    
+	    /**
+	     * Viene creato un ActionListener per il pulsante conferma.
+	     */
 	    conferma.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento) {
 	    		
+	    		/**
+	    		 * Se il contatore che tiene la quantità dei piatto ordinati è uguale a 0, significa che non è stato aggiunto alcun piatto.
+	    		 * Compare quindi un messaggio di alert, in quanto non è possibile creare un nuovo ordine che sia vuoto.
+	    		 */
 	    		if (contatore_quantita==0) {
 	    			JOptionPane.showMessageDialog(null, "Per proseguire, è necessario ordinare almeno una porzione.");
+	    			
+	    		/**
+	    		 * Altrimenti, viene chiuso il frame del menù delle ordinazioni, viene scritta la comanda sul file e viene creato un nuovo frame di tipo RiepilogoCameriere.
+	    		 */
 	    		} else {
-		    	ordinazione.dispose();
-		    	quantita.write();
-		    	new RiepilogoCameriere(numerotavolo);
+			    	ordinazione.dispose();
+			    	quantita.write();
+			    	new RiepilogoCameriere(numerotavolo);
 	    		}
 		    }
 	    });
+	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame , e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
         pannello_centrale.setResizeWeight(0.8);
@@ -200,12 +239,12 @@ public class TavoloSingolo{
 		contenuto.add(scroll);
 		
 		/**
-		 * viene poi chiamata la funzione grazie al quale le cateogrie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
+		 * viene poi chiamata la funzione grazie al quale le categorie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		
 		/**
-		 * il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
+		 * il frame viene reso visibile, settato al centro e chiudibile con il tasto "X".
 		 */
 	    ordinazione.setVisible(true);
 		ordinazione.setLocationRelativeTo(null);
@@ -213,14 +252,14 @@ public class TavoloSingolo{
 		}
 	
 	/**
-	 * La funzione popolaPannello,come da nome, � in grado di popolare il pannello centrale con vari oggetti.
+	 * La funzione popolaPannello, come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		
 		/**
-		 * Essendo il pannello centrale un JSplitPane, questo � caratterizzato dal fatto che � divisibile in 2 pannelli pi� piccoli;
+		 * Essendo il pannello centrale un JSplitPane, questo è caratterizzato dal fatto che è divisibile in 2 pannelli più piccoli;
 		 * nel nostro caso, uno di sx e uno di dx.
-		 * Entrambi usato il GridLayout e ne vengono settati i colori e aggiunti al pannello principale.
+		 * Entrambi usano il GridLayout e ne vengono settati i colori e vengonos aggiunti al pannello principale.
 		 */
 		JPanel center_left= new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
@@ -251,9 +290,9 @@ public class TavoloSingolo{
 		 vuota3.setForeground(MenuPrincipale.COLORE_SFONDO);
 		 center_right.add(vuota3);
 		 	
-		 /**
-		     * Mentre si scorrono le categorie, si scorre la lista dei piatti, e si controlla se l'iedntificativo del piatto � uguale a quello della categoria.
-		     * Nel caso la risposta fosse si,il piatto viene aggiunto al posto giusto, sotto la sua categoria di appartenenza.
+		 	/**
+		     * Mentre si scorrono le categorie, si scorre la lista dei piatti, e si controlla se l'identificativo del piatto è uguale a quello della categoria.
+		     * Nel caso la risposta fosse si, il piatto viene aggiunto al posto giusto, sotto la sua categoria di appartenenza.
 		     */
 			for (int j = 0; j < listap.size(); j++) {
 	    		if (listap.getPiatto(j).getNumcategory()== i) {
@@ -265,8 +304,7 @@ public class TavoloSingolo{
 		    		piatto.setFont(new Font("AR BLANCA", Font.BOLD, 20));
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);
-			        
-			        
+			     
 			        /**
 	    			 * viene aggiunto al pannello di dx un bottone per diminuire la quantita da selezionare.
 	    			 */
@@ -276,7 +314,7 @@ public class TavoloSingolo{
 			        center_right.add(diminuisci);
 			        
 			        /**
-	    			 * viene aggiunto al pannello di dx una label che identifica il nuero di porzioni da ordinare.
+	    			 * viene aggiunto al pannello di dx una label che identifica il numero di porzioni da ordinare.
 	    			 */
 			        JLabel numpor = new JLabel("   0");
 					numpor.setForeground(MenuPrincipale.COLORE_SFONDO);
@@ -343,7 +381,7 @@ public class TavoloSingolo{
 	/**
 	 * La funzione aggiungiPiatto permette di aggiungere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
 	 * @param nome_piatto : stringa che identifica il nome del piatto;
-	 * @param prezzo_piatto : suoble che identifica il prezzo del piatto;
+	 * @param prezzo_piatto : duoble che identifica il prezzo del piatto;
 	 * @param porzioni : intero che indentifica le porzioni del piatto.
 	 */
 	public void aggiungiPiatto(String nome_piatto, double prezzo_piatto, int porzioni) {

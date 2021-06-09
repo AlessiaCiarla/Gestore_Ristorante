@@ -6,21 +6,21 @@ import javax.swing.*;
 import gestore_ristorante.MenuPrincipale;
 
 /**
- * Classe che implementa la grafica del men� che visualizzer� lo chef, che sar� modificabile grazie ad alcuni bottoni.
+ * Classe di front-end che implementa la grafica del menù che visualizzerà lo chef, che sarà modificabile grazie ad alcuni bottoni.
  *
  */
 public class MenuChef {
 	
 	/**
 	 * Le categorie sono fisse e sono 5, quindi viene creato un array di strighe,rappresentante le categorie.
-	 * In secondo luogo, viene creato un oggetto di tipo ListaPiatti, grazie al quale invece riesco ad avere tutti i piatti nel men�.
+	 * In secondo luogo, viene creato un oggetto di tipo ListaPiatti, grazie al quale invece riesco ad avere tutti i piatti nel menù.
 	 */
 	String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
 	ListaPiatti listap= new ListaPiatti();
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterr� il men� ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
 	 */
 	JFrame editable_menu= new JFrame("CHEF");
 	Container contenuto= editable_menu.getContentPane();
@@ -34,7 +34,7 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il men� e i rispettivi bottoni.
+	 * La funzione visualizza crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale, contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
@@ -72,44 +72,68 @@ public class MenuChef {
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 		    	/**
-		    	 * In questo caso, il JFrame di Menu_Chef viene chiuso, e ne viene creato uno nuovo di tipo Menu_Principale, che riporta proprio alla schermata principale.
+		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; ci sono 2 opzioni disponibili.
+		    	 *Viene settata la misura e gli viene associato un ContentPane.
 		    	 */
 	    		JFrame controllo= new JFrame();
 	    		controllo.setSize(400,200);
 	    		Container cont= controllo.getContentPane();
 	    		
+	    		/**
+	    		 * Viene creato un pannello che viene aggiunto al ContentPane e ne vengono settati sfondo e layout.
+	    		 */
 	    		JPanel center= new JPanel();
 	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
 	    		
+	    		/**
+	    		 * Viene aggiunta una JLabel al pannello centrale del frame.
+	    		 * Ne vengono settati font e colore.
+	    		 */
 	    		JLabel domanda= new JLabel("Vuoi tornare al Menù Principale?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
 	    		
+	    		/**
+	    		 * Viene creato un poi un secondo pannello,situato nella parte bassa del frame.
+	    		 * Ne vengono impostati layout e viene aggiunto al ContentPane.
+	    		 */
 	    		JPanel down= new JPanel();
 	    		down.setLayout(new GridLayout(1,2));
 	    		cont.add(down, BorderLayout.SOUTH);
 	    		
+	    		/**
+	    		 * Viene aggiunto il bottone "no" al pannello down, con le impostazioni grafiche settate.
+	    		 */
 	    		JButton no = new JButton("NO");
 	    		no.setFont(new Font("Garamond", Font.BOLD, 18));
 	    	    no.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    	    no.setForeground(Color.BLACK);
 	    	    down.add(no);
 	    	    
+	    	    /**
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
 	    	    	}
 	    	    });
 	    	    
+	    	    /**
+	    	     * Si crea poi anche un bottone "si" che viene aggiunto al pannello down, con le impostazioni grafiche settate.
+	    	     */
 	    	    JButton si = new JButton("SI");
 	    		si.setFont(new Font("Garamond", Font.BOLD, 18));
 	    	    si.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    	    si.setForeground(Color.BLACK);
 	    	    down.add(si);
 	    	    
+	    	    /**
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
@@ -118,6 +142,9 @@ public class MenuChef {
 	    	    	}
 	    	    });
 	    		
+	    	    /**
+	    	     * Si rende visibile il frame editable_menu, si colloca al centro e si può chiudere con il tasto "X".
+	    	     */
 	    	    controllo.setVisible(true);
 	    		controllo.setLocationRelativeTo(null);
 	    		controllo.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
@@ -125,7 +152,7 @@ public class MenuChef {
 	    });
 	    
 	    /**
-	     * Viene aggiunto un bottone add, grazie al quale � possibile aggiungere un piatto al men�.
+	     * Viene aggiunto un bottone add, grazie al quale è possibile aggiungere un piatto al menù.
 	     */
 	    Icon piu = new ImageIcon("images/piu.png");
 		JButton aggiungi = new JButton(piu);
@@ -136,14 +163,14 @@ public class MenuChef {
 	    	public void actionPerformed(ActionEvent evento){
 	    		
 	    		/**
-	    		 * Quando si clicca il bottone "+", si aprir� un nuovo frame, di misura pi� contenuta.
+	    		 * Quando si clicca il bottone "+", si aprirà un nuovo frame, di misura più contenuta.
 	    		 */
 	    		JFrame agg_piatto= new JFrame("AGGIUNGI UN PIATTO");
 	    		agg_piatto.setSize(400,200);
 	    		Container cont_agg= agg_piatto.getContentPane();
 	    		
 	    		/**
-	    		 * In questo frame � possibile scegliere la categoria grazei a un men� a tendina, inserire un nome del piatto da tastiera, e inserire il prezzo, sempre da tastiera.
+	    		 * In questo frame è possibile scegliere la categoria grazie a un menù a tendina, inserire un nome del piatto da tastiera, e inserire il prezzo, sempre da tastiera.
 	    		 */
 	    		JPanel tendina1= new JPanel();
 	    		tendina1.setBackground(MenuPrincipale.COLORE_SFONDO);
@@ -176,7 +203,7 @@ public class MenuChef {
 	    		tendina1.add(price);
 	    		
 	    		/**
-	    		 * Alla fine, quando tutti i campi saranno compilati, cliccando il bottone "conferma", si potr� visualizzare il frame del men� aggiornato.
+	    		 * Alla fine, quando tutti i campi saranno compilati, cliccando il bottone "conferma", si potrà visualizzare il frame del menù aggiornato.
 	    		 */
 	    		JPanel down= new JPanel();
 	    		up.setLayout(new GridLayout(1,1));
@@ -192,7 +219,7 @@ public class MenuChef {
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		
 	    	    		/**
-	    	    		 * Cliccando conferma, il frame dedicato all'aggiungimento del piatto verr� chiuso, e verr� invocata la funzione aggiungiPiatto.
+	    	    		 * Cliccando conferma, il frame dedicato all'aggiungimento del piatto verrà chiuso, e verrà invocata la funzione aggiungiPiatto.
 	    	    		 */
 	    	    		try {
 		    	    		String selectedcategory= (String) drop_down.getSelectedItem();
@@ -206,7 +233,15 @@ public class MenuChef {
 		    	    		double d_prezzo=Double.parseDouble(nuovo_prezzo);
 		    	    		String nuovo_nome= name.getText();
 		    	    		aggiungiPiatto(nuovo_nome,d_prezzo, indice);
+		    	    		
+		    	    		/**
+		    	    		 * Il frame agg_piatto viene chiuso.
+		    	    		 */
 		    	    		agg_piatto.dispose();
+		    	    	
+		    	    	/**
+		    	    	 * Nel caso in cui non venga inserito un nome o un prezzo valido da tastiera, compare un messaggio di alert.
+		    	    	 */
 	    	    		} catch(Exception ex) {
 		    			    JOptionPane.showMessageDialog(null, "Per continuare, è necessario inserire un nome e un prezzo.");
 	    	    		}
@@ -237,7 +272,7 @@ public class MenuChef {
 		contenuto.add(scroll1);
 		
 		/**
-		 * viene poi chiamata la funzione grazie al quale le cateogrie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
+		 * viene poi chiamata la funzione grazie al quale le categorie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		
@@ -250,7 +285,7 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione popolaPannello,come da nome, � in grado di popolare il pannello centrale con vari oggetti.
+	 * La funzione popolaPannello, come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		
@@ -260,9 +295,9 @@ public class MenuChef {
 		int lunghezza= categorie.length + listap.size();
 		
 		/**
-		 * Essendo il pannello centrale un JSplitPane, questo � caratterizzato dal fatto che � divisibile in 2 pannelli pi� piccoli;
+		 * Essendo il pannello centrale un JSplitPane, questo è caratterizzato dal fatto che è divisibile in 2 pannelli più piccoli;
 		 * nel nostro caso, uno di sx e uno di dx.
-		 * Entrambi usato il GridLayout e ne vengono settati i colori e aggiunti al pannello principale.
+		 * Entrambi usano il GridLayout e ne vengono settati i colori e aggiunti al pannello principale.
 		 */
 		JPanel center_left= new JPanel();
 		center_left.setLayout(new GridLayout(lunghezza,1));
@@ -288,7 +323,7 @@ public class MenuChef {
 		    center_right.add(category);
 		    
 		    /**
-		     * Mentre si scorrono le categorie, si scorre la lista dei piatti, e si controlla se l'iedntificativo del piatto � uguale a quello della categoria.
+		     * Mentre si scorrono le categorie, si scorre la lista dei piatti, e si controlla se l'iedntificativo del piatto è uguale a quello della categoria.
 		     * Nel caso la risposta fosse si,il piatto viene aggiunto al posto giusto, sotto la sua categoria di appartenenza.
 		     */
 	   		for (int j = 0; j < listap.size(); j++) {
@@ -302,12 +337,15 @@ public class MenuChef {
 				    piatto.setForeground(Color.BLACK);
 			        center_left.add(piatto);
 			        
+			        /**
+			         * Mi ricavo il nome, prezzo e categoria del piatto corrente, perchè serviranno in seguito.
+			         */
 			        String nomecorrente= listap.getPiatto(j).getName();
 		    		double  prezzocorrente=listap.getPiatto(j).getPrice();
 		    		int catcorrente= listap.getPiatto(j).getNumcategory();
 		        
 		    		/**
-		    		 * Per ogni piatto aggiunto, nel pannello di destra viene creato un pulsante modifica,grazie al quale � possibile modificare la categoria, il nome, il prezzo del piatto o rimuovere quest'ultimo.
+		    		 * Per ogni piatto aggiunto, nel pannello di destra viene creato un pulsante modifica, grazie al quale è possibile modificare la categoria, il nome, il prezzo del piatto o rimuovere quest'ultimo.
 		    		 */
 			        Icon penna = new ImageIcon("images/penna.png");
 					JButton modifica = new JButton(penna);
@@ -318,8 +356,8 @@ public class MenuChef {
 				    	public void actionPerformed(ActionEvent evento){
 				    		
 				    		/**
-				    		 * Cliccando modifica viene creato un nuovo frame, di dimensioni pi� contenute.
-				    		 *Da questo frame, � possibile cambiare la categoria da un men� a tendina, inserire il nuovo nome e prezzo da tastiera e confermare, oppure rimuovere del tutto il piatto.
+				    		 * Cliccando modifica viene creato un nuovo frame, di dimensioni più contenute.
+				    		 *Da questo frame, è possibile cambiare la categoria da un menù a tendina, inserire il nuovo nome e prezzo da tastiera e confermare, oppure rimuovere del tutto il piatto.
 				    		 */
 				    		JFrame mod_piatto= new JFrame("MODIFICA UN PIATTO");
 				    		mod_piatto.setSize(400,200);
@@ -369,7 +407,7 @@ public class MenuChef {
 						    	public void actionPerformed(ActionEvent evento){
 						    		
 						    		/**
-						    		 * Cliccandi rimuovi piatto, si chiude il frame grazei al quale � possibile modificare o rimuovere il piatto e viene richiamata la funzione rimuoviPiatto.
+						    		 * Cliccando rimuovi piatto, si chiude il frame grazie al quale è possibile modificare o rimuovere il piatto e viene richiamata la funzione rimuoviPiatto.
 						    		 */
 						    		mod_piatto.dispose();
 						    		rimuoviPiatto(nomecorrente, prezzocorrente, catcorrente);
@@ -377,7 +415,7 @@ public class MenuChef {
 				    	    });
 				    		
 				    	    /**
-				    	     * Se, invece, con conferma, il piatto sar� ancora presente nel men�, ma con le modifiche impostate.
+				    	     * Viene creato poi un bottone di conferma, grazie al quale il piatto sarà ancora presente nel menù, ma con le modifiche impostate.
 				    	     */
 				    		JButton conferma = new JButton("CONFERMA");
 				    		conferma.setFont(new Font("Garamond", Font.BOLD, 18));
@@ -389,7 +427,7 @@ public class MenuChef {
 						    	public void actionPerformed(ActionEvent evento){
 						    		
 						    		/**
-						    		 * Cliccando conferma, il frame viene chiuso e ,dopo aver ricavati i dati giusti, viene chiaata la funzione modificaPiatto.
+						    		 * Cliccando conferma, il frame viene chiuso e ,dopo aver ricavati i dati giusti, viene chiamata la funzione modificaPiatto.
 						    		 */
 						    		try {
 							    		String newcategory= (String) drop_down.getSelectedItem();
@@ -405,7 +443,15 @@ public class MenuChef {
 					    	    		Piatto sostituto=new Piatto(nomemod,prezzomod,indice);
 					    	    		Piatto dasostituire= new Piatto(nomecorrente,prezzocorrente,catcorrente);
 					    	    		modificaPiatto(dasostituire, sostituto);
+					    	    		
+					    	    		/**
+					    	    		 * Il frame mod_piatto viene infino chiuso.
+					    	    		 */
 					    	    		mod_piatto.dispose();
+					    	    		
+					    	    	/**
+					    	    	 * Se non vengono inseriti nome o prezzo del piatto, viene lanciato un messaggio di alert.
+					    	    	 */
 						    		} catch(Exception ex) {
 						    			JOptionPane.showMessageDialog(null, "Per continuare, è necessario inserire un nome e un prezzo.");
 						    		}
@@ -428,13 +474,13 @@ public class MenuChef {
 	/**
 	 * La funzione aggiungiPiatto permette di aggiungere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
 	 * @param nome_piatto : stringa che identifica il nome del piatto;
-	 * @param prezzo_piatto : suoble che identifica il prezzo del piatto;
+	 * @param prezzo_piatto : duoble che identifica il prezzo del piatto;
 	 * @param category : intero che indentifica la categoria del piatto.
 	 */
 	public void aggiungiPiatto(String nome_piatto, double prezzo_piatto, int category) {
 		
 		/**
-		 * il contenuto del frame viene pulito,e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
+		 * il contenuto del frame viene pulito, e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
 		 */
 		editable_menu.getContentPane().removeAll();
 		contenuto= editable_menu.getContentPane();
@@ -455,7 +501,7 @@ public class MenuChef {
 		listap.write();
 		
 		/**
-		 * Viene richiamata la funzione visualizza, grazie alla quale � possibile ricreare il contenuto del frame e popolare nuovamente il pannello centrale con il nuovo piatto.
+		 * Viene richiamata la funzione visualizza, grazie alla quale è possibile ricreare il contenuto del frame e popolare nuovamente il pannello centrale con il nuovo piatto.
 		 */
 		visualizza();
 		
@@ -470,13 +516,13 @@ public class MenuChef {
 	/**
 	 * La funzione rimuoviPiatto permette di rimuovere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
 	 * @param nome_piatto : stringa che identifica il nome del piatto;
-	 * @param prezzo_piatto : suoble che identifica il prezzo del piatto;
+	 * @param prezzo_piatto : duoble che identifica il prezzo del piatto;
 	 * @param category : intero che indentifica la categoria del piatto.
 	 */
 	public void rimuoviPiatto(String nome_piatto, double prezzo_piatto, int category) {
 		
 		/**
-		 * il contenuto del frame viene pulito,e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
+		 * il contenuto del frame viene pulito, e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
 		 */
 		editable_menu.getContentPane().removeAll();
 		contenuto= editable_menu.getContentPane();
@@ -505,14 +551,14 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione modificaPiatto consente di modificare un piatto confrontando il piatto vecchio da sostituire, con il nuovo piatto con i dati modificati( sar� il suo sostituto).
-	 * @param dasostituire: piatto gi� presente nel men�, i cui dati (alcuni o tutti) vogliono essere cambiati.
-	 * @param sostituto : piatto che sar� il sostituto del primo parametro.
+	 * La funzione modificaPiatto consente di modificare un piatto confrontando il piatto vecchio da sostituire, con il nuovo piatto con i dati modificati( sarà il suo sostituto).
+	 * @param dasostituire: piatto già presente nel menù, i cui dati (alcuni o tutti) vogliono essere cambiati.
+	 * @param sostituto : piatto che sarà il sostituto del primo parametro.
 	 */
 	public void modificaPiatto(Piatto dasostituire, Piatto sostituto) {
 		
 		/**
-		 * il contenuto del frame viene pulito,e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
+		 * il contenuto del frame viene pulito, e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
 		 */
 		editable_menu.getContentPane().removeAll();
 		contenuto= editable_menu.getContentPane();
