@@ -3,7 +3,6 @@ package gestore_ristorante.cameriere;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-
 import gestore_ristorante.MenuPrincipale;
 
 /**
@@ -245,5 +244,5 @@ public class ElencoTavoliCameriere {
 	    		}
 		    }
 		}
-	}
+	}	
 }

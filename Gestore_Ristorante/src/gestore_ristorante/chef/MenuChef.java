@@ -3,6 +3,8 @@ package gestore_ristorante.chef;
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
+
+import gestore_ristorante.Lista;
 import gestore_ristorante.MenuPrincipale;
 
 /**
@@ -498,7 +500,7 @@ public class MenuChef {
 		 */
 		listap.add(nuovo_piatto);
 		listap.sort();
-		listap.write();
+		utilizzaPolimorfismo(listap);
 		
 		/**
 		 * Viene richiamata la funzione visualizza, grazie alla quale è possibile ricreare il contenuto del frame e popolare nuovamente il pannello centrale con il nuovo piatto.
@@ -539,7 +541,7 @@ public class MenuChef {
 		 * Si riscrive sul file il contenuto della lista, in questo caso con il piatto rimosso.
 		 */
 		listap.remove(darimuovere);
-		listap.write();
+		utilizzaPolimorfismo(listap);
 		visualizza();
 		
 		/**
@@ -570,7 +572,7 @@ public class MenuChef {
 		 * Si riscrive sul file il contenuto della lista, in questo caso con il piatto rimosso.
 		 */
 		listap.modify(dasostituire, sostituto);
-		listap.write();
+		utilizzaPolimorfismo(listap);
 		visualizza();
 		
 		/**
@@ -579,6 +581,11 @@ public class MenuChef {
 		editable_menu.invalidate();
 		editable_menu.validate();
 		editable_menu.repaint();
+	}
+	
+	public static void utilizzaPolimorfismo(Lista po)
+	{
+		po.write();
 	}
 	
 }

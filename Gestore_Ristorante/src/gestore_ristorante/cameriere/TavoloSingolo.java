@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import gestore_ristorante.Lista;
 import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.chef.ListaPiatti;
 import gestore_ristorante.chef.Piatto;
@@ -218,7 +219,7 @@ public class TavoloSingolo{
 	    		 */
 	    		} else {
 			    	ordinazione.dispose();
-			    	quantita.write();
+			    	utilizzaPolimorfismo(quantita);
 			    	new RiepilogoCameriere(numerotavolo);
 	    		}
 		    }
@@ -388,6 +389,12 @@ public class TavoloSingolo{
 		Piatto nuovo_piatto= new Piatto(nome_piatto,prezzo_piatto, porzioni);
 		quantita.add(nuovo_piatto);
 		quantita.sort();
+	}
+	
+	
+	public static void utilizzaPolimorfismo(Lista po)
+	{
+		po.write();
 	}
 }
 

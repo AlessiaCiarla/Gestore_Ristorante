@@ -3,12 +3,13 @@ package gestore_ristorante.cassa;
 import java.io.*;
 import java.util.ArrayList;
 
+import gestore_ristorante.Lista;
 import gestore_ristorante.chef.Piatto;
 
 /**
 * Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe RiepilogoCassa(front-end).
 */
-public class Scontrino {
+public class Scontrino implements Lista {
 	
 	/**
 	 * Viene creato un ArrayList contenente oggetti di tipo Piatto.
@@ -52,6 +53,7 @@ public class Scontrino {
 		return listapiatti.size();
 	}
 	
+	@Override
 	/**
 	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
 	 */
@@ -162,5 +164,11 @@ public class Scontrino {
 		} catch(Exception ex){
 			System.out.println("Exception msg: "+ ex);
 		}
+	}
+
+	@Override
+	public void write() {
+		// TODO Auto-generated method stub
+		
 	}
 }

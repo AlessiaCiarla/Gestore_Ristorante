@@ -3,13 +3,14 @@ package gestore_ristorante.cameriere;
 import java.io.*;
 import java.util.*;
 
+import gestore_ristorante.Lista;
 import gestore_ristorante.chef.OrdinaPiatti;
 import gestore_ristorante.chef.Piatto;
 
 /**
 * Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe TavoloSingolo e RiepilogoCameriere(front-end).
 */
-public class Ordinazione {
+public class Ordinazione implements Lista {
 	
 	/**
 	 * Viene creato un ArrayList contenente oggetti di tipo Tavolo.
@@ -67,6 +68,7 @@ public class Ordinazione {
 		return listapiatti.size();
 	}
 	
+	@Override
 	/**
 	 * Legge dal file in cui è contenuta l'ordinazione e lo copia all'interno dell'ArrayList.
 	 */
@@ -103,7 +105,8 @@ public class Ordinazione {
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
-		
+	
+	@Override
 	/**
 	 * Prende il contenuto dell'ArrayList e lo copia all'interno del file txt.
 	 */

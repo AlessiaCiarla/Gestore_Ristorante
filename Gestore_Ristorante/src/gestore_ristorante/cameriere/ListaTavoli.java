@@ -3,10 +3,12 @@ package gestore_ristorante.cameriere;
 import java.io.*;
 import java.util.ArrayList;
 
+import gestore_ristorante.Lista;
+
 /**
 * Classe back-end che contiene l'ArrayList di tutti i tavoli e gestisce vari metodi che saranno usati nella classe ElencoTavoliCameriere(front-end).
 */
-public class ListaTavoli {
+public class ListaTavoli implements Lista {
 	
 	/**
 	 * Viene creato un ArrayList contenente oggetti di tipo Tavolo.
@@ -39,6 +41,7 @@ public class ListaTavoli {
 		return listatavoli.size();
 	}
 	
+	@Override
 	/**
 	 * Legge dal file in cui è contenuta la lista dei tavoli e lo copia all'interno dell'ArrayList.
 	 */
@@ -75,7 +78,8 @@ public class ListaTavoli {
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
-		
+	
+	@Override
 	/**
 	 * Prende il contenuto dell'ArrayList e lo scrive all'interno del file txt.
 	 */

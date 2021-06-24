@@ -5,6 +5,7 @@ import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 
+import gestore_ristorante.Lista;
 import gestore_ristorante.MenuPrincipale;
 
 /**
@@ -94,7 +95,7 @@ public class RiepilogoCameriere{
 		    	 * Inoltre viene azzerato il contenuto del file di appoggio e ripulita la lista che contiene i piatti ordinati.
 		    	 */
 	    		listap.clear();
-	    		listap.write();
+	    		utilizzaPolimorfismo(listap);
 		    	riepilogo.dispose(); 
 		    	new TavoloSingolo(numerotavolo);
 		    }
@@ -180,7 +181,7 @@ public class RiepilogoCameriere{
 	    	    for (int k=0; k<tavoli.size(); k++) {
 	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
 			    	    tavoli.getTavolo(k).setStato("I");
-	    	    		tavoli.write();
+	    	    		utilizzaPolimorfismo(tavoli);
 	    	    }
 	    	    
 	    	    /**
@@ -258,5 +259,10 @@ public class RiepilogoCameriere{
 		        pannello_centrale.add(quantita);
 			}
 	   	}
+	}
+	
+	public static void utilizzaPolimorfismo(Lista po)
+	{
+		po.write();
 	}
 }

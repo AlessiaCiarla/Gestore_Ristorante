@@ -3,10 +3,12 @@ package gestore_ristorante.chef;
 import java.io.*;
 import java.util.*;
 
+import gestore_ristorante.Lista;
+
 /**
  * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menù, e gestisce vari metodi che saranno usati nella classe MenuChef(front-end).
  */
-public class ListaPiatti{
+public class ListaPiatti implements Lista{
 	
 	/**
 	 * Viene creato un ArrayList di tipo Piatto e viene preso in input in file e salvato in una variabile.

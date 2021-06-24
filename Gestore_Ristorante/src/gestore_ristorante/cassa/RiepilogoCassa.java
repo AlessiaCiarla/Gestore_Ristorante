@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import gestore_ristorante.Lista;
 import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.cameriere.ListaTavoli;
 
@@ -197,7 +198,7 @@ public class RiepilogoCassa{
 	    	    for (int k=0; k<tavoli.size(); k++) {
 	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
 			    	    tavoli.getTavolo(k).setStato("NI");
-	    	    		tavoli.write();
+	    	    		utilizzaPolimorfismo(tavoli);
 	    	    }
 	    	    
 	    	    /**
@@ -290,5 +291,10 @@ public class RiepilogoCassa{
 				        totale= totale + (scontrino.getPiatto(j).getPrice()*scontrino.getPiatto(j).getNumcategory());
 					}
 	   		}
+	}
+	
+	public static void utilizzaPolimorfismo(Lista po)
+	{
+		po.write();
 	}
 }

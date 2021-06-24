@@ -4,6 +4,7 @@ import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
+import gestore_ristorante.Lista;
 import gestore_ristorante.MenuPrincipale;
 import gestore_ristorante.cameriere.ListaTavoli;
 import gestore_ristorante.cassa.Scontrino;
@@ -189,7 +190,7 @@ public class RiepilogoCuoco{
 	    	    for (int k=0; k<tavoli.size(); k++) {
 	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
 			    	    tavoli.getTavolo(k).setStato("E");
-	    	    		tavoli.write();
+	    	    		utilizzaPolimorfismo(tavoli);
 	    	    }
 	    	    
 	    	    /**
@@ -269,5 +270,9 @@ public class RiepilogoCuoco{
 				        pannello_centrale.add(quantita);
 					}
 	   		}
+	}
+	public static void utilizzaPolimorfismo(Lista po)
+	{
+		po.write();
 	}
 }
