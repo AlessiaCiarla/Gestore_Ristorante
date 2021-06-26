@@ -1,8 +1,8 @@
 package gestore_ristorante;
 
-
+/**
+ * Interfaccia che viene utilizzata per implementare il polimorfismo nelle classi che utilizzano il metodo write();
+ */
 public interface Lista {
-	public void read() ;
 	public void write();
-
 }

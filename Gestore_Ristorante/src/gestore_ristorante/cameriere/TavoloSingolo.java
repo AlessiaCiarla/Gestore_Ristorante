@@ -391,7 +391,10 @@ public class TavoloSingolo{
 		quantita.sort();
 	}
 	
-	
+	/**
+	 * Utilizzo il polimorfismo per scrivere sul file.txt in base all'oggetto dichiarato in precedenza.
+	 * @param po è l'interfaccia con il metodo write();
+	 **/
 	public static void utilizzaPolimorfismo(Lista po)
 	{
 		po.write();

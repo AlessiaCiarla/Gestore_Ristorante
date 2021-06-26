@@ -67,8 +67,7 @@ public class Ordinazione implements Lista {
 	public int size() {
 		return listapiatti.size();
 	}
-	
-	@Override
+
 	/**
 	 * Legge dal file in cui è contenuta l'ordinazione e lo copia all'interno dell'ArrayList.
 	 */

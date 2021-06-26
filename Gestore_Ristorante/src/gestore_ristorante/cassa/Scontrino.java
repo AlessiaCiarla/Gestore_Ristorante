@@ -53,7 +53,7 @@ public class Scontrino implements Lista {
 		return listapiatti.size();
 	}
 	
-	@Override
+
 	/**
 	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
 	 */

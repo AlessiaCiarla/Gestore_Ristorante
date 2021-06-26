@@ -41,7 +41,6 @@ public class ListaTavoli implements Lista {
 		return listatavoli.size();
 	}
 	
-	@Override
 	/**
 	 * Legge dal file in cui è contenuta la lista dei tavoli e lo copia all'interno dell'ArrayList.
 	 */
