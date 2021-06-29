@@ -1,4 +1,4 @@
-package gestore_ristorante.chef;
+package gestoreRistorante.chef;
 
 import java.util.Comparator;
 

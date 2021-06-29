@@ -1,4 +1,4 @@
-package gestore_ristorante.cameriere;
+package gestoreRistorante.cameriere;
 
 /**
  * Viene creata la classe Tavolo (back-end), grazie alla quale viene identificato un tavolo.

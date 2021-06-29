@@ -1,11 +1,11 @@
-package gestore_ristorante.chef;
+package gestoreRistorante.chef;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import gestore_ristorante.Lista;
-import gestore_ristorante.MenuPrincipale;
+import gestoreRistorante.Lista;
+import gestoreRistorante.MenuPrincipale;
 
 /**
  * Classe di front-end che implementa la grafica del menù che visualizzerà lo chef, che sarà modificabile grazie ad alcuni bottoni.

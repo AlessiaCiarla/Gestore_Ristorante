@@ -1,4 +1,4 @@
-package gestore_ristorante.chef;
+package gestoreRistorante.chef;
 
 /**
  * Viene creata la classe Piatto (back-end), grazie alla quale viene identificato un piatto all'interno del menù.

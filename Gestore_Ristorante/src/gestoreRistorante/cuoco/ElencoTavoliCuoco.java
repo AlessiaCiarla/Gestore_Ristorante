@@ -1,11 +1,12 @@
-package gestore_ristorante.cuoco;
+package gestoreRistorante.cuoco;
 
 import java.awt.*;
 import java.awt.event.*;
 
 import javax.swing.*;
-import gestore_ristorante.MenuPrincipale;
-import gestore_ristorante.cameriere.ListaTavoli;
+
+import gestoreRistorante.MenuPrincipale;
+import gestoreRistorante.cameriere.ListaTavoli;
 
 /**
  * Classe che implementa la gestione dei tavoli da parte del cuoco(front-end).

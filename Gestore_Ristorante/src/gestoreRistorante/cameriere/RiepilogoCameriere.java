@@ -1,12 +1,12 @@
-package gestore_ristorante.cameriere;
+package gestoreRistorante.cameriere;
 
 import java.awt.*;
 import java.awt.event.*;
 import java.io.*;
 import javax.swing.*;
 
-import gestore_ristorante.Lista;
-import gestore_ristorante.MenuPrincipale;
+import gestoreRistorante.Lista;
+import gestoreRistorante.MenuPrincipale;
 
 /**
  * Classe che implementa la grafica dell'ordinazione finale che visualizzerà il cameriere.

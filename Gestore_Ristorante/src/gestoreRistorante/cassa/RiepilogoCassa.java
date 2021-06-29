@@ -1,19 +1,18 @@
-package gestore_ristorante.cuoco;
+package gestoreRistorante.cassa;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
 
-import gestore_ristorante.Lista;
-import gestore_ristorante.MenuPrincipale;
-import gestore_ristorante.cameriere.ListaTavoli;
-import gestore_ristorante.cassa.Scontrino;
+import gestoreRistorante.Lista;
+import gestoreRistorante.MenuPrincipale;
+import gestoreRistorante.cameriere.ListaTavoli;
 
 /**
-* Classe che implementa la grafica della comanda che visualizzerà il cuoco.
-*
-*/
-public class RiepilogoCuoco{
+ * Classe che implementa la grafica dello scontrino che visualizzerà la cassa(front-end).
+ *
+ */
+public class RiepilogoCassa{
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
@@ -29,31 +28,39 @@ public class RiepilogoCuoco{
 	ListaTavoli tavoli = new ListaTavoli();
 	
 	/**
-	 *numerotavolo è il numero del tavolo di cui devo visualizzare la comanda.
+	 * numerotavolo è il numero del tavolo di cui devo visualizzare lo scontrino.
 	 */
 	int numerotavolo;
 	
 	/**
-	 * Il costruttore chiama la funzione visualizza.
-	 * @param int num: è il numero del tavolo di cui devo visualizzare la comanda.
+	 * totale è il totale da pagare.
 	 */
-	public RiepilogoCuoco(int num) {
+	double totale;
+	
+	/**
+	 * Il costruttore chiama la funzione visualizza.
+	 * @param int num: è il numero del tavolo di cui devo visualizzare lo scontrino.
+	 */
+	public RiepilogoCassa(int num) {
 		this.numerotavolo=num;
 		visualizza();
 	}
 	
+	/**
+	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il men� e i rispettivi bottoni.
+	 */
 	public void visualizza() {
 		
 		/**
 		 * viene creato un oggetto di tipo Scontrino, grazie al quale invece riesco ad avere tutte le quantità di ogni piatto ordinato.
 		 */
-		Scontrino comanda = new Scontrino(numerotavolo);
+		Scontrino scontrino = new Scontrino(numerotavolo);
 		
 		/**
 		 * la misura del frame viene impostata a 600x600, con relativo layout e background.
 		 */
-		editable_menu.setSize(600,600); 
 		pannello_centrale.setLayout(new BoxLayout(pannello_centrale, BoxLayout.PAGE_AXIS));
+		editable_menu.setSize(600,600); 
 		pannello_centrale.setBackground(MenuPrincipale.COLORE_SFONDO);
 		
 		/**
@@ -80,6 +87,7 @@ public class RiepilogoCuoco{
 		JButton back= new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
+	    
 	    
 	    back.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
@@ -151,7 +159,7 @@ public class RiepilogoCuoco{
 	    	    	public void actionPerformed(ActionEvent evento){
 	    	    		controllo.dispose();
 	    	    		editable_menu.dispose(); 
-	    		    	new ElencoTavoliCuoco();
+	    		    	new ElencoTavoliCassa();
 	    	    	}
 	    	    });
 	    		
@@ -169,36 +177,36 @@ public class RiepilogoCuoco{
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
 		JPanel down= new JPanel();
-		up.setLayout(new GridLayout(1,1));
+		down.setLayout(new GridLayout(1,2));
+		down.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(down, BorderLayout.SOUTH);
-	    
+		
 		/**
 	     * Viene aggiunto un bottone conferma, grazie al quale è possibile confermare l'ordine definitivamente.
 	     */
-	    JButton conferma = new JButton("EVADI ORDINE");
+	    JButton conferma = new JButton("PAGA ORDINE");
 		conferma.setFont(new Font("Garamond", Font.BOLD, 22));
-	    conferma.setBackground(MenuPrincipale.COLORE_SFONDO);
+	    conferma.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    conferma.setForeground(Color.BLACK);
 	    down.add(conferma, BorderLayout.SOUTH);
 	    
 	    conferma.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-	    		
 	    		/**
-	    		 * Quando si clicca il bottone "conferma", si cambierà lo stato del tavolo da "NI" a "E".
+	    		 * Quando si clicca il bottone "conferma", si cambierà lo stato del tavolo da "E" a "NI".
 	    		 */
 	    	    for (int k=0; k<tavoli.size(); k++) {
 	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
-			    	    tavoli.getTavolo(k).setStato("E");
+			    	    tavoli.getTavolo(k).setStato("NI");
 	    	    		utilizzaPolimorfismo(tavoli);
 	    	    }
 	    	    
 	    	    /**
-	    	     * Creo un nuovo JFrame creato dalla classe ElencoTavoliCuoco con un alert che l'ordine è stato evaso.
+	    	     * Creo un nuovo JFrame creato dalla classe ElencoTavoliCassa con un alert che l'ordine è stato pagato.
 	    	     */
 		    	editable_menu.dispose();
-		    	new ElencoTavoliCuoco();
-		    	JOptionPane.showMessageDialog(null, "Ordine evaso!");
+		    	new ElencoTavoliCassa();
+		    	JOptionPane.showMessageDialog(null, "Pagamento effettuato!");
 	    	}});
 	    
 	    /**
@@ -209,14 +217,22 @@ public class RiepilogoCuoco{
 	    /**
 		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, nel caso diventassero tanti.
 		 */
-        JScrollPane scroll= new JScrollPane(pannello_centrale);
-		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-		contenuto.add(scroll);
+        JScrollPane scroll1= new JScrollPane(pannello_centrale);
+		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+		contenuto.add(scroll1);
 		
 		/**
-		 * viene poi chiamata la funzione popolaPannello grazie al quale i piatti con relativo nome, prezzo e quantita vengono aggiunti al pannello centrale.
+		 * viene poi chiamata la funzione grazie al quale i piatti con relativo nome, prezzo e quantita vengono aggiunti al pannello centrale.
 		 */
-		popolaPannello(comanda, pannello_centrale);
+		popolaPannello(scontrino, pannello_centrale);
+		
+		/**
+		 * Viene creata una label che visualizzera il totale da pagare.
+		 */
+		JLabel prezzo = new JLabel("TOTALE: €" + totale, SwingConstants.CENTER);
+		prezzo.setFont(new Font("Garamond", Font.BOLD, 22));
+	    prezzo.setForeground(Color.BLACK);
+		down.add(prezzo, BorderLayout.SOUTH);
 		
 		/**
 		 * il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
@@ -227,26 +243,26 @@ public class RiepilogoCuoco{
 	}
 	
 	/**
-	 * metodo che aggiunge al pannello centrale i piatti da evadere.
-	 * @param comanda: è il file e l'ArrayList della comanda.
+	 * metodo che aggiunge al pannello centrale i piatti da pagare.
+	 * @param scontrino : è il file e l'ArrayList dello scontrino.
 	 * @param pannello_variabile : è il pannello centrale.
 	 */
-	public void popolaPannello(Scontrino comanda,JPanel pannello_variabile ) {
+	public void popolaPannello(Scontrino scontrino,JPanel pannello_variabile ) {
 		
 		/**
-	     * si scorre la lista dei piatti, e si controlla se la quantita del piatto è maggiore di zero.
+	     * si scorre la lista dei piatti, e si controlla se la quantità del piatto è maggiore di zero.
 	     * Nel caso la risposta fosse si, il piatto viene aggiunto al pannello centrale.
 	     */
-		for (int j = 0; j < comanda.size(); j++) {
-					if (comanda.getPiatto(j).getNumcategory()>0) {
+		for (int j = 0; j < scontrino.size(); j++) {
+					if (scontrino.getPiatto(j).getNumcategory()>0) {
 						
 						/**
 		    			 * il nome del piatto viene aggiunto al pannello centrale.
 		    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto da un punto di vista grafico.
 		    			 */
 						pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
-						JLabel piatto = new JLabel("PIATTO: " + comanda.getPiatto(j).getName());
-			    		piatto.setFont(new Font("Ink Free", Font.BOLD, 22));
+						JLabel piatto = new JLabel("PIATTO: " + scontrino.getPiatto(j).getName());
+			    		piatto.setFont(new Font("Bell MT", Font.BOLD, 22));
 					    piatto.setForeground(Color.BLACK);
 					    piatto.setAlignmentX(Component.CENTER_ALIGNMENT);
 				        pannello_centrale.add(piatto);
@@ -254,8 +270,8 @@ public class RiepilogoCuoco{
 				        /**
 		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
 		    			 */
-				        JLabel prezzo = new JLabel("PREZZO: " + comanda.getPiatto(j).getPrice() + "   €");
-			    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
+				        JLabel prezzo = new JLabel("PREZZO: " + scontrino.getPiatto(j).getPrice() + "   €");
+			    		prezzo.setFont(new Font("Bell MT", Font.BOLD, 22));
 					    prezzo.setForeground(Color.BLACK);
 					    prezzo.setAlignmentX(Component.CENTER_ALIGNMENT);
 				        pannello_centrale.add(prezzo);
@@ -263,11 +279,16 @@ public class RiepilogoCuoco{
 				        /**
 		    			 * la quantita del piatto viene aggiunto al pannello centrale.
 		    			 */
-				        JLabel quantita = new JLabel("N. PORZIONI: " + comanda.getPiatto(j).getNumcategory() + "");
-			    		quantita.setFont(new Font("Ink Free", Font.BOLD, 22));
+				        JLabel quantita = new JLabel("N. PORZIONI: " + scontrino.getPiatto(j).getNumcategory() + "");
+			    		quantita.setFont(new Font("Bell MT", Font.BOLD, 22));
 					    quantita.setForeground(Color.BLACK);
 					    quantita.setAlignmentX(Component.CENTER_ALIGNMENT);
 				        pannello_centrale.add(quantita);
+				        
+				        /**
+				         * E' il totale da pagare.
+				         */
+				        totale= totale + (scontrino.getPiatto(j).getPrice()*scontrino.getPiatto(j).getNumcategory());
 					}
 	   		}
 	}

@@ -1,10 +1,10 @@
-package gestore_ristorante.cassa;
+package gestoreRistorante.cassa;
 
 import java.io.*;
 import java.util.ArrayList;
 
-import gestore_ristorante.Lista;
-import gestore_ristorante.chef.Piatto;
+import gestoreRistorante.Lista;
+import gestoreRistorante.chef.Piatto;
 
 /**
 * Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe RiepilogoCassa(front-end).

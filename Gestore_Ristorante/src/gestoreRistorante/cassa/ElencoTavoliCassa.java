@@ -1,22 +1,24 @@
-package gestore_ristorante.cameriere;
+package gestoreRistorante.cassa;
 
 import java.awt.*;
 import java.awt.event.*;
 import javax.swing.*;
-import gestore_ristorante.MenuPrincipale;
+
+import gestoreRistorante.MenuPrincipale;
+import gestoreRistorante.cameriere.ListaTavoli;
 
 /**
- * Classe che implementa la gestione dei tavoli da parte del cameriere.
+ * Classe che implementa la gestione dei tavoli da parte della cassa(front-end).
  *
  */
-public class ElencoTavoliCameriere {
+public class ElencoTavoliCassa {
 	
 	/**
 	 * I tavoli sono fissi e sono 5, quindi viene creato un array di strighe,rappresentante l'insieme dei tavoli.
 	 * In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale invece riesco ad avere tutti i tavoli 
-	 * con i relativi attributi in un ArrayList.
+	 * con relativi attributi in un ArrayList.
 	 */
-	String nomitavoli[] ={"TAVOLO 1", "TAVOLO 2", "TAVOLO 3", "TAVOLO 4","TAVOLO 5"};
+	String tavoli[] ={"TAVOLO 1", "TAVOLO 2", "TAVOLO 3", "TAVOLO 4","TAVOLO 5"};
 	ListaTavoli listat = new ListaTavoli();
 	
 	/**
@@ -25,12 +27,13 @@ public class ElencoTavoliCameriere {
 	 */
 	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
 	Container contenuto= table_view.getContentPane();
-	JSplitPane pannello_centrale=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
+    
 	/**
 	 * Il costruttore chiama la funzione visualizza.
 	 */
-	public ElencoTavoliCameriere() {
+	public ElencoTavoliCassa() {
 		visualizza();
 	}
 	
@@ -55,12 +58,12 @@ public class ElencoTavoliCameriere {
 		contenuto.add(up, BorderLayout.NORTH);
 		
 		/**
-		 * Viene aggiunta una label tavoli, per dare un contesto al frame, e ne vengono impostate le specifiche.
+		 * Viene aggiunta una label "TAVOLI", per dare un contesto al frame, e ne vengono impostate le specifiche.
 		 */
-		JLabel tavoli = new JLabel("TAVOLI", SwingConstants.CENTER);
-		tavoli.setFont(new Font("Garamond", Font.BOLD, 20));
-	    tavoli.setForeground(Color.BLACK);
-		up.add(tavoli);
+		JLabel nometavolo = new JLabel("TAVOLI", SwingConstants.CENTER);
+		nometavolo.setFont(new Font("Garamond", Font.BOLD, 20));
+	    nometavolo.setForeground(Color.BLACK);
+		up.add(nometavolo);
 		
 		/**
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
@@ -145,7 +148,7 @@ public class ElencoTavoliCameriere {
 	    	    });
 	    		
 	    	    /**
-	    	     * Si rende visibile il frame editable_menu, si colloca al centro e si può chiudere con il tasto "X".
+	    	     * Si rende visibile il frame controllo, si colloca al centro e si può chiudere con il tasto "X".
 	    	     */
 	    	    controllo.setVisible(true);
 	    		controllo.setLocationRelativeTo(null);
@@ -154,15 +157,15 @@ public class ElencoTavoliCameriere {
 	    });
 	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame ,
+         *Il pannello centrale viene aggiunto al contenuto del frame ,
          *  e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
          */
-	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
-        pannello_centrale.setResizeWeight(0.8);
-		pannello_centrale.setContinuousLayout(true);
+	    contenuto.add(pannello_variabile,BorderLayout.CENTER);
+        pannello_variabile.setResizeWeight(0.8);
+		pannello_variabile.setContinuousLayout(true);
 		
 		/**
-		 * viene poi chiamata la funzione grazie al quale i tavoli con i relativi stati vengono inseriti sul pannello centrale.
+		 * viene poi chiamata la funzione popolaPannello grazie al quale i tavoli con i rielativi stati vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		
@@ -180,55 +183,55 @@ public class ElencoTavoliCameriere {
 	public void popolaPannello() {
 		
 		/**
-		 * Essendo il pannello centrale un JSplitPane, questo è caratterizzato dal fatto che è divisibile in 2 pannelli più piccoli;
+		 * Essendo il pannello centrale un JSplitPane, questo è caratterizzato dal fatto che è divisibile in 2 pannelli pi� piccoli;
 		 * nel nostro caso, uno di sx e uno di dx.
-		 * Entrambi usan il GridLayout, ne vengono settati i colori e vengono aggiunti al pannello principale.
+		 * Entrambi usato il GridLayout e ne vengono settati i colori e aggiunti al pannello principale.
 		 */
 		JPanel center_left= new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_left.setLayout(new GridLayout(5,2));
-		pannello_centrale.setLeftComponent(center_left);
+		pannello_variabile.setLeftComponent(center_left);
 		
 		JPanel center_right= new JPanel();
 		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_right.setLayout(new GridLayout(5,2));
-		pannello_centrale.setRightComponent(center_right);
+		pannello_variabile.setRightComponent(center_right);
 		
 		/**
-		 * Si scorre l'array dei tavoli, e per ogni tavolo si crea un bottone con il nome  nel pannello di sx,
+		 * Si scorre l'array dei tavoli, e per ogni tavolo si crea un bottone con il nome nel pannello di sx,
 		 * e una label con lo stato dell'ordine nel pannello di dx.
 		 */
-		for (int i = 0; i < nomitavoli.length; i++) {
+		for (int i = 0; i < tavoli.length; i++) {
 			
 			/**
 			 * il nome del tavolo viene aggiunto al pannello di sx.
 			 */
-			JButton Tavolo = new JButton (nomitavoli[i]);
+			JButton Tavolo = new JButton (tavoli[i]);
 			Tavolo.setFont(new Font("Garamond", Font.BOLD, 45));
 			Tavolo.setBackground(MenuPrincipale.COLORE_SFONDO);
 			Tavolo.setForeground(Color.BLACK);
 		    center_left.add(Tavolo);
 		    
 		    /**
-			 * Se lo stato dell'ordine è gia stato inserito o evaso allora il bottone del tavolo viene disattivato.
+			 * Se lo stato dell'ordine non è stato inserito o inserito allora il bottone del tavolo viene disattivato.
 			 */
-		    if (listat.getTavolo(i).getStato().equals("I") || listat.getTavolo(i).getStato().equals("E")) {
+		    if (listat.getTavolo(i).getStato().equals("NI")||listat.getTavolo(i).getStato().equals("I")) {
 		    	Tavolo.setEnabled(false);
 		    }
 		    
 		    /*
-		     * indice identifica il numero del tavolo (utile alla classe di back-end per riconoscere il tavolo selezionato).
+		     *Indice identifica il numero del tavolo.
 		     */
 		    int indice=i;
 		    
 		    /**
-    		 * Cliccando su un tavolo viene creato un nuovo frame dato dalla classe TavoloSingolo, dove ci si porta dietro il numero del tavolo su cui ho cliccato.
+    		 * Cliccando su un tavolo viene creato un nuovo frame dato dalla classe RiepilogoCassa, dove ci si porta dietro il numero del tavolo su cui ho cliccato.
     		 */
 		    Tavolo.addActionListener(new ActionListener(){
 		    	public void actionPerformed(ActionEvent evento) {
 		    		int numero = listat.getTavolo(indice).getNumero();
 		    		table_view.dispose();
-		    		new TavoloSingolo(numero);
+		    		new RiepilogoCassa(numero);
 		    	}
 		    });
 		    
@@ -238,11 +241,11 @@ public class ElencoTavoliCameriere {
 		    for (int j = 0; j < listat.size(); j++) {
 	    		if (listat.getTavolo(j).getNumero()== i) {
 	    			JLabel status = new JLabel("STATO ORDINE: " + listat.getTavolo(j).getStato());
-		    		status.setFont(new Font("Times New Roman", Font.BOLD, 18));
+		    		status.setFont(new Font("Times New Roman", Font.BOLD, 20));
 				    status.setForeground(Color.BLACK);
-			        center_right.add(status);
+			        center_right.add(status);    
 	    		}
 		    }
 		}
-	}	
+	}
 }
