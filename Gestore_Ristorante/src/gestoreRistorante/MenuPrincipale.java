@@ -173,7 +173,7 @@ public class MenuPrincipale{
 	    		
 		    	/**
 		    	 * Se si chiude la sessione il programma verrà chiuso e verranno puliti tutti i file che contengono i
-		    	 *  dati di ordinazione, scontrini e gli stati dei tavoli cambiarenna in NI.
+		    	 *  dati di ordinazione, scontrini e gli stati dei tavoli cambieranno in NI.
 		    	 */
 	    		for (int i = 0; i<tavoli.size(); i++) {
 					tavoli.getTavolo(i).setStato("NI");
