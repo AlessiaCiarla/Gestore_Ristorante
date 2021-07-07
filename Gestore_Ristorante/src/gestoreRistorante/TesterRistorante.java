@@ -8,9 +8,8 @@ public class TesterRistorante {
 	public static void main(String[] args){
 		
 		/**
-		 * Viene creato, quindi, un nuovo oggetto di tipo MenuPrincipale, che interfaccia il Men� di partenza.
+		 * Viene creato, quindi, un nuovo oggetto di tipo MenuPrincipale, che interfaccia il Menù di partenza.
 		 */
 		new MenuPrincipale();
-		
 	}
 }

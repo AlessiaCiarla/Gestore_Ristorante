@@ -7,7 +7,7 @@ package gestoreRistorante.chef;
 public class Piatto{
 	
 	/**
-	 * Ogni piatto è caratterizzato da 3 valori:un nome, un prezzo e un intero che identifica la categoria.
+	 * Ogni piatto è caratterizzato da 3 valori: un nome, un prezzo e un intero che identifica la categoria.
 	 */
 	private String name;
 	private double price;

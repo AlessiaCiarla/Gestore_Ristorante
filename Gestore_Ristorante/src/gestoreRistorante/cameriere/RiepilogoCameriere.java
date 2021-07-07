@@ -16,7 +16,7 @@ public class RiepilogoCameriere{
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
 	JFrame riepilogo= new JFrame("RIEPILOGO ORDINE");
 	Container contenuto= riepilogo.getContentPane();
@@ -27,7 +27,7 @@ public class RiepilogoCameriere{
 	 */
 	Ordinazione listap = new Ordinazione();
 	
-	/** In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale riesco ad avere tutti i tavoli 
+	/** In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale riesco ad avere tutti i tavoli.
 	 * con relativi attributi in un ArrayList.
 	 */
 	ListaTavoli tavoli = new ListaTavoli();
@@ -43,7 +43,7 @@ public class RiepilogoCameriere{
 	int numerotavolo;
 	
 	/**
-	 * Il costruttore chiama la funzione visualizza.
+	 * Il costruttore chiama il metodo visualizza().
 	 * @param int num : è il numero del tavolo su cui ho preso l'ordinazione.
 	 */
 	public RiepilogoCameriere(int num) {
@@ -52,7 +52,8 @@ public class RiepilogoCameriere{
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il menù e i rispettivi bottoni.
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,
+	 * contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
@@ -136,24 +137,20 @@ public class RiepilogoCameriere{
 	    	    	    if (numerotavolo==0) {
 	    	    	    	File outfile =new File("file/scontrino_tavolo1.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    }
-	    	    	    else if (numerotavolo==1) {
+	    	    	    } else if (numerotavolo==1) {
 	    	    	    	File outfile =new File("file/scontrino_tavolo2.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    }
-	    	    	    else if (numerotavolo==2) {
+	    	    	    } else if (numerotavolo==2) {
 	    	    	    	File outfile =new File("file/scontrino_tavolo3.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    }
-	    	    	    else if (numerotavolo==3) {
+	    	    	    } else if (numerotavolo==3) {
 	    	    	    	File outfile =new File("file/scontrino_tavolo4.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    }
-	    	    	    else {
+	    	    	    } else {
 	    	    	    	File outfile =new File("file/scontrino_tavolo5.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
 	    	    	    }
-	    	    	    
+	    	    	  
 	    	    	    byte[] buffer = new byte[1024];
 	    	 
 	    	    	    int length;
@@ -193,7 +190,7 @@ public class RiepilogoCameriere{
 	    }});
 	    
 	    /**
-         * il pannello centrale viene aggiunto al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * Il pannello centrale viene aggiunto al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
 	    
@@ -205,12 +202,12 @@ public class RiepilogoCameriere{
 		contenuto.add(scroll);
 		
 		/**
-		 * viene poi chiamata la funzione grazie al quale i piatti con relativo nome, prezzo e quantita vengono aggiunti al pannello centrale.
+		 * viene poi chiamato il metodo grazie al quale i piatti con relativo nome, prezzo e quantita vengono aggiunti al pannello centrale.
 		 */
 		popolaPannello();
 		
 		/**
-		 * il frame viene reso visibile, settato al centro e chiudibile con il tasto "X".
+		 * Il frame viene reso visibile, settato al centro e chiudibile con il tasto "X".
 		 */
 	    riepilogo.setVisible(true);
 		riepilogo.setLocationRelativeTo(null);
@@ -218,19 +215,19 @@ public class RiepilogoCameriere{
 	}
 	
 	/**
-	 * La funzione popolaPannello, come da nome, è in grado di popolare il pannello centrale con vari oggetti.
+	 * Il metodo popolaPannello(), come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		
 		/**
-	     * si scorre la lista dei piatti, e si controlla se la quantita del piatto è maggiore di zero.
+	     * Si scorre la lista dei piatti, e si controlla se la quantita del piatto è maggiore di zero.
 	     * Nel caso la risposta fosse si, il piatto viene aggiunto al pannello centrale.
 	     */
 		for (int j = 0; j < listap.size(); j++) {
 			if (listap.getPiatto(j).getNumcategory()>0) {
 				
 				/**
-    			 * il nome del piatto viene aggiunto al pannello centrale.
+    			 * Il nome del piatto viene aggiunto al pannello centrale.
     			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto da un punto di vista grafico.
     			 */
 				pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
@@ -241,7 +238,7 @@ public class RiepilogoCameriere{
 		        pannello_centrale.add(piatto);
 		        
 		        /**
-    			 * il prezzo del piatto viene aggiunto al pannello centrale.
+    			 * Il prezzo del piatto viene aggiunto al pannello centrale.
     			 */
 		        JLabel prezzo = new JLabel("PREZZO: " + listap.getPiatto(j).getPrice() + "   €");
 	    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
@@ -250,7 +247,7 @@ public class RiepilogoCameriere{
 		        pannello_centrale.add(prezzo);
 		        
 		        /**
-    			 * la quantita del piatto viene aggiunto al pannello centrale.
+    			 * La quantita del piatto viene aggiunto al pannello centrale.
     			 */
 		        JLabel quantita = new JLabel("N. PORZIONI: " + listap.getPiatto(j).getNumcategory() + "");
 	    		quantita.setFont(new Font("Ink Free", Font.BOLD, 22)); 

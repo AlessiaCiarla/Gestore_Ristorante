@@ -17,7 +17,7 @@ import gestoreRistorante.cuoco.ElencoTavoliCuoco;
 public class MenuPrincipale{
 	
 	/**
-	 * vengono create due variabili statiche per mantenere i colori utilizzati nel programma.
+	 * Vengono create due variabili statiche per mantenere i colori utilizzati nel programma.
 	 */
 	public final static Color COLORE_SFONDO=new Color(171,205,239);  
 	public final static Color COLORE_BOTTONI=new Color(224,255,255);
@@ -28,12 +28,12 @@ public class MenuPrincipale{
 	JFrame start= new JFrame("GESTORE DI UN RISTORANTE");
 	
 	/**
-	 * Si crea un oggetto Container, che corrisponder� al contenuto del JFrame.
+	 * Si crea un oggetto Container, che corrisponderà al contenuto del JFrame.
 	 */
 	Container contenuto=start.getContentPane();
 	
 	/**
-	 * si crea un oggetto di tipo ListaTavoli.
+	 * Si crea un oggetto di tipo ListaTavoli.
 	 */
 	ListaTavoli tavoli = new ListaTavoli();
 	
@@ -48,7 +48,7 @@ public class MenuPrincipale{
 	public void visualizza() {
 	
 		/**
-		 * viene settata la misura del frame.
+		 * Viene settata la misura del frame.
 		 */
 		start.setSize(600,600); 
 		
@@ -99,11 +99,10 @@ public class MenuPrincipale{
 	     * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
 	     * * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone.
 	     */
-	    
 	    chef.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
 		    	
-		    	/**
+	    		/**
 		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo MenuChef, che implementerà una nuova interfaccia.
 		    	 */
 		    	start.dispose(); 
@@ -113,7 +112,7 @@ public class MenuPrincipale{
 	    
 	    cameriere.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-		    	
+	    		
 	    		/**
 		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCameriere, che implementerà una nuova interfaccia.
 		    	 */
@@ -136,7 +135,7 @@ public class MenuPrincipale{
 
 	    cassa.addActionListener(new ActionListener(){
 	    	public void actionPerformed(ActionEvent evento){
-		    	
+	    		
 	    		/**
 		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa, che implementerà una nuova interfaccia.
 		    	 */
@@ -200,15 +199,15 @@ public class MenuPrincipale{
 					pw5.close();
 					pw6 = new PrintWriter("file/appoggio.txt");
 					pw6.close();
-				} catch (FileNotFoundException e) {
-					e.printStackTrace();
-				}
-		    	start.dispose(); 
-		    }
-	    });
+					} catch (FileNotFoundException e) {
+						e.printStackTrace();
+						}		
+		    		start.dispose(); 
+		    	}
+	    	});
 	    
 		/**
-		 * Metodi per rendere visibile la finestra,per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
+		 * Metodi per rendere visibile la finestra, per collocarla al centro dello schermo e per chiuderla tramite il tasto "X".
 		 */
 		start.setVisible(true);
 	    start.setLocationRelativeTo(null);

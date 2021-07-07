@@ -23,7 +23,7 @@ public class ElencoTavoliCassa {
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
 	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
 	Container contenuto= table_view.getContentPane();
@@ -31,14 +31,14 @@ public class ElencoTavoliCassa {
 	
     
 	/**
-	 * Il costruttore chiama la funzione visualizza.
+	 * Il costruttore chiama il metodo visualizza().
 	 */
 	public ElencoTavoliCassa() {
 		visualizza();
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra 
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra 
 	 * e setta le spechifiche grafiche del pannello principale,contenente la lista dei tavoli e i rispettivi bottoni.
 	 */
 	public void visualizza() {
@@ -119,7 +119,7 @@ public class ElencoTavoliCassa {
 	    	    down.add(no);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sull'elenco dei tavoli.
 	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -137,7 +137,7 @@ public class ElencoTavoliCassa {
 	    	    down.add(si);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso l'elenco dei tavoli e si torna al menù principale.
 	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -165,7 +165,7 @@ public class ElencoTavoliCassa {
 		pannello_variabile.setContinuousLayout(true);
 		
 		/**
-		 * viene poi chiamata la funzione popolaPannello grazie al quale i tavoli con i rielativi stati vengono inseriti sul pannello centrale.
+		 * Viene poi chiamata il metodo popolaPannello() grazie al quale i tavoli con i rielativi stati vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		

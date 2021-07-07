@@ -24,27 +24,27 @@ public class ElencoTavoliCuoco {
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
 	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
 	Container contenuto= table_view.getContentPane();
 	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	  
 	/**
-	 * Il costruttore chiama la funzione visualizza.
+	 * Il costruttore chiama il metodo visualizza().
 	 */
 	public ElencoTavoliCuoco() {
 		visualizza();
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra 
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra 
 	 * e setta le spechifiche grafiche del pannello principale, contenente la lista dei tavoli e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
 		/**
-		 * la misura del frame viene impostata a 600x600.
+		 * La misura del frame viene impostata a 600x600.
 		 */
 		table_view.setSize(600,600);
 		
@@ -119,7 +119,7 @@ public class ElencoTavoliCuoco {
 	    	    down.add(no);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sull'elenco dei tavoli.
 	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -137,7 +137,7 @@ public class ElencoTavoliCuoco {
 	    	    down.add(si);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso l'elenco dei tavoli e si torna al menù principale.
 	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -165,7 +165,7 @@ public class ElencoTavoliCuoco {
 		pannello_variabile.setContinuousLayout(true);
         
 		/**
-		 * viene poi chiamata la funzione grazie al quale i tavoli con i rielativi stati vengono inseriti sul pannello centrale.
+		 * Viene poi chiamata il metodo grazie al quale i tavoli con i rielativi stati vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		
@@ -178,7 +178,7 @@ public class ElencoTavoliCuoco {
 	}
 	
 	/**
-	 * La funzione popolaPannello,come da nome, è in grado di popolare il pannello centrale con vari oggetti.
+	 * Il metodo popolaPannello(), come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		

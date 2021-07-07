@@ -7,7 +7,7 @@ package gestoreRistorante.cameriere;
 public class Tavolo {
 	
 	/**
-	 * Ogni tavolo è caratterizzato da 3 valori:un nome, un numero e uno stato.
+	 * Ogni tavolo è caratterizzato da 3 valori: un nome, un numero e uno stato.
 	 */
 	private String nome;
 	private int numero;

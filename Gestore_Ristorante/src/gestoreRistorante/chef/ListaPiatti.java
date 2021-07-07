@@ -125,13 +125,13 @@ public class ListaPiatti implements Lista{
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
-		
+	
+	@Override
 	/**
 	 * Prende il contenuto dell'ArrayList e lo copia all'interno del file txt.
 	 */
 	public void write(){
 		try {
-			
 		    /**
 		     * Crea un oggetto BufferedWriter per scrivere l'output del file.
 		     */

@@ -20,7 +20,7 @@ public class Ordinazione implements Lista {
 	File file = new File("file/appoggio.txt");
 	
 	/**
-	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto, usando il metodo read() creato più avanti.
 	 */
 	public Ordinazione () {
 		read();

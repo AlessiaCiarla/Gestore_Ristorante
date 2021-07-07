@@ -18,7 +18,8 @@ public class ListaTavoli implements Lista {
 	File file = new File("file/lista_tavoli.txt");
 	
 	/**
-	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Tavolo,usando il metodo read() creato più avanti, al fine di popolare immediatamente il pannello grafico usato in ElencoTavoliCameriere.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Tavolo, usando il metodo read() creato più avanti, 
+	 * al fine di popolare immediatamente il pannello grafico usato in ElencoTavoliCameriere.
 	 */
 	public ListaTavoli () {
 		read();
@@ -84,7 +85,6 @@ public class ListaTavoli implements Lista {
 	 */
 	public void write(){
 		try {
-			
 			/**
 		     * Crea un oggetto BufferedWriter per scrivere l'output del file.
 		     */

@@ -22,26 +22,26 @@ public class MenuChef {
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni,in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
 	JFrame editable_menu= new JFrame("CHEF");
 	Container contenuto= editable_menu.getContentPane();
 	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
 	/**
-	 * Il costruttore chiama la funzione visualizza.
+	 * Il costruttore chiama il metodo visualizza().
 	 */
 	public MenuChef() {
 		visualizza();
 	}
 	
 	/**
-	 * La funzione visualizza crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale, contenente il menù e i rispettivi bottoni.
+	 * Il metodo visualizza() crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale, contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
 		/**
-		 * la misura del frame viene impostata a 600x600.
+		 * La misura del frame viene impostata a 600x600.
 		 */
 		editable_menu.setSize(600,600);
 		
@@ -116,7 +116,7 @@ public class MenuChef {
 	    	    down.add(no);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menù dello Chef.
 	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -134,7 +134,7 @@ public class MenuChef {
 	    	    down.add(si);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menù dello chef e si torna al menù principale.
 	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -274,12 +274,12 @@ public class MenuChef {
 		contenuto.add(scroll1);
 		
 		/**
-		 * viene poi chiamata la funzione grazie al quale le categorie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
+		 * Viene poi chiamato il metodo grazie al quale le categorie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		
 		/**
-		 * il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
+		 * Il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
 		 */
 		editable_menu.setVisible(true);
 		editable_menu.setLocationRelativeTo(null);
@@ -287,12 +287,12 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione popolaPannello, come da nome, è in grado di popolare il pannello centrale con vari oggetti.
+	 * Il metodo popolaPannello(), come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		
 		/**
-		 * si ricava la lunghezza giusta del pannello data dalla lunghezza dell'array delle categorie e la lista dei piatti.
+		 * Si ricava la lunghezza giusta del pannello data dalla lunghezza dell'array delle categorie e la lista dei piatti.
 		 */
 		int lunghezza= categorie.length + listap.size();
 		
@@ -461,7 +461,7 @@ public class MenuChef {
 				    	    });
 				    	    
 				    	    /**
-				    	     * il frame per modificare il piatto viene reso visibile, posizionato al centro e chiudibile con "X".
+				    	     * Il frame per modificare il piatto viene reso visibile, posizionato al centro e chiudibile con "X".
 				    	     */
 				    		mod_piatto.setVisible(true);
 				    		mod_piatto.setLocationRelativeTo(null);
@@ -474,7 +474,7 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione aggiungiPiatto permette di aggiungere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
+	 * Il metodo aggiungiPiatto() permette di aggiungere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
 	 * @param nome_piatto : stringa che identifica il nome del piatto;
 	 * @param prezzo_piatto : duoble che identifica il prezzo del piatto;
 	 * @param category : intero che indentifica la categoria del piatto.
@@ -482,7 +482,7 @@ public class MenuChef {
 	public void aggiungiPiatto(String nome_piatto, double prezzo_piatto, int category) {
 		
 		/**
-		 * il contenuto del frame viene pulito, e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
+		 * Il contenuto del frame viene pulito, e viene ricostruito; di conseguenza viene creato anche un nuovo pannello di tipo JSplitPane.
 		 */
 		editable_menu.getContentPane().removeAll();
 		contenuto= editable_menu.getContentPane();
@@ -516,7 +516,7 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione rimuoviPiatto permette di rimuovere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
+	 * Il metodo rimuoviPiatto() permette di rimuovere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
 	 * @param nome_piatto : stringa che identifica il nome del piatto;
 	 * @param prezzo_piatto : duoble che identifica il prezzo del piatto;
 	 * @param category : intero che indentifica la categoria del piatto.
@@ -553,7 +553,7 @@ public class MenuChef {
 	}
 	
 	/**
-	 * La funzione modificaPiatto consente di modificare un piatto confrontando il piatto vecchio da sostituire, con il nuovo piatto con i dati modificati( sarà il suo sostituto).
+	 * Il metodo modificaPiatto() consente di modificare un piatto confrontando il piatto vecchio da sostituire, con il nuovo piatto con i dati modificati( sarà il suo sostituto).
 	 * @param dasostituire: piatto già presente nel menù, i cui dati (alcuni o tutti) vogliono essere cambiati.
 	 * @param sostituto : piatto che sarà il sostituto del primo parametro.
 	 */

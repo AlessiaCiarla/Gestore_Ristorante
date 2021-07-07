@@ -17,7 +17,7 @@ public class RiepilogoCuoco{
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
 	JFrame editable_menu= new JFrame("RIEPILOGO ORDINE");
 	Container contenuto= editable_menu.getContentPane();
@@ -34,7 +34,7 @@ public class RiepilogoCuoco{
 	int numerotavolo;
 	
 	/**
-	 * Il costruttore chiama la funzione visualizza.
+	 * Il costruttore chiama il metodo visualizza().
 	 * @param int num: è il numero del tavolo di cui devo visualizzare la comanda.
 	 */
 	public RiepilogoCuoco(int num) {
@@ -45,7 +45,7 @@ public class RiepilogoCuoco{
 	public void visualizza() {
 		
 		/**
-		 * viene creato un oggetto di tipo Scontrino, grazie al quale invece riesco ad avere tutte le quantità di ogni piatto ordinato.
+		 * Viene creato un oggetto di tipo Scontrino, grazie al quale invece riesco ad avere tutte le quantità di ogni piatto ordinato.
 		 */
 		Scontrino comanda = new Scontrino(numerotavolo);
 		
@@ -127,7 +127,7 @@ public class RiepilogoCuoco{
 	    	    down.add(no);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sullo scontrino.
 	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -145,7 +145,7 @@ public class RiepilogoCuoco{
 	    	    down.add(si);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna all'elenco dei tavoli.
 	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -202,7 +202,7 @@ public class RiepilogoCuoco{
 	    	}});
 	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * Il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
 	    
@@ -219,7 +219,7 @@ public class RiepilogoCuoco{
 		popolaPannello(comanda, pannello_centrale);
 		
 		/**
-		 * il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
+		 * Il frame viene reso visibile,settato al centro e chiudibile con il tasto "X".
 		 */
 	    editable_menu.setVisible(true);
 		editable_menu.setLocationRelativeTo(null);
@@ -227,21 +227,21 @@ public class RiepilogoCuoco{
 	}
 	
 	/**
-	 * metodo che aggiunge al pannello centrale i piatti da evadere.
+	 * Metodo che aggiunge al pannello centrale i piatti da evadere.
 	 * @param comanda: è il file e l'ArrayList della comanda.
 	 * @param pannello_variabile : è il pannello centrale.
 	 */
 	public void popolaPannello(Scontrino comanda,JPanel pannello_variabile ) {
 		
 		/**
-	     * si scorre la lista dei piatti, e si controlla se la quantita del piatto è maggiore di zero.
+	     * Si scorre la lista dei piatti, e si controlla se la quantita del piatto è maggiore di zero.
 	     * Nel caso la risposta fosse si, il piatto viene aggiunto al pannello centrale.
 	     */
 		for (int j = 0; j < comanda.size(); j++) {
 					if (comanda.getPiatto(j).getNumcategory()>0) {
 						
 						/**
-		    			 * il nome del piatto viene aggiunto al pannello centrale.
+		    			 * Il nome del piatto viene aggiunto al pannello centrale.
 		    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto da un punto di vista grafico.
 		    			 */
 						pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
@@ -252,7 +252,7 @@ public class RiepilogoCuoco{
 				        pannello_centrale.add(piatto);
 				        
 				        /**
-		    			 * il prezzo del piatto viene aggiunto al pannello centrale.
+		    			 * Il prezzo del piatto viene aggiunto al pannello centrale.
 		    			 */
 				        JLabel prezzo = new JLabel("PREZZO: " + comanda.getPiatto(j).getPrice() + "   €");
 			    		prezzo.setFont(new Font("Ink Free", Font.BOLD, 22));
@@ -261,7 +261,7 @@ public class RiepilogoCuoco{
 				        pannello_centrale.add(prezzo);
 				        
 				        /**
-		    			 * la quantita del piatto viene aggiunto al pannello centrale.
+		    			 * La quantita del piatto viene aggiunto al pannello centrale.
 		    			 */
 				        JLabel quantita = new JLabel("N. PORZIONI: " + comanda.getPiatto(j).getNumcategory() + "");
 			    		quantita.setFont(new Font("Ink Free", Font.BOLD, 22));

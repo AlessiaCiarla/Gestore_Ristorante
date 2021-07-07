@@ -39,7 +39,7 @@ public class TavoloSingolo{
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni funzione.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
 	JFrame ordinazione= new JFrame("TAVOLO SINGOLO");
 	Container contenuto= ordinazione.getContentPane();
@@ -51,7 +51,7 @@ public class TavoloSingolo{
 	int contatore_quantita=0;
 	
 	/**
-	 * Il costruttore chiama la funzione visualizza.
+	 * Il costruttore chiama il metodo visualizza().
 	 * @param int num: è il numero del tavolo su cui sto prendendo l'ordinazione.
 	 */
 
@@ -61,7 +61,7 @@ public class TavoloSingolo{
 	}
 	
 	/**
-	 * La funzione visualizza in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il menù e i rispettivi bottoni.
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
@@ -71,7 +71,7 @@ public class TavoloSingolo{
 		quantita.clear();
 		
 		/**
-		 * la misura del frame viene impostata a 600x600.
+		 * La misura del frame viene impostata a 600x600.
 		 */
 		ordinazione.setSize(600,600);
 		
@@ -155,7 +155,7 @@ public class TavoloSingolo{
 	    	    down.add(no);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menu dello Chef.
+	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sul Menù.
 	    	     */
 	    	    no.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -173,7 +173,7 @@ public class TavoloSingolo{
 	    	    down.add(si);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menu dello chef e si torna al menù principale.
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menù e si torna all'elenco dei tavoli.
 	    	     */
 	    	    si.addActionListener(new ActionListener(){
 	    	    	public void actionPerformed(ActionEvent evento){
@@ -240,12 +240,12 @@ public class TavoloSingolo{
 		contenuto.add(scroll);
 		
 		/**
-		 * viene poi chiamata la funzione grazie al quale le categorie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
+		 * viene poi chiamato il metodo grazie al quale le categorie, i piatti e i relativi bottoni vengono inseriti sul pannello centrale.
 		 */
 		popolaPannello();
 		
 		/**
-		 * il frame viene reso visibile, settato al centro e chiudibile con il tasto "X".
+		 * Il frame viene reso visibile, settato al centro e chiudibile con il tasto "X".
 		 */
 	    ordinazione.setVisible(true);
 		ordinazione.setLocationRelativeTo(null);
@@ -253,7 +253,7 @@ public class TavoloSingolo{
 		}
 	
 	/**
-	 * La funzione popolaPannello, come da nome, è in grado di popolare il pannello centrale con vari oggetti.
+	 * Il metodo popolaPannello(), come da nome, è in grado di popolare il pannello centrale con vari oggetti.
 	 */
 	public void popolaPannello() {
 		
@@ -380,9 +380,9 @@ public class TavoloSingolo{
 	}
 	
 	/**
-	 * La funzione aggiungiPiatto permette di aggiungere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
+	 * Il metodo aggiungiPiatto() permette di aggiungere un piatto sia graficamente che funzionalmente(sia back-end che front-end).
 	 * @param nome_piatto : stringa che identifica il nome del piatto;
-	 * @param prezzo_piatto : duoble che identifica il prezzo del piatto;
+	 * @param prezzo_piatto : double che identifica il prezzo del piatto;
 	 * @param porzioni : intero che indentifica le porzioni del piatto.
 	 */
 	public void aggiungiPiatto(String nome_piatto, double prezzo_piatto, int porzioni) {
