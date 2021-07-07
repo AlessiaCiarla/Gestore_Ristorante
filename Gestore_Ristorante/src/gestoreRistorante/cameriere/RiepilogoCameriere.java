@@ -12,15 +12,15 @@ import gestoreRistorante.MenuPrincipale;
  * Classe che implementa la grafica dell'ordinazione finale che visualizzerà il cameriere.
  *
  */
-public class RiepilogoCameriere{
+public class RiepilogoCameriere {
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione.
 	 */
-	JFrame riepilogo= new JFrame("RIEPILOGO ORDINE");
-	Container contenuto= riepilogo.getContentPane();
-	JPanel pannello_centrale= new JPanel();	
+	JFrame riepilogo = new JFrame("RIEPILOGO ORDINE");
+	Container contenuto = riepilogo.getContentPane();
+	JPanel pannello_centrale = new JPanel();	
 	
 	/**
 	 * viene creato un oggetto di tipo Ordinazione, grazie al quale riesco ad avere tutte le quantità di ogni piatto ordinato.
@@ -35,7 +35,7 @@ public class RiepilogoCameriere{
 	/**
 	 * infile è il file in cui devo copiare tutta l'ordinazione in modo tale da poterla utilizzare successivamente come scontrino. 
 	 */
-	File infile =new File("file/appoggio.txt");
+	File infile = new File("file/appoggio.txt");
 	
 	/**
 	 * numerotavolo è il numero del tavolo su cui sto prendendo l'ordinazione.
@@ -47,13 +47,12 @@ public class RiepilogoCameriere{
 	 * @param int num : è il numero del tavolo su cui ho preso l'ordinazione.
 	 */
 	public RiepilogoCameriere(int num) {
-		this.numerotavolo=num;
+		this.numerotavolo = num;
 		visualizza();
 	}
 	
 	/**
-	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,
-	 * contenente il menù e i rispettivi bottoni.
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale.
 	 */
 	public void visualizza() {
 		
@@ -68,7 +67,7 @@ public class RiepilogoCameriere{
 		 * Il pannello up contiene tutti quegli elementi che vengono disposti proprio nella parte alta della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel up= new JPanel();
+		JPanel up = new JPanel();
 		up.setLayout(new GridLayout(1,2));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
@@ -85,14 +84,15 @@ public class RiepilogoCameriere{
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
 		Icon freccia = new ImageIcon("images/freccia.png");
-		JButton back= new JButton(freccia);
+		JButton back = new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 		
-	    back.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    back.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 	    		/**
-		    	 * In questo caso, il JFrame di RiepilogoCameriere viene chiuso, e ne viene creato uno nuovo di tipo TavoloSingolo, che riporta proprio alla schermata dell'ordinazione.
+		    	 * In questo caso, il JFrame di RiepilogoCameriere viene chiuso, e ne viene creato uno nuovo di tipo TavoloSingolo, 
+		    	 * che riporta proprio alla schermata dell'ordinazione.
 		    	 * Inoltre viene azzerato il contenuto del file di appoggio e ripulita la lista che contiene i piatti ordinati.
 		    	 */
 	    		listap.clear();
@@ -106,7 +106,7 @@ public class RiepilogoCameriere{
 		 * Il pannello down contiene tutti quegli elementi che vengono disposti proprio nella parte bassa della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel down= new JPanel();
+		JPanel down = new JPanel();
 		up.setLayout(new GridLayout(1,1));
 		contenuto.add(down, BorderLayout.SOUTH);
 		
@@ -119,8 +119,8 @@ public class RiepilogoCameriere{
 	    conferma.setForeground(Color.BLACK);
 	    down.add(conferma, BorderLayout.SOUTH);
 	    
-	    conferma.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    conferma.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 	    		
 	    		/**
 	    		 * Quando si clicca il bottone "conferma", si copierà il contenuto nel file di appoggio nel file dello scontrino.
@@ -134,36 +134,36 @@ public class RiepilogoCameriere{
 	    	    		 */
 	    	    	    instream = new FileInputStream(infile);
 	    	    	    
-	    	    	    if (numerotavolo==0) {
-	    	    	    	File outfile =new File("file/scontrino_tavolo1.txt");
+	    	    	    if (numerotavolo == 0) {
+	    	    	    	File outfile = new File("file/scontrino_tavolo1.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    } else if (numerotavolo==1) {
-	    	    	    	File outfile =new File("file/scontrino_tavolo2.txt");
+	    	    	    } else if (numerotavolo == 1) {
+	    	    	    	File outfile = new File("file/scontrino_tavolo2.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    } else if (numerotavolo==2) {
-	    	    	    	File outfile =new File("file/scontrino_tavolo3.txt");
+	    	    	    } else if (numerotavolo == 2) {
+	    	    	    	File outfile = new File("file/scontrino_tavolo3.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
-	    	    	    } else if (numerotavolo==3) {
-	    	    	    	File outfile =new File("file/scontrino_tavolo4.txt");
+	    	    	    } else if (numerotavolo == 3) {
+	    	    	    	File outfile = new File("file/scontrino_tavolo4.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
 	    	    	    } else {
-	    	    	    	File outfile =new File("file/scontrino_tavolo5.txt");
+	    	    	    	File outfile = new File("file/scontrino_tavolo5.txt");
 	    	    	    	outstream = new FileOutputStream(outfile);
 	    	    	    }
 	    	    	  
 	    	    	    byte[] buffer = new byte[1024];
 	    	 
 	    	    	    int length;
-	    	    	    while ((length = instream.read(buffer)) > 0){
+	    	    	    while ((length = instream.read(buffer)) > 0) {
 	    	    	    	outstream.write(buffer, 0, length);
 	    	    	    }
 
 	    	    	    instream.close();
 	    	    	    outstream.close();
-	    	    	}catch(IOException ioe){
+	    	    	} catch (IOException ioe) {
 	    	    		ioe.printStackTrace();
 	    	    	 }
-	    	    if(infile.exists()){
+	    	    if (infile.exists()) {
 	    	    	    infile.delete();
 	    	    	}
 	    	    	try {
@@ -175,8 +175,8 @@ public class RiepilogoCameriere{
     	    	/**
     	    	 * Una volta confermato l'ordine vado a cambiare lo stato del tavolo annesso.
     	    	 */
-	    	    for (int k=0; k<tavoli.size(); k++) {
-	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
+	    	    for (int k = 0; k < tavoli.size(); k++) {
+	    	    	if (numerotavolo == tavoli.getTavolo(k).getNumero())
 			    	    tavoli.getTavolo(k).setStato("I");
 	    	    		utilizzaPolimorfismo(tavoli);
 	    	    }
@@ -190,14 +190,16 @@ public class RiepilogoCameriere{
 	    }});
 	    
 	    /**
-         * Il pannello centrale viene aggiunto al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * Il pannello centrale viene aggiunto al contenuto del frame, e vengono impostate delle specifiche, 
+         * essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
 	    
 	    /**
-		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, nel caso diventassero tanti.
+		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, 
+		 * nel caso diventassero tanti.
 		 */
-        JScrollPane scroll= new JScrollPane(pannello_centrale);
+        JScrollPane scroll = new JScrollPane(pannello_centrale);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contenuto.add(scroll);
 		
@@ -224,11 +226,12 @@ public class RiepilogoCameriere{
 	     * Nel caso la risposta fosse si, il piatto viene aggiunto al pannello centrale.
 	     */
 		for (int j = 0; j < listap.size(); j++) {
-			if (listap.getPiatto(j).getNumcategory()>0) {
+			if (listap.getPiatto(j).getNumcategory() > 0) {
 				
 				/**
     			 * Il nome del piatto viene aggiunto al pannello centrale.
-    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto da un punto di vista grafico.
+    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto
+    			 *  da un punto di vista grafico.
     			 */
 				pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
     			JLabel piatto = new JLabel("PIATTO: " + listap.getPiatto(j).getName()); 
@@ -262,8 +265,7 @@ public class RiepilogoCameriere{
 	 * Utilizzo il polimorfismo per scrivere sul file.txt in base all'oggetto dichiarato in precedenza.
 	 * @param po è l'interfaccia con il metodo write();
 	 **/
-	public static void utilizzaPolimorfismo(Lista po)
-	{
+	public static void utilizzaPolimorfismo(Lista po){
 		po.write();
 	}
 }

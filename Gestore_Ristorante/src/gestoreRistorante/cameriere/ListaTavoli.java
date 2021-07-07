@@ -6,13 +6,14 @@ import java.util.ArrayList;
 import gestoreRistorante.Lista;
 
 /**
-* Classe back-end che contiene l'ArrayList di tutti i tavoli e gestisce vari metodi che saranno usati nella classe ElencoTavoliCameriere(front-end).
+* Classe back-end che contiene l'ArrayList di tutti i tavoli e gestisce vari metodi che saranno usati nella classe 
+* ElencoTavoliCameriere(front-end).
 */
 public class ListaTavoli implements Lista {
 	
 	/**
 	 * Viene creato un ArrayList contenente oggetti di tipo Tavolo.
-	 * Viene salvato un file preso in input con l'indirizzo, in una variabile "file".
+	 * Viene salvato un file preso in input con l'indirizzo, in una variabile, "file".
 	 */
 	ArrayList<Tavolo> listatavoli = new ArrayList<Tavolo>();
 	File file = new File("file/lista_tavoli.txt");
@@ -58,13 +59,13 @@ public class ListaTavoli implements Lista {
 		     */
 		    String currentLine = reader.readLine();
 
-		    while (currentLine != null){
+		    while (currentLine != null) {
 			    String[] datiPiatto = currentLine.split(",");
 			   
 			    String Name = datiPiatto[0];
-			    String Numero =datiPiatto[1];
+			    String Numero = datiPiatto[1];
 			    String Stato = datiPiatto[2];
-			    int numint= Integer.parseInt(Numero);
+			    int numint = Integer.parseInt(Numero);
 			    
 			    /**
 			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
@@ -74,7 +75,7 @@ public class ListaTavoli implements Lista {
 			    currentLine = reader.readLine();
 		    }
 		    reader.close();
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
@@ -83,8 +84,8 @@ public class ListaTavoli implements Lista {
 	/**
 	 * Prende il contenuto dell'ArrayList e lo scrive all'interno del file txt.
 	 */
-	public void write(){
-		try {
+	public void write() {
+		try { 
 			/**
 		     * Crea un oggetto BufferedWriter per scrivere l'output del file.
 		     */
@@ -93,7 +94,7 @@ public class ListaTavoli implements Lista {
 			/**
 			* Scrive ogni piatto all'interno del file di output.
 			*/
-			for (Tavolo datiPiatto : listatavoli){
+			for (Tavolo datiPiatto : listatavoli) {
 				writer.write(datiPiatto.getNome());
 				writer.write("," + datiPiatto.getNumero());
 			    writer.write(","  + datiPiatto.getStato());
@@ -104,7 +105,7 @@ public class ListaTavoli implements Lista {
 		     * Chiude il file.
 		     */
 			writer.close();
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ex);
 		}
 	}

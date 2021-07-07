@@ -20,9 +20,9 @@ public class Tavolo {
 	 * @param stato: rappresenta lo stato dell'ordine di quel tavolo (NI : non inserito, I: inserito, E: evaso).
 	 */
 	public Tavolo(String name, int num, String status) {
-		this.nome=name;
-		this.numero=num;
-		this.stato=status;
+		this.nome = name;
+		this.numero = num;
+		this.stato = status;
 	}
 	
 	/**

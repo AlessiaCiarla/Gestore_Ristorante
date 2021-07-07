@@ -10,7 +10,7 @@ import gestoreRistorante.chef.ListaPiatti;
 import gestoreRistorante.chef.Piatto;
 
 /**
- * Classe che implementa la grafica del menù che visualizzerà il cameriere.
+ * Classe che implementa la grafica del menù per prendere l'ordinazione del tavolo selezionato.
  *
  */
 public class TavoloSingolo{
@@ -19,13 +19,13 @@ public class TavoloSingolo{
 	 * Le categorie sono fisse e sono 5, quindi viene creato un array di strighe,rappresentante le categorie.
 	 * In secondo luogo, viene creato un oggetto di tipo ListaPiatti, grazie al quale invece riesco ad avere tutti i piatti nel menù.
 	 */
-	String categorie[] ={"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
-	ListaPiatti listap= new ListaPiatti();
+	String categorie[] = {"ANTIPASTI", "PRIMI", "SECONDI", "CONTORNI", "DOLCI"};
+	ListaPiatti listap = new ListaPiatti();
 	
 	/**
 	 * si ricava la lunghezza giusta del pannello data dalla lunghezza dell'array delle categorie e la lista dei piatti.
 	 */
-	int lunghezza= categorie.length + listap.size();
+	int lunghezza = categorie.length + listap.size();
 	
 	/**
 	 * viene creato un oggetto di tipo Ordinazione, grazie al quale invece riesco ad avere tutte le quantità di ogni piatto ordinato.
@@ -39,34 +39,37 @@ public class TavoloSingolo{
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni,
+	 *  in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
-	JFrame ordinazione= new JFrame("TAVOLO SINGOLO");
-	Container contenuto= ordinazione.getContentPane();
-	JSplitPane pannello_centrale=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JFrame ordinazione = new JFrame("TAVOLO SINGOLO");
+	Container contenuto = ordinazione.getContentPane();
+	JSplitPane pannello_centrale = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	
 	/**
 	 * Variabile che serve a far uscire un alert se non è stata selezionata nessuna quantità.
 	 */
-	int contatore_quantita=0;
+	int contatore_quantita = 0;
 	
 	/**
 	 * Il costruttore chiama il metodo visualizza().
 	 * @param int num: è il numero del tavolo su cui sto prendendo l'ordinazione.
 	 */
 
-	public TavoloSingolo (int num) {
-		this.numerotavolo=num;
+	public TavoloSingolo(int num) {
+		this.numerotavolo = num;
 		visualizza();
 	}
 	
 	/**
-	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il menù e i rispettivi bottoni.
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche
+	 *  del pannello principale,contenente il menù e i rispettivi bottoni.
 	 */
 	public void visualizza() {
 		
 		/**
-		 * Ad ogni avvio pulisco il file appoggio.txt e l'ArrayList dove è contenuta l'ordinazione, per poter prendere in modo corretto una nuova ordinazione.
+		 * Ad ogni avvio pulisco il file appoggio.txt e l'ArrayList dove è contenuta l'ordinazione,
+		 *  per poter prendere in modo corretto una nuova ordinazione.
 		 */
 		quantita.clear();
 		
@@ -79,7 +82,7 @@ public class TavoloSingolo{
 		 * Il pannello up contiene tutti quegli elementi che vengono disposti proprio nella parte alta della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel up= new JPanel();
+		JPanel up = new JPanel();
 		up.setLayout(new GridLayout(1,2));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
@@ -88,7 +91,7 @@ public class TavoloSingolo{
 		 * Il pannello down contiene tutti quegli elementi che vengono disposti proprio nella parte bassa della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel down= new JPanel();
+		JPanel down = new JPanel();
 		up.setLayout(new GridLayout(1,1));
 		down.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(down, BorderLayout.SOUTH);
@@ -105,7 +108,7 @@ public class TavoloSingolo{
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
 		Icon freccia = new ImageIcon("images/freccia.png");
-		JButton back= new JButton(freccia);
+		JButton back = new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 	    
@@ -113,17 +116,18 @@ public class TavoloSingolo{
 	    	public void actionPerformed(ActionEvent evento){
 		    	
 	    		/**
-		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; ci sono 2 opzioni disponibili.
+		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; 
+		    	 *ci sono 2 opzioni disponibili.
 		    	 *Viene settata la misura e gli viene associato un ContentPane.
 		    	 */
-	    		JFrame controllo= new JFrame();
+	    		JFrame controllo = new JFrame();
 	    		controllo.setSize(400,200);
-	    		Container cont= controllo.getContentPane();
+	    		Container cont = controllo.getContentPane();
 	    		
 	    		/**
 	    		 * Viene creato un pannello che viene aggiunto al ContentPane e ne vengono settati sfondo e layout.
 	    		 */
-	    		JPanel center= new JPanel();
+	    		JPanel center = new JPanel();
 	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
@@ -132,7 +136,7 @@ public class TavoloSingolo{
 	    		 * Viene aggiunta una JLabel al pannello centrale del frame.
 	    		 * Ne vengono settati font e colore.
 	    		 */
-	    		JLabel domanda= new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
+	    		JLabel domanda = new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
@@ -141,7 +145,7 @@ public class TavoloSingolo{
 	    		 * Viene creato un poi un secondo pannello,situato nella parte bassa del frame.
 	    		 * Ne vengono impostati layout e viene aggiunto al ContentPane.
 	    		 */
-	    		JPanel down= new JPanel();
+	    		JPanel down = new JPanel();
 	    		down.setLayout(new GridLayout(1,2));
 	    		cont.add(down, BorderLayout.SOUTH);
 	    		
@@ -175,8 +179,8 @@ public class TavoloSingolo{
 	    	    /**
 	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il menù e si torna all'elenco dei tavoli.
 	    	     */
-	    	    si.addActionListener(new ActionListener(){
-	    	    	public void actionPerformed(ActionEvent evento){
+	    	    si.addActionListener(new ActionListener() {
+	    	    	public void actionPerformed(ActionEvent evento) {
 	    	    		controllo.dispose();
 	    	    		ordinazione.dispose(); 
 	    		    	new ElencoTavoliCameriere();
@@ -204,18 +208,19 @@ public class TavoloSingolo{
 	    /**
 	     * Viene creato un ActionListener per il pulsante conferma.
 	     */
-	    conferma.addActionListener(new ActionListener(){
+	    conferma.addActionListener(new ActionListener() {
 	    	public void actionPerformed(ActionEvent evento) {
 	    		
 	    		/**
 	    		 * Se il contatore che tiene la quantità dei piatto ordinati è uguale a 0, significa che non è stato aggiunto alcun piatto.
 	    		 * Compare quindi un messaggio di alert, in quanto non è possibile creare un nuovo ordine che sia vuoto.
 	    		 */
-	    		if (contatore_quantita==0) {
+	    		if (contatore_quantita == 0) {
 	    			JOptionPane.showMessageDialog(null, "Per proseguire, è necessario ordinare almeno una porzione.");
 	    			
 	    		/**
-	    		 * Altrimenti, viene chiuso il frame del menù delle ordinazioni, viene scritta la comanda sul file e viene creato un nuovo frame di tipo RiepilogoCameriere.
+	    		 * Altrimenti, viene chiuso il frame del menù delle ordinazioni, viene scritta la comanda sul file 
+	    		 * e viene creato un nuovo frame di tipo RiepilogoCameriere.
 	    		 */
 	    		} else {
 			    	ordinazione.dispose();
@@ -226,16 +231,18 @@ public class TavoloSingolo{
 	    });
 	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche, 
+         * essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
         pannello_centrale.setResizeWeight(0.8);
 		pannello_centrale.setContinuousLayout(true);
 		
 		/**
-		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, nel caso diventassero tanti.
+		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, 
+		 * nel caso diventassero tanti.
 		 */
-        JScrollPane scroll= new JScrollPane(pannello_centrale);
+        JScrollPane scroll = new JScrollPane(pannello_centrale);
 		scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contenuto.add(scroll);
 		
@@ -262,18 +269,19 @@ public class TavoloSingolo{
 		 * nel nostro caso, uno di sx e uno di dx.
 		 * Entrambi usano il GridLayout e ne vengono settati i colori e vengonos aggiunti al pannello principale.
 		 */
-		JPanel center_left= new JPanel();
+		JPanel center_left = new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_left.setLayout(new GridLayout(lunghezza,1));
 		pannello_centrale.setLeftComponent(center_left);
 		
-		JPanel center_right= new JPanel();
+		JPanel center_right = new JPanel();
 		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_right.setLayout(new GridLayout(lunghezza,4));
 		pannello_centrale.setRightComponent(center_right);
 		
 		/**
-		 * Si scorre l'array delle categorie, e per ogni categoria letta si crea una label con il nome della categoria nel pannello di sx, e tre label vuote per rispettare gli spazi nel pannello di dx.
+		 * Si scorre l'array delle categorie, e per ogni categoria letta si crea una label con il nome della categoria nel pannello di sx,
+		 *  e tre label vuote per rispettare gli spazi nel pannello di dx.
 		 */
 		for (int i = 0; i < categorie.length; i++) {
    		 JLabel categ = new JLabel(categorie[i], SwingConstants.CENTER);
@@ -292,11 +300,12 @@ public class TavoloSingolo{
 		 center_right.add(vuota3);
 		 	
 		 	/**
-		     * Mentre si scorrono le categorie, si scorre la lista dei piatti, e si controlla se l'identificativo del piatto è uguale a quello della categoria.
+		     * Mentre si scorrono le categorie, si scorre la lista dei piatti, e si controlla se l'identificativo del piatto è uguale 
+		     * a quello della categoria.
 		     * Nel caso la risposta fosse si, il piatto viene aggiunto al posto giusto, sotto la sua categoria di appartenenza.
 		     */
 			for (int j = 0; j < listap.size(); j++) {
-	    		if (listap.getPiatto(j).getNumcategory()== i) {
+	    		if (listap.getPiatto(j).getNumcategory() == i) {
 	    			 
 	    			/**
 	    			 * il nome del piatto e il suo prezzo vengono aggiunti al pannello di sx.
@@ -334,8 +343,8 @@ public class TavoloSingolo{
 				    /**
 				     * attributi che identificano il piatto che sto selezionando.
 				     */
-			        String nomecorrente= listap.getPiatto(j).getName();
-		    		double  prezzocorrente=listap.getPiatto(j).getPrice();
+			        String nomecorrente = listap.getPiatto(j).getName();
+		    		double  prezzocorrente = listap.getPiatto(j).getPrice();
 		    		int indicecorrente = j;
 		    		Integer counter = 0;
 		    		
@@ -344,8 +353,8 @@ public class TavoloSingolo{
 		    		 */
 		    		aggiungiPiatto(nomecorrente, prezzocorrente, counter);
 		    		
-		    		diminuisci.addActionListener(new ActionListener(){
-		    	    	public void actionPerformed(ActionEvent evento){
+		    		diminuisci.addActionListener(new ActionListener() {
+		    	    	public void actionPerformed(ActionEvent evento) {
 		    	    		
 		    	    		/**
 				    		 * Cliccando "-", diminuisco l'attributo relativo alle quantita.
@@ -353,7 +362,7 @@ public class TavoloSingolo{
 		    	    		String por = numpor.getText().trim();
 		    	    		if (Integer.parseInt(por)>0) {
 		    			
-		    	    		Integer count=quantita.getPiatto(indicecorrente).getNumcategory()-1;
+		    	    		Integer count = quantita.getPiatto(indicecorrente).getNumcategory() - 1;
 		    	    		quantita.getPiatto(indicecorrente).setNumcategory(count);
 		    	    		String porz = count.toString();
     	    				numpor.setText("   " + porz);
@@ -362,16 +371,16 @@ public class TavoloSingolo{
 		    	    	}
 			        });
 		    		
-		    		aggiungi.addActionListener(new ActionListener(){
-		    	    	public void actionPerformed(ActionEvent evento){
+		    		aggiungi.addActionListener(new ActionListener() {
+		    	    	public void actionPerformed(ActionEvent evento) {
 		    	    		/**
 				    		 * Cliccando "+", aumento l'attributo relativo alle quantita.
 				    		 */
-		    	    		Integer count=quantita.getPiatto(indicecorrente).getNumcategory()+1;
+		    	    		Integer count = quantita.getPiatto(indicecorrente).getNumcategory() + 1;
 		    	    		quantita.getPiatto(indicecorrente).setNumcategory(count);
 		    	    		String por = count.toString();
     	    				numpor.setText("   " + por);
-    	    				contatore_quantita=count;
+    	    				contatore_quantita = count;
 		    	    	}
 			        });
 	    		}

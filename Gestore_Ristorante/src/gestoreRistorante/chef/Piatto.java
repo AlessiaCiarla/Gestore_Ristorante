@@ -4,7 +4,7 @@ package gestoreRistorante.chef;
  * Viene creata la classe Piatto (back-end), grazie alla quale viene identificato un piatto all'interno del menù.
  *
  */
-public class Piatto{
+public class Piatto {
 	
 	/**
 	 * Ogni piatto è caratterizzato da 3 valori: un nome, un prezzo e un intero che identifica la categoria.
@@ -19,10 +19,10 @@ public class Piatto{
 	 * @param prezzo: rappresenta il prezzo del piatto (10, 11.50, ecc).
 	 * @param numcat: rappresenta il numero della categoria (0: antipasti, 1: primi, 2: secondi,ecc).
 	 */
-	public Piatto(String nome, double prezzo,int numcat){
-		this.name= nome;
-		this.price=prezzo;
-		this.numcategory=numcat;
+	public Piatto(String nome, double prezzo,int numcat) {
+		this.name = nome;
+		this.price = prezzo;
+		this.numcategory = numcat;
 	}
 	
 	/**

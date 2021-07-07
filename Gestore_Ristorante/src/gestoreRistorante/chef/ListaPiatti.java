@@ -6,20 +6,22 @@ import java.util.*;
 import gestoreRistorante.Lista;
 
 /**
- * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menù, e gestisce vari metodi che saranno usati nella classe MenuChef(front-end).
+ * Classe back-end che contiene l'ArrayList di tutti i piatti all'interno del menù, e gestisce vari metodi che saranno usati 
+ * nella classe MenuChef(front-end).
  */
-public class ListaPiatti implements Lista{
+public class ListaPiatti implements Lista {
 	
 	/**
-	 * Viene creato un ArrayList di tipo Piatto e viene preso in input in file e salvato in una variabile.
+	 * Viene creato un ArrayList di tipo Piatto e viene preso in input il file che conterrà il menù e salvato in una variabile.
 	 */
 	ArrayList<Piatto> listapiatti = new ArrayList<Piatto>();
 	File file = new File("file/menu.txt");
 	
 	/**
-	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti, al fine di popolare immediatamente il pannello grafico usato in MenuChef.
+	 * Con il costruttore leggo l'ArrayList contenente oggetti di tipo Piatto,usando il metodo read() creato più avanti, 
+	 * al fine di popolare immediatamente il pannello grafico usato in MenuChef.
 	 */
-	public ListaPiatti () {
+	public ListaPiatti() {
 		read();
 	}
 			
@@ -27,7 +29,7 @@ public class ListaPiatti implements Lista{
 	 * Aggiunge un piatto all'ArrayList dei piatti.
 	 * @param piatto è il piatto da aggiungere.
 	 */
-	public void add(Piatto datiPiatto){
+	public void add(Piatto datiPiatto) {
 		if (!listapiatti.contains(datiPiatto)) {
 			listapiatti.add(datiPiatto);
 		}
@@ -37,14 +39,14 @@ public class ListaPiatti implements Lista{
 	 * Ordina la lista dei piatti tramite una Collections.sort.
 	 * Questo avviene tramite la creazione di un nuovo oggetto di tipo OrdinaPiatti.
 	 */
-	public void sort(){
+	public void sort() {
 		Collections.sort(listapiatti, new OrdinaPiatti());
 	}
 	
 	/**
 	 * Rimuove tutto il contenuto dell'ArrayList.
 	 */
-	public void clear(){
+	public void clear() {
 		listapiatti.clear();
 	}
 	
@@ -78,10 +80,10 @@ public class ListaPiatti implements Lista{
 	 * @param dasostituire è il piatto da modificare.
 	 * @param sostituto è il piatto che va inserito al posto del precedente.
 	 */
-	public void modify(Piatto dasostituire, Piatto sostituto){	
+	public void modify(Piatto dasostituire, Piatto sostituto) {	
 		if (!listapiatti.contains(sostituto)) {
-			for (Piatto datiPiatto : listapiatti){
-				if (datiPiatto.equals(dasostituire)){
+			for (Piatto datiPiatto : listapiatti) {
+				if (datiPiatto.equals(dasostituire)) {
 					listapiatti.set(listapiatti.indexOf(datiPiatto), sostituto);
 				}
 			}
@@ -89,7 +91,7 @@ public class ListaPiatti implements Lista{
 	}
 	
 	/**
-	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList.
+	 * Legge dal file in cui è contenuto il menù e lo copia all'interno dell'ArrayList listapiatti.
 	 */
 	public void read() {
 		try {
@@ -104,13 +106,13 @@ public class ListaPiatti implements Lista{
 		     */
 		    String currentLine = reader.readLine();
 
-		    while (currentLine != null){
+		    while (currentLine != null) {
 			    String[] datiPiatto = currentLine.split(",");
 			   
 			    String Name = datiPiatto[0];
 			    String Price =datiPiatto[1];
 			    String NumCat= datiPiatto[2];
-			    int numint= Integer.parseInt(NumCat);
+			    int numint = Integer.parseInt(NumCat);
 			    double prezzo = Double.parseDouble(Price);
 			    
 			    /**
@@ -121,16 +123,16 @@ public class ListaPiatti implements Lista{
 			    currentLine = reader.readLine();
 		    }
 		    reader.close();
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
 	
 	@Override
 	/**
-	 * Prende il contenuto dell'ArrayList e lo copia all'interno del file txt.
+	 * Prende il contenuto dell'ArrayList listapiatti e lo copia all'interno del file txt.
 	 */
-	public void write(){
+	public void write() {
 		try {
 		    /**
 		     * Crea un oggetto BufferedWriter per scrivere l'output del file.
@@ -140,7 +142,7 @@ public class ListaPiatti implements Lista{
 			/**
 			* Scrive ogni piatto all'interno del file di output.
 			*/
-			for (Piatto datiPiatto : listapiatti){
+			for (Piatto datiPiatto : listapiatti) {
 				writer.write(datiPiatto.getName());
 				writer.write("," + datiPiatto.getPrice());
 			    writer.write(","  + datiPiatto.getNumcategory());
@@ -152,7 +154,7 @@ public class ListaPiatti implements Lista{
 		     */
 				writer.close();
 	  
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ex);
 		}
 	}

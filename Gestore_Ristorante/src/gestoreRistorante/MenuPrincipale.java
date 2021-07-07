@@ -1,4 +1,4 @@
-package gestoreRistorante;
+ package gestoreRistorante;
 
 import java.awt.*;
 import java.awt.event.*;
@@ -14,23 +14,23 @@ import gestoreRistorante.cuoco.ElencoTavoliCuoco;
 /**
  * Classe che implementa la grafica del menù iniziale, da cui è possibile scegliere un ruolo tra: chef, cameriere, cuoco e responsabile di cassa.
  */
-public class MenuPrincipale{
+public class MenuPrincipale {
 	
 	/**
 	 * Vengono create due variabili statiche per mantenere i colori utilizzati nel programma.
 	 */
-	public final static Color COLORE_SFONDO=new Color(171,205,239);  
-	public final static Color COLORE_BOTTONI=new Color(224,255,255);
+	public final static Color COLORE_SFONDO = new Color(171,205,239);  
+	public final static Color COLORE_BOTTONI = new Color(224,255,255);
 	
 	/**
 	 * Si crea un oggetto JFrame, di grandezza 600x600.
 	 */
-	JFrame start= new JFrame("GESTORE DI UN RISTORANTE");
+	JFrame start = new JFrame("GESTORE DI UN RISTORANTE");
 	
 	/**
 	 * Si crea un oggetto Container, che corrisponderà al contenuto del JFrame.
 	 */
-	Container contenuto=start.getContentPane();
+	Container contenuto = start.getContentPane();
 	
 	/**
 	 * Si crea un oggetto di tipo ListaTavoli.
@@ -39,7 +39,7 @@ public class MenuPrincipale{
 	
 	
 	/**
-	 * Con il metodo costruttore della classe Start si crea un nuovo oggetto, che è proprio il menù iniziale.
+	 * Con il metodo costruttore, si richiama il metodo visualizza().
 	 */
 	public MenuPrincipale() {
 		visualizza();
@@ -56,7 +56,7 @@ public class MenuPrincipale{
 		 * Si crea un oggetto JPanel, grazie al quale si imposta un layout.
 		 * In questo caso, si crea una griglia 4x1 e viene aggiunta al Container, grazie all'uso di GridLayout.
 		 */
-		JPanel pannello= new JPanel();
+		JPanel pannello = new JPanel();
 		pannello.setLayout(new GridLayout(4,1));
 		pannello.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(pannello,BorderLayout.CENTER );
@@ -87,7 +87,7 @@ public class MenuPrincipale{
 	    cuoco.setForeground(Color.BLACK);
 	    pannello.add(cuoco);
 	    
-	    JButton cassa= new JButton("CASSA");
+	    JButton cassa = new JButton("CASSA");
 	    cassa.setFont(new Font("Garamond", Font.BOLD, 40));
 	    cassa.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    cassa.setForeground(Color.BLACK);
@@ -99,33 +99,36 @@ public class MenuPrincipale{
 	     * L'interfaccia ActionListener ha un solo metodo: ActionPerformed, che prende come parametro un ActionEvent: un evento di azione.
 	     * * Nel metodo, vengono poi inserite le istruzioni che devono verificarsi premendo il bottone.
 	     */
-	    chef.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    chef.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 		    	
 	    		/**
-		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo MenuChef, che implementerà una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo MenuChef, 
+		    	 * che implementerà una nuova grafica.
 		    	 */
 		    	start.dispose(); 
 		    	new MenuChef();
 		    }
 	    });
 	    
-	    cameriere.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    cameriere.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 	    		
 	    		/**
-		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCameriere, che implementerà una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCameriere, 
+		    	 * che implementerà una nuova grafica.
 		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCameriere();
 		    }
 	    });
 	    
-	    cuoco.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    cuoco.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 	    		
 	    		/**
-		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCuoco, che implementerà una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCuoco, 
+		    	 * che implementerà una nuova grafica.
 		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCuoco();
@@ -133,11 +136,12 @@ public class MenuPrincipale{
 	    });
 	    
 
-	    cassa.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    cassa.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 	    		
 	    		/**
-		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa, che implementerà una nuova interfaccia.
+		    	 * In questo caso, il JFrame del menù principale viene chiuso, e ne viene creato uno nuovo di tipo ElencoTavoliCassa, 
+		    	 * che implementerà una nuova grafica.
 		    	 */
 		    	start.dispose(); 
 		    	new ElencoTavoliCassa();
@@ -149,7 +153,7 @@ public class MenuPrincipale{
 	     * Ha un'impostazione a griglia 1x1.
 	     * Ne viene settato anche lo sfondo.
 	     */
-	    JPanel down= new JPanel();
+	    JPanel down = new JPanel();
 		down.setLayout(new GridLayout(1,1));
 		down.setBackground(COLORE_SFONDO);
 		contenuto.add(down,BorderLayout.SOUTH );
@@ -167,14 +171,14 @@ public class MenuPrincipale{
 	    /**
 	     * Viene creato un ActionListener  per il bottone chiudi_sessione.
 	     */
-	    chiudi_sessione.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    chiudi_sessione.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 	    		
 		    	/**
 		    	 * Se si chiude la sessione il programma verrà chiuso e verranno puliti tutti i file che contengono i
 		    	 *  dati di ordinazione, scontrini e gli stati dei tavoli cambieranno in NI.
 		    	 */
-	    		for (int i = 0; i<tavoli.size(); i++) {
+	    		for (int i = 0; i < tavoli.size(); i++) {
 					tavoli.getTavolo(i).setStato("NI");
 					tavoli.write();
 				}

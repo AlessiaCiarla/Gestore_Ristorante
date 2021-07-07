@@ -8,7 +8,8 @@ import gestoreRistorante.chef.OrdinaPiatti;
 import gestoreRistorante.chef.Piatto;
 
 /**
-* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe TavoloSingolo e RiepilogoCameriere(front-end).
+* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe 
+* TavoloSingolo e RiepilogoCameriere(front-end).
 */
 public class Ordinazione implements Lista {
 	
@@ -30,7 +31,7 @@ public class Ordinazione implements Lista {
 	 * Aggiunge un piatto all'ArrayList dei piatti.
 	 * @param piatto è il piatto da aggiungere.
 	 */
-	public void add(Piatto datiPiatto){
+	public void add(Piatto datiPiatto) {
 		if (!listapiatti.contains(datiPiatto)) {
 			listapiatti.add(datiPiatto);
 		}
@@ -40,14 +41,14 @@ public class Ordinazione implements Lista {
 	 * Ordina la lista dei piatti tramite una Collections.sort.
 	 * Questo avviene tramite la creazione di un nuovo oggetto di tipo OrdinaPiatti.
 	 */
-	public void sort(){
+	public void sort() {
 		Collections.sort(listapiatti, new OrdinaPiatti());
 	}
 	
 	/**
 	 * Rimuove tutto il contenuto dell'ArrayList.
 	 */
-	public void clear(){
+	public void clear() {
 		listapiatti.clear();
 	}
 	
@@ -84,13 +85,13 @@ public class Ordinazione implements Lista {
 		     */
 		    String currentLine = reader.readLine();
 
-		    while (currentLine != null){
+		    while (currentLine != null) {
 			    String[] datiPiatto = currentLine.split(",");
 			   
 			    String Name = datiPiatto[0];
-			    String Price =datiPiatto[1];
-			    String NumCat= datiPiatto[2];
-			    int numint= Integer.parseInt(NumCat);
+			    String Price = datiPiatto[1];
+			    String NumCat = datiPiatto[2];
+			    int numint = Integer.parseInt(NumCat);
 			    double prezzo = Double.parseDouble(Price);
 			    /**
 			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
@@ -100,7 +101,7 @@ public class Ordinazione implements Lista {
 			    currentLine = reader.readLine();
 		    }
 		    reader.close();
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
@@ -109,7 +110,7 @@ public class Ordinazione implements Lista {
 	/**
 	 * Prende il contenuto dell'ArrayList e lo copia all'interno del file txt.
 	 */
-	public void write(){
+	public void write() {
 		try {
 			
 		    /**
@@ -120,7 +121,7 @@ public class Ordinazione implements Lista {
 			/**
 			* Scrive ogni piatto all'interno del file di output.
 			*/
-			for (Piatto datiPiatto : listapiatti){
+			for (Piatto datiPiatto : listapiatti) {
 				writer.write(datiPiatto.getName());
 				writer.write("," + datiPiatto.getPrice());
 			    writer.write(","  + datiPiatto.getNumcategory());
@@ -132,7 +133,7 @@ public class Ordinazione implements Lista {
 		     */
 			writer.close();
 	  
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ex);
 		}
 	}

@@ -7,7 +7,8 @@ import gestoreRistorante.Lista;
 import gestoreRistorante.chef.Piatto;
 
 /**
-* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati nella classe RiepilogoCassa(front-end).
+* Classe back-end che contiene l'ArrayList di tutti i piatti ordinati, e gestisce vari metodi che saranno usati 
+* nella classe RiepilogoCassa(front-end).
 */
 public class Scontrino implements Lista {
 	
@@ -25,14 +26,14 @@ public class Scontrino implements Lista {
 	/**
 	 * numerotavolo è il numero del tavolo su cui sto prendendo l'ordinazione.
 	 */
-	int numerotavolo=0;
+	int numerotavolo = 0;
 		
 	/**
 	 * Il costruttore chiama la funzione read per leggere il contenuto del file.
 	 * @param int num : è il numero del tavolo su cui devo pagare l'ordine.
 	 */
 	public Scontrino (int numero) {
-		this.numerotavolo=numero;
+		this.numerotavolo = numero;
 		read();
 	}
 
@@ -64,16 +65,16 @@ public class Scontrino implements Lista {
 		     * Crea un oggetto BufferedReader per leggere l'input del file.
 		     */
 			
-			if (numerotavolo==0) {
+			if (numerotavolo == 0) {
 				BufferedReader reader = new BufferedReader(new FileReader(file1));
 				String currentLine = reader.readLine();
 				while (currentLine != null){
 				    String[] datiPiatto = currentLine.split(",");
 				   
 				    String Name = datiPiatto[0];
-				    String Price =datiPiatto[1];
-				    String NumCat= datiPiatto[2];
-				    int numint= Integer.parseInt(NumCat);
+				    String Price = datiPiatto[1];
+				    String NumCat = datiPiatto[2];
+				    int numint = Integer.parseInt(NumCat);
 				    double prezzo = Double.parseDouble(Price);
 				    /**
 				    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
@@ -83,16 +84,16 @@ public class Scontrino implements Lista {
 				    currentLine = reader.readLine();
 			    }
 			    reader.close();
-    	    } else if (numerotavolo==1) {
+    	    } else if (numerotavolo == 1) {
     	    	BufferedReader reader = new BufferedReader(new FileReader(file2));
     	    	String currentLine = reader.readLine();
     	    	while (currentLine != null){
     			    String[] datiPiatto = currentLine.split(",");
     			   
     			    String Name = datiPiatto[0];
-    			    String Price =datiPiatto[1];
-    			    String NumCat= datiPiatto[2];
-    			    int numint= Integer.parseInt(NumCat);
+    			    String Price = datiPiatto[1];
+    			    String NumCat = datiPiatto[2];
+    			    int numint = Integer.parseInt(NumCat);
     			    double prezzo = Double.parseDouble(Price);
     			    /**
     			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
@@ -102,16 +103,16 @@ public class Scontrino implements Lista {
     			    currentLine = reader.readLine();
     		    }
     		    reader.close();
-    	    } else if (numerotavolo==2) {
+    	    } else if (numerotavolo == 2) {
     	    	BufferedReader reader = new BufferedReader(new FileReader(file3));
     	    	String currentLine = reader.readLine();
     	    	while (currentLine != null){
     			    String[] datiPiatto = currentLine.split(",");
     			   
     			    String Name = datiPiatto[0];
-    			    String Price =datiPiatto[1];
-    			    String NumCat= datiPiatto[2];
-    			    int numint= Integer.parseInt(NumCat);
+    			    String Price = datiPiatto[1];
+    			    String NumCat = datiPiatto[2];
+    			    int numint = Integer.parseInt(NumCat);
     			    double prezzo = Double.parseDouble(Price);
     			    /**
     			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
@@ -121,22 +122,22 @@ public class Scontrino implements Lista {
     			    currentLine = reader.readLine();
     		    }
     		    reader.close();
-    	    } else if (numerotavolo==3) {
+    	    } else if (numerotavolo == 3) {
     	    	BufferedReader reader = new BufferedReader(new FileReader(file4));
     	    	String currentLine = reader.readLine();
     	    	while (currentLine != null){
     			    String[] datiPiatto = currentLine.split(",");
     			   
     			    String Name = datiPiatto[0];
-    			    String Price =datiPiatto[1];
-    			    String NumCat= datiPiatto[2];
-    			    int numint= Integer.parseInt(NumCat);
+    			    String Price = datiPiatto[1];
+    			    String NumCat = datiPiatto[2];
+    			    int numint = Integer.parseInt(NumCat);
     			    double prezzo = Double.parseDouble(Price);
     			    
     			    /**
     			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
     			    */
-    			    listapiatti.add(new Piatto( Name, prezzo, numint));
+    			    listapiatti.add(new Piatto(Name, prezzo, numint));
     			   
     			    currentLine = reader.readLine();
     		    }
@@ -148,9 +149,9 @@ public class Scontrino implements Lista {
     			    String[] datiPiatto = currentLine.split(",");
     			   
     			    String Name = datiPiatto[0];
-    			    String Price =datiPiatto[1];
-    			    String NumCat= datiPiatto[2];
-    			    int numint= Integer.parseInt(NumCat);
+    			    String Price = datiPiatto[1];
+    			    String NumCat = datiPiatto[2];
+    			    int numint = Integer.parseInt(NumCat);
     			    double prezzo = Double.parseDouble(Price);
     			    /**
     			    * Crea un oggetto Piatto e lo aggiunge all'ArrayList.
@@ -161,14 +162,12 @@ public class Scontrino implements Lista {
     		    }
     		    reader.close();
     	    } 
-		} catch(Exception ex){
+		} catch (Exception ex) {
 			System.out.println("Exception msg: "+ ex);
 		}
 	}
 
 	@Override
 	public void write() {
-		// TODO Auto-generated method stub
-		
 	}
 }

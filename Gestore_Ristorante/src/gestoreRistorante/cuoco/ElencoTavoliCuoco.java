@@ -2,7 +2,6 @@ package gestoreRistorante.cuoco;
 
 import java.awt.*;
 import java.awt.event.*;
-
 import javax.swing.*;
 
 import gestoreRistorante.MenuPrincipale;
@@ -19,16 +18,16 @@ public class ElencoTavoliCuoco {
 	 * In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale invece riesco ad avere tutti i tavoli 
 	 * con relativi attributi in un ArrayList.
 	 */
-	String tavoli[] ={"TAVOLO 1", "TAVOLO 2", "TAVOLO 3", "TAVOLO 4","TAVOLO 5"};
+	String tavoli[] = {"TAVOLO 1", "TAVOLO 2", "TAVOLO 3", "TAVOLO 4","TAVOLO 5"};
 	ListaTavoli listat = new ListaTavoli();
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà il menù ed i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà la lista dei tavoli e i loro stati.
 	 */
-	JFrame table_view= new JFrame("LISTA DEI TAVOLI");
-	Container contenuto= table_view.getContentPane();
-	JSplitPane pannello_variabile=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
+	JFrame table_view = new JFrame("LISTA DEI TAVOLI");
+	Container contenuto = table_view.getContentPane();
+	JSplitPane pannello_variabile = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
 	  
 	/**
 	 * Il costruttore chiama il metodo visualizza().
@@ -52,7 +51,7 @@ public class ElencoTavoliCuoco {
 		 * Il pannello up contiene tutti quegli elementi che vengono disposti proprio nella parte alta della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel up= new JPanel();
+		JPanel up = new JPanel();
 		up.setLayout(new GridLayout(1,3));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
@@ -69,25 +68,26 @@ public class ElencoTavoliCuoco {
 		 * Viene aggiunto un pulsante back, per tornare alla schermata principale.
 		 */
 		Icon freccia = new ImageIcon("images/freccia.png");
-		JButton back= new JButton(freccia);
+		JButton back = new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 	    
-	    back.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    back.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 		    	
 	    		/**
-		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; ci sono 2 opzioni disponibili.
+		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; 
+		    	 *ci sono 2 opzioni disponibili.
 		    	 *Viene settata la misura e gli viene associato un ContentPane.
 		    	 */
-	    		JFrame controllo= new JFrame();
+	    		JFrame controllo = new JFrame();
 	    		controllo.setSize(400,200);
-	    		Container cont= controllo.getContentPane();
+	    		Container cont = controllo.getContentPane();
 	    		
 	    		/**
 	    		 * Viene creato un pannello che viene aggiunto al ContentPane e ne vengono settati sfondo e layout.
 	    		 */
-	    		JPanel center= new JPanel();
+	    		JPanel center = new JPanel();
 	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
@@ -96,7 +96,7 @@ public class ElencoTavoliCuoco {
 	    		 * Viene aggiunta una JLabel al pannello centrale del frame.
 	    		 * Ne vengono settati font e colore.
 	    		 */
-	    		JLabel domanda= new JLabel("Vuoi tornare al Menù Principale?",SwingConstants.CENTER);
+	    		JLabel domanda = new JLabel("Vuoi tornare al Menù Principale?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
@@ -105,7 +105,7 @@ public class ElencoTavoliCuoco {
 	    		 * Viene creato un poi un secondo pannello,situato nella parte bassa del frame.
 	    		 * Ne vengono impostati layout e viene aggiunto al ContentPane.
 	    		 */
-	    		JPanel down= new JPanel();
+	    		JPanel down = new JPanel();
 	    		down.setLayout(new GridLayout(1,2));
 	    		cont.add(down, BorderLayout.SOUTH);
 	    		
@@ -121,8 +121,8 @@ public class ElencoTavoliCuoco {
 	    	    /**
 	    	     * Se si clicca il tasto "no", si chiude semplicemente questo frame di controllo e si rimane sull'elenco dei tavoli.
 	    	     */
-	    	    no.addActionListener(new ActionListener(){
-	    	    	public void actionPerformed(ActionEvent evento){
+	    	    no.addActionListener(new ActionListener() {
+	    	    	public void actionPerformed(ActionEvent evento) {
 	    	    		controllo.dispose();
 	    	    	}
 	    	    });
@@ -137,10 +137,11 @@ public class ElencoTavoliCuoco {
 	    	    down.add(si);
 	    	    
 	    	    /**
-	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso l'elenco dei tavoli e si torna al menù principale.
+	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso l'elenco dei tavoli e si torna 
+	    	     * al menù principale.
 	    	     */
-	    	    si.addActionListener(new ActionListener(){
-	    	    	public void actionPerformed(ActionEvent evento){
+	    	    si.addActionListener(new ActionListener() {
+	    	    	public void actionPerformed(ActionEvent evento) {
 	    	    		controllo.dispose();
 	    	    		table_view.dispose(); 
 	    		    	new MenuPrincipale();
@@ -187,12 +188,12 @@ public class ElencoTavoliCuoco {
 		 * nel nostro caso, uno di sx e uno di dx.
 		 * Entrambi usano il GridLayout e ne vengono settati i colori e vengono aggiunti al pannello principale.
 		 */
-		JPanel center_left= new JPanel();
+		JPanel center_left = new JPanel();
 		center_left.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_left.setLayout(new GridLayout(5,2));
 		pannello_variabile.setLeftComponent(center_left);
 		
-		JPanel center_right= new JPanel();
+		JPanel center_right = new JPanel();
 		center_right.setBackground(MenuPrincipale.COLORE_SFONDO);
 		center_right.setLayout(new GridLayout(5,2));
 		pannello_variabile.setRightComponent(center_right);
@@ -222,12 +223,13 @@ public class ElencoTavoliCuoco {
 		    /*
 		     * indice identifica il numero del tavolo.
 		     */
-		    int indice=i;
+		    int indice = i;
 		    
 		    /**
-    		 * Cliccando su un tavolo viene creato un nuovo frame dato dalla classe RiepilogoCuoco, dove mi porto dietro il numero del tavolo che ho selezionato.
+    		 * Cliccando su un tavolo viene creato un nuovo frame dato dalla classe RiepilogoCuoco, 
+    		 * dove mi porto dietro il numero del tavolo che ho selezionato.
     		 */
-		    Tavolo.addActionListener(new ActionListener(){
+		    Tavolo.addActionListener(new ActionListener() {
 		    	public void actionPerformed(ActionEvent evento) {
 		    		int numero = listat.getTavolo(indice).getNumero();
 		    		table_view.dispose();
@@ -239,7 +241,7 @@ public class ElencoTavoliCuoco {
 			 * lo stato dell'ordine del tavolo viene aggiunto al pannello di dx.
 			 */
 		    for (int j = 0; j < listat.size(); j++) {
-	    		if (listat.getTavolo(j).getNumero()== i) {
+	    		if (listat.getTavolo(j).getNumero() == i) {
 	    			JLabel status = new JLabel("STATO ORDINE: " + listat.getTavolo(j).getStato());
 		    		status.setFont(new Font("Times New Roman", Font.BOLD, 20));
 				    status.setForeground(Color.BLACK);

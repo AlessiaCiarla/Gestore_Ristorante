@@ -12,15 +12,16 @@ import gestoreRistorante.cameriere.ListaTavoli;
  * Classe che implementa la grafica dello scontrino che visualizzerà la cassa(front-end).
  *
  */
-public class RiepilogoCassa{
+public class RiepilogoCassa {
 	
 	/**
 	 * Graficamente, viene creato un un nuovo JFrame, con il rispettivo ContentPane.
-	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni, in modo tale che sia modificabile e riconoscibile in ogni metodo.
+	 * Inoltre, viene creato come attributo anche il pannello che conterrà l'ordinazione e i bottoni,
+	 *  in modo tale che sia modificabile e riconoscibile in ogni metodo.
 	 */
-	JFrame editable_menu= new JFrame("RIEPILOGO ORDINE");
-	Container contenuto= editable_menu.getContentPane();
-	JPanel pannello_centrale= new JPanel();	
+	JFrame editable_menu = new JFrame("RIEPILOGO ORDINE");
+	Container contenuto = editable_menu.getContentPane();
+	JPanel pannello_centrale = new JPanel();	
 	
 	/** In secondo luogo, viene creato un oggetto di tipo ListaTavoli, grazie al quale invece riesco ad avere tutti i tavoli 
 	 * con relativi attributi in un ArrayList.
@@ -42,12 +43,12 @@ public class RiepilogoCassa{
 	 * @param int num: è il numero del tavolo di cui devo visualizzare lo scontrino.
 	 */
 	public RiepilogoCassa(int num) {
-		this.numerotavolo=num;
+		this.numerotavolo = num;
 		visualizza();
 	}
 	
 	/**
-	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale,contenente il men� e i rispettivi bottoni.
+	 * Il metodo visualizza() in sintesi crea la parte alta della finestra e setta le spechifiche grafiche del pannello principale
 	 */
 	public void visualizza() {
 		
@@ -67,7 +68,7 @@ public class RiepilogoCassa{
 		 * Il pannello up contiene tutti quegli elementi che vengono disposti proprio nella parte alta della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel up= new JPanel();
+		JPanel up = new JPanel();
 		up.setLayout(new GridLayout(1,2));
 		up.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(up, BorderLayout.NORTH);
@@ -84,26 +85,27 @@ public class RiepilogoCassa{
 		 * Viene aggiunto un pulsante back, per tornare alla lista dei tavoli.
 		 */
 		Icon freccia = new ImageIcon("images/freccia.png");
-		JButton back= new JButton(freccia);
+		JButton back = new JButton(freccia);
 		back.setBackground(MenuPrincipale.COLORE_BOTTONI);
 	    up.add(back);
 	    
 	    
-	    back.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    back.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
 		    	
 	    		/**
-		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; ci sono 2 opzioni disponibili.
+		    	 *Viene creato un frame che si occupa di controllare se l'utente abbia cliccato per sbaglio sul tasto back; 
+		    	 *ci sono 2 opzioni disponibili.
 		    	 *Viene settata la misura e gli viene associato un ContentPane.
 		    	 */
-	    		JFrame controllo= new JFrame();
+	    		JFrame controllo = new JFrame();
 	    		controllo.setSize(400,200);
-	    		Container cont= controllo.getContentPane();
+	    		Container cont = controllo.getContentPane();
 	    		
 	    		/**
 	    		 * Viene creato un pannello che viene aggiunto al ContentPane e ne vengono settati sfondo e layout.
 	    		 */
-	    		JPanel center= new JPanel();
+	    		JPanel center = new JPanel();
 	    		center.setBackground(MenuPrincipale.COLORE_SFONDO);
 	    		center.setLayout(new GridLayout(1,1));
 	    		cont.add(center,BorderLayout.CENTER);
@@ -112,7 +114,7 @@ public class RiepilogoCassa{
 	    		 * Viene aggiunta una JLabel al pannello centrale del frame.
 	    		 * Ne vengono settati font e colore.
 	    		 */
-	    		JLabel domanda= new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
+	    		JLabel domanda = new JLabel("Vuoi tornare alla lista dei Tavoli?",SwingConstants.CENTER);
 	    		domanda.setFont(new Font("Garamond", Font.BOLD, 20));
 	    	    domanda.setForeground(Color.BLACK);
 	    		center.add(domanda);
@@ -121,7 +123,7 @@ public class RiepilogoCassa{
 	    		 * Viene creato un poi un secondo pannello,situato nella parte bassa del frame.
 	    		 * Ne vengono impostati layout e viene aggiunto al ContentPane.
 	    		 */
-	    		JPanel down= new JPanel();
+	    		JPanel down = new JPanel();
 	    		down.setLayout(new GridLayout(1,2));
 	    		cont.add(down, BorderLayout.SOUTH);
 	    		
@@ -155,8 +157,8 @@ public class RiepilogoCassa{
 	    	    /**
 	    	     * Se si clicca il tasto "si", viene chiuso il frame di controllo, viene chiuso il riepilogo e si torna all'elenco dei tavoli.
 	    	     */
-	    	    si.addActionListener(new ActionListener(){
-	    	    	public void actionPerformed(ActionEvent evento){
+	    	    si.addActionListener(new ActionListener() {
+	    	    	public void actionPerformed(ActionEvent evento) {
 	    	    		controllo.dispose();
 	    	    		editable_menu.dispose(); 
 	    		    	new ElencoTavoliCassa();
@@ -176,7 +178,7 @@ public class RiepilogoCassa{
 		 * Il pannello down contiene tutti quegli elementi che vengono disposti proprio nella parte bassa della finestra.
 		 * Vengono impostati il layout, il colore dello sfondo, e viene aggiunto al contenuto del frame.
 		 */
-		JPanel down= new JPanel();
+		JPanel down = new JPanel();
 		down.setLayout(new GridLayout(1,2));
 		down.setBackground(MenuPrincipale.COLORE_SFONDO);
 		contenuto.add(down, BorderLayout.SOUTH);
@@ -190,13 +192,14 @@ public class RiepilogoCassa{
 	    conferma.setForeground(Color.BLACK);
 	    down.add(conferma, BorderLayout.SOUTH);
 	    
-	    conferma.addActionListener(new ActionListener(){
-	    	public void actionPerformed(ActionEvent evento){
+	    conferma.addActionListener(new ActionListener() {
+	    	public void actionPerformed(ActionEvent evento) {
+	    		
 	    		/**
 	    		 * Quando si clicca il bottone "conferma", si cambierà lo stato del tavolo da "E" a "NI".
 	    		 */
-	    	    for (int k=0; k<tavoli.size(); k++) {
-	    	    	if (numerotavolo==tavoli.getTavolo(k).getNumero())
+	    	    for (int k = 0; k < tavoli.size(); k++) {
+	    	    	if (numerotavolo == tavoli.getTavolo(k).getNumero())
 			    	    tavoli.getTavolo(k).setStato("NI");
 	    	    		utilizzaPolimorfismo(tavoli);
 	    	    }
@@ -210,19 +213,22 @@ public class RiepilogoCassa{
 	    	}});
 	    
 	    /**
-         * il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche, essendo il pannello un JSplitPane.
+         * il pannello centrale viene aggiungo al contenuto del frame, e vengono impostate delle specifiche,
+         *  essendo il pannello un JSplitPane.
          */
 	    contenuto.add(pannello_centrale,BorderLayout.CENTER);
 	    
 	    /**
-		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, nel caso diventassero tanti.
+		 * Viene inserito un oggetto JScrollPane, in modo tale da vedere bene tutti i piatti scorrendo con una barra, 
+		 * nel caso diventassero tanti.
 		 */
-        JScrollPane scroll1= new JScrollPane(pannello_centrale);
+        JScrollPane scroll1 = new JScrollPane(pannello_centrale);
 		scroll1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		contenuto.add(scroll1);
 		
 		/**
-		 * Viene poi chiamata il metodo popolaPannello() grazie al quale i piatti con relativo nome, prezzo e quantita vengono aggiunti al pannello centrale.
+		 * Viene poi chiamata il metodo popolaPannello() grazie al quale i piatti con relativo nome, 
+		 * prezzo e quantita vengono aggiunti al pannello centrale.
 		 */
 		popolaPannello(scontrino, pannello_centrale);
 		
@@ -254,11 +260,12 @@ public class RiepilogoCassa{
 	     * Nel caso la risposta fosse si, il piatto viene aggiunto al pannello centrale.
 	     */
 		for (int j = 0; j < scontrino.size(); j++) {
-					if (scontrino.getPiatto(j).getNumcategory()>0) {
+					if (scontrino.getPiatto(j).getNumcategory() > 0) {
 						
 						/**
 		    			 * Il nome del piatto viene aggiunto al pannello centrale.
-		    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio il contenuto da un punto di vista grafico.
+		    			 * Tra un piatto e l'altro viene inserita una RigidArea,che permette di ordinare al meglio 
+		    			 * il contenuto da un punto di vista grafico.
 		    			 */
 						pannello_centrale.add(Box.createRigidArea(new Dimension(0, 25)));
 						JLabel piatto = new JLabel("PIATTO: " + scontrino.getPiatto(j).getName());
@@ -288,7 +295,7 @@ public class RiepilogoCassa{
 				        /**
 				         * E' il totale da pagare.
 				         */
-				        totale= totale + (scontrino.getPiatto(j).getPrice()*scontrino.getPiatto(j).getNumcategory());
+				        totale = totale + (scontrino.getPiatto(j).getPrice() * scontrino.getPiatto(j).getNumcategory());
 					}
 	   		}
 	}
@@ -297,8 +304,7 @@ public class RiepilogoCassa{
 	 * Utilizzo il polimorfismo per scrivere sul file.txt in base all'oggetto dichiarato in precedenza.
 	 * @param po è l'interfaccia con il metodo write();
 	 **/
-	public static void utilizzaPolimorfismo(Lista po)
-	{
+	public static void utilizzaPolimorfismo(Lista po){
 		po.write();
 	}
 }
